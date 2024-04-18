@@ -1,16 +1,19 @@
 <template>
 	<div class="qa-container">
 		<div class="head flex">
-			<el-icon class="icon-back cursor-pointer" @click="goBack">
-				<ArrowLeftBold />
-			</el-icon>
-			<li class="flex-initial w-full text-center animate__animated animate__fadeInDown">高管招聘</li>
+			<div class="icon_wrap" ref="backIconRef" @click="goBack">
+				<el-icon class="icon-back cursor-pointer">
+					<ArrowLeftBold />
+				</el-icon>
+				<span>返回</span>
+			</div>
+			<li class="flex-initial w-full text-center wow animate__fadeInUp">高管招聘</li>
 		</div>
-		<img class="img" src="@/assets/myService/detail_2_1.png" alt="">
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_2_1.png" alt="">
 		<div class="conf-info">
-			<li class="title">{{ pageInfo.conf1.title }}</li>
-			<li class="msg">{{ pageInfo.conf1.msg }}</li>
-			<div class="cards">
+			<li class="title  wow animate__fadeInUp ">{{ pageInfo.conf1.title }}</li>
+			<li class="msg  wow animate__fadeInUp">{{ pageInfo.conf1.msg }}</li>
+			<div class="cards  wow animate__fadeInUp">
 				<div class="card" v-for="(item, index) in pageInfo.conf1.cards" :key="index">
 					<li class="item-name">{{ item.name }}</li>
 					<li class="item-tip" v-for="tip in item.tips" :key="tip">-{{ tip }}</li>
@@ -18,7 +21,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf2.title }}</li>
 			<li class="msg">{{ pageInfo.conf2.msg }}</li>
 			<li>
@@ -27,7 +30,7 @@
 					<span class="step-key">{{ item }}</span>
 				</span>
 			</li>
-			<div class="cards">
+			<div class="cards ">
 				<div class="card" v-for="(item, index) in pageInfo.conf2.cards" :key="index">
 					<li class="item-name">{{ item.name }}</li>
 					<div class="tips-cont">
@@ -41,12 +44,12 @@
 			</div>
 			<li class="msg">{{ pageInfo.conf2.tips }}</li>
 		</div>
-		<img class="img" src="@/assets/myService/detail_2_2.png" alt="">
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_2_2.png" alt="">
 	</div>
 </template>
 
 <script setup lang='ts'>
-import { onMounted } from 'vue';
+import { Ref, onMounted,ref,reactive,onUnmounted } from 'vue';
 import { useRouter } from "vue-router";
 const router = useRouter();
 const qaList = [
@@ -106,7 +109,7 @@ const pageInfo = {
 		tips: '可从财务、客户、内部运营、队伍建设四个维度来评估不同组织的成熟度情况。同时，针对不同的组织特点，优先选择在性格特质、领导风格、经验、核心能力方面更符合组织要求的干部。'
 	}
 }
-onMounted(() => { });
+
 const goBack = () => {
 	router.go(-1)
 	// router.push('/service')
@@ -126,9 +129,35 @@ const goBack = () => {
 		line-height: 63px;
 		font-weight: 500;
 		padding-bottom: 40px;
-
+		.icon_wrap{
+			position: fixed;
+			top:109px;
+			// display: flex;
+			height:80px;
+			width: 80px;
+			border-radius: 40px;
+			background: #fff;
+			// padding-top:23px;
+			text-align: center;
+			&:hover span{
+				opacity: 1;
+				display: inline-block;
+			}
+			span{
+				display: none;
+				opacity: 0;
+				position: relative;
+				left: -2px;
+				height: 32px;
+				line-height: 32px;
+				font-size: 18px;
+				transition: all 0.5s ease-in-out;
+			}
+		}
 		.icon-back {
+			display: inline-block;
 			font-size: 32px;
+			vertical-align: sub;
 		}
 	}
 

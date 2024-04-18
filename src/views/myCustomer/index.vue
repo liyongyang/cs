@@ -1,23 +1,23 @@
 <template>
 	<div class="customer-container">
-		<li v-if="isSmallSize" class="container-name">我们的客户</li>
+		<li v-if="isSmallSize" class="container-name">{{t('common.routes.menu3')}}</li>
 		<vue3-seamless-scroll v-if="logoList" :list="logoList" class="scroll" direction="right">
 			<div class="scroll-item" v-for="(item, index) in logoList" :key="index">
-				<div v-for="(t, index) in item" :key="index" class="logo">
-					<img :src="t" alt="">
+				<div v-for="(t1, index) in item" :key="index" class="logo">
+					<img :src="t1" alt="">
 					<!-- <li>{{ t }}</li> -->
 				</div>
 			</div>
 		</vue3-seamless-scroll>
 		<div class="content">
-			<li class="title wow animate__fadeInUp ">成功案例分析</li>
+			<li class="title wow animate__fadeInUp ">{{t('page_customer.conf1.title')}}</li>
 			<div class="my-conf1 wow animate__fadeInUp">
 				<div class="card-item" v-for="(item, index) in egList" :key="index">
 					<img @mouseover="changeHover(index, true)" @mouseleave="changeHover(index, false)" @click="toCase(index)"
 						:class="['img', 'animate__animated',item.status?'animate__fadeIn':'']" :src="item.status ? item.activeImg : item.img" alt="">
 				</div>
 			</div>
-			<li class="title wow animate__fadeInUp">客户评价</li>
+			<li class="title wow animate__fadeInUp">{{t('page_customer.conf2.title')}}</li>
 			<div class="my-conf2 wow animate__fadeInUp">
 				<div class="search">
 					<el-select v-model="filterV.type1" placeholder="全部行业">
@@ -50,10 +50,53 @@
 import { onBeforeMount, reactive, ref } from 'vue';
 import { useRouter } from "vue-router";
 import { Vue3SeamlessScroll } from "vue3-seamless-scroll";
-
-import { commentList } from './customer';
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n()
 const router = useRouter();
-
+const commentList = [
+  {
+    name: t('page_customer.conf2.detail[0].name'),
+    tit: t('page_customer.conf2.detail[0].tit'),
+    msg: t('page_customer.conf2.detail[0].msg'),
+    imageName: 'logo.png',
+  },
+  {
+		name: t('page_customer.conf2.detail[1].name'),
+    tit: t('page_customer.conf2.detail[1].tit'),
+    msg: t('page_customer.conf2.detail[1].msg'),
+    imageName: 'logo2.png',
+  },
+  {
+    name: t('page_customer.conf2.detail[2].name'),
+    tit: t('page_customer.conf2.detail[2].tit'),
+    msg: t('page_customer.conf2.detail[2].msg'),
+    imageName: 'logo3.png',
+  },
+  {
+    name: t('page_customer.conf2.detail[3].name'),
+    tit: t('page_customer.conf2.detail[3].tit'),
+    msg: t('page_customer.conf2.detail[3].msg'),
+    imageName: 'logo2.png',
+  },
+  {
+    name: t('page_customer.conf2.detail[4].name'),
+    tit: t('page_customer.conf2.detail[4].tit'),
+    msg: t('page_customer.conf2.detail[4].msg'),
+    imageName: 'logo4.png',
+  },
+  {
+    name: t('page_customer.conf2.detail[5].name'),
+    tit: t('page_customer.conf2.detail[5].tit'),
+    msg: t('page_customer.conf2.detail[5].msg'),
+    imageName: 'logo2.png',
+  },
+  {
+		name: t('page_customer.conf2.detail[6].name'),
+    tit: t('page_customer.conf2.detail[6].tit'),
+    msg: t('page_customer.conf2.detail[6].msg'),
+    imageName: 'logo.png',
+  },
+]
 const isSmallSize = ref(window.innerWidth < 576)
 const logoList = ref([])
 const egList = ref([])
@@ -186,7 +229,7 @@ const toCase = (i: number) => {
 					cursor: default;
 					display: flex;
 					width: auto;
-					height: 243px;
+					min-height: 243px;
 					margin: 8px auto;
 					border-radius: 12px;
 					border: 1px solid #B0A7A7;
@@ -197,6 +240,7 @@ const toCase = (i: number) => {
 
 					.item-img {
 						width: 320px;
+						height:244px;
 						border-radius: 12px 0 0 12px;
 					}
 
@@ -205,7 +249,7 @@ const toCase = (i: number) => {
 						// flex-direction: column;
 						// justify-content: space-between;
 						width: 928px;
-						margin: 40px 32px;
+						margin: 40px  40px 32px;
 						flex-wrap: wrap;
 						text-wrap: wrap;
 						word-wrap: break-word;
@@ -218,7 +262,7 @@ const toCase = (i: number) => {
 							font-size: 28px;
 							line-height: 36px;
 							align-items: center;
-
+							white-space: nowrap;
 							.line {
 								width: 3px;
 								height: 20px;
@@ -241,6 +285,7 @@ const toCase = (i: number) => {
 							font-size: 20px;
 							line-height: 26px;
 							width: auto;
+							white-space: wrap;
 						}
 					}
 				}

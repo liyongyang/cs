@@ -1,9 +1,12 @@
 <template>
 	<div class="qa-container">
 		<div class="head flex">
-			<el-icon class="icon-back cursor-pointer" @click="goBack">
-				<ArrowLeftBold />
-			</el-icon>
+			<div class="icon_wrap" ref="backIconRef" @click="goBack">
+				<el-icon class="icon-back cursor-pointer">
+					<ArrowLeftBold />
+				</el-icon>
+				<span>返回</span>
+			</div>
 			<li class="flex-initial w-full text-center animate__animated animate__fadeInDown">Q&A</li>
 		</div>
 		<div class="content">
@@ -23,11 +26,87 @@
 </template>
 
 <script setup lang='ts'>
-import { onMounted } from 'vue';
+import { Ref, onMounted,ref,reactive,onUnmounted } from 'vue';
 import { useRouter } from "vue-router";
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n()
 const router = useRouter();
-import { qaList, aboutOurs } from './index';
-onMounted(() => { });
+const qaList = [
+  {
+    question: t('page_qa.qaList[0].question'),
+    answer: t('page_qa.qaList[0].answer'),
+  },
+	{
+    question: t('page_qa.qaList[1].question'),
+    answer: t('page_qa.qaList[1].answer'),
+  },
+  {
+    question: t('page_qa.qaList[2].question'),
+    answer: t('page_qa.qaList[2].answer'),
+  },
+  {
+    question: t('page_qa.qaList[3].question'),
+    answer: t('page_qa.qaList[3].answer'),
+  },
+  {
+    question: t('page_qa.qaList[4].question'),
+    answer: t('page_qa.qaList[4].answer'),
+  },
+  {
+    question: t('page_qa.qaList[5].question'),
+    answer: t('page_qa.qaList[5].answer'),
+  },
+  {
+    question: t('page_qa.qaList[6].question'),
+    answer: t('page_qa.qaList[6].answer'),
+  },
+  {
+    question: t('page_qa.qaList[7].question'),
+    answer: t('page_qa.qaList[7].answer'),
+  },
+  {
+    question: t('page_qa.qaList[8].question'),
+    answer: t('page_qa.qaList[8].answer'),
+  },
+  {
+    question: t('page_qa.qaList[9].question'),
+    answer: t('page_qa.qaList[9].answer'),
+  },
+  {
+    question: t('page_qa.qaList[10].question'),
+    answer: t('page_qa.qaList[10].answer'),
+  },
+]
+const aboutOurs = {
+  question: t('page_qa.aboutOurs.question'),
+  answer: [
+    {
+      title: t('page_qa.aboutOurs.answer[0].title'),
+      detail:t('page_qa.aboutOurs.answer[0].detail'),
+    },
+    {
+      title:  t('page_qa.aboutOurs.answer[1].title'),
+      detail:t('page_qa.aboutOurs.answer[1].detail'),
+    },
+    {
+      title:  t('page_qa.aboutOurs.answer[2].title'),
+      detail:t('page_qa.aboutOurs.answer[2].detail'),
+    },
+    {
+      title:  t('page_qa.aboutOurs.answer[3].title'),
+      detail:t('page_qa.aboutOurs.answer[3].detail'),
+    },
+    {
+      title:  t('page_qa.aboutOurs.answer[4].title'),
+      detail: '',
+    },
+    {
+      title:  t('page_qa.aboutOurs.answer[5].title'),
+      detail: '',
+    },
+  ],
+}
+
 const goBack = () => {
 	router.push('/joinUs')
 }
@@ -43,9 +122,35 @@ const goBack = () => {
 		font-size: 48px;
 		line-height: 63px;
 		font-weight: 500;
-
+		.icon_wrap{
+			position: fixed;
+			top:109px;
+			// display: flex;
+			height:80px;
+			width: 80px;
+			border-radius: 40px;
+			background: #fff;
+			// padding-top:23px;
+			text-align: center;
+			&:hover span{
+				opacity: 1;
+				display: inline-block;
+			}
+			span{
+				display: none;
+				opacity: 0;
+				position: relative;
+				left: -2px;
+				height: 32px;
+				line-height: 32px;
+				font-size: 18px;
+				transition: all 0.5s ease-in-out;
+			}
+		}
 		.icon-back {
+			display: inline-block;
 			font-size: 32px;
+			vertical-align: sub;
 		}
 	}
 

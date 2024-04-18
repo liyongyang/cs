@@ -1,21 +1,24 @@
 <template>
 	<div class="qa-container">
 		<div class="head flex">
-			<el-icon class="icon-back cursor-pointer" @click="goBack">
-				<ArrowLeftBold />
-			</el-icon>
-			<li class="flex-initial w-full text-center animate__animated animate__fadeInDown">市场资讯服务</li>
+			<div class="icon_wrap" ref="backIconRef" @click="goBack">
+				<el-icon class="icon-back cursor-pointer" >
+					<ArrowLeftBold />
+				</el-icon>
+				<span>返回</span>
+			</div>
+			<li class="flex-initial w-full text-center wow animate__fadeInUp">市场资讯服务</li>
 		</div>
-		<img class="img" src="@/assets/myService/detail_7_1.png" alt="">
-		<div class="conf-info">
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_7_1.png" alt="">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf1.title }}</li>
 			<li class="msg" v-for="(item, index) in pageInfo.conf1.msg" :key="index">{{ item }}</li>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf2.title }}</li>
 			<li class="msg" v-for="(item, index) in pageInfo.conf2.msg" :key="index">{{ item }}</li>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf3.title }}</li>
 			<div class="cards">
 				<div class="card" v-for="(item, index) in pageInfo.conf3.card" :key="index">
@@ -24,7 +27,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf4.title }}</li>
 			<div class="cards2">
 				<li class="card2" v-for="(item, index) in pageInfo.conf4.card" :key="index">{{
@@ -32,33 +35,33 @@
 				</li>
 			</div>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf5.title }}</li>
 			<div class="cards2">
 				<img class="img" v-for="index in 5" :key="index" :src="`/myService/icons/detail7_card_` + index + `.png`"
 					alt="">
 			</div>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf6.title }}</li>
 			<img class="img" src="/myService/icons/detail7_card2_1.png" alt="">
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf7.title }}</li>
 			<img class="img" src="/myService/icons/detail7_card2_2.png" alt="">
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf8.title }}</li>
 			<li class="msg" v-for="(item, index) in pageInfo.conf8.msg" :key="index">{{ item }}</li>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf9.title }}</li>
 			<div class="cards3" v-for="(item, index) in pageInfo.conf9.card" :key="index">
 				<li class="cards3-tit">{{ item.name }}</li>
 				<li class="cards3-msg" v-for="t in item.msg" :key="t">{{ t }}</li>
 			</div>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp" >
 			<li class="title">{{ pageInfo.conf10.title }}</li>
 			<img class="img" src="/myService/icons/detail7_card2_3.png" alt="">
 		</div>
@@ -66,7 +69,7 @@
 </template>
 
 <script setup lang='ts'>
-import { onMounted } from 'vue';
+import {onMounted,ref,reactive,onUnmounted } from 'vue';
 import { useRouter } from "vue-router";
 const router = useRouter();
 const pageInfo = {
@@ -157,7 +160,6 @@ const pageInfo = {
 		title: '研亚咨询深服务的客户'
 	}
 }
-onMounted(() => { });
 const goBack = () => {
 	router.go(-1)
 	// router.push('/service')
@@ -177,9 +179,35 @@ const goBack = () => {
 		line-height: 63px;
 		font-weight: 500;
 		padding-bottom: 40px;
-
+		.icon_wrap{
+			position: fixed;
+			top:109px;
+			// display: flex;
+			height:80px;
+			width: 80px;
+			border-radius: 40px;
+			background: #fff;
+			// padding-top:23px;
+			text-align: center;
+			&:hover span{
+				opacity: 1;
+				display: inline-block;
+			}
+			span{
+				display: none;
+				opacity: 0;
+				position: relative;
+				left: -2px;
+				height: 32px;
+				line-height: 32px;
+				font-size: 18px;
+				transition: all 0.5s ease-in-out;
+			}
+		}
 		.icon-back {
+			display: inline-block;
 			font-size: 32px;
+			vertical-align: sub;
 		}
 	}
 
