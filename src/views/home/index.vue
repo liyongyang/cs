@@ -4,7 +4,8 @@
 			<el-carousel trigger="click" height="auto" autoplay @change="handleCarousel" :interval="8000">
 				<el-carousel-item class="banner-item" v-for="(item, index) in bannerList" :key="index">
 					<img w-full :src="item.img" alt="" class="img-item">
-					<div :class="['info','animate__animated', isFirstEnter&&currentCarouselIndex===index?'animate__fadeInDown':'',!isFirstEnter&&currentCarouselIndex===index? 'info_animate':'']">
+					<div
+						:class="['info', 'animate__animated', isFirstEnter && currentCarouselIndex === index ? 'animate__fadeInDown' : '', !isFirstEnter && currentCarouselIndex === index ? 'info_animate' : '']">
 						<li class="title">{{ item.txt }} </li>
 						<li class="msg">{{ item.msg }}</li>
 					</div>
@@ -39,7 +40,8 @@
 					<li class="txt-2"><span>{{ t('page1.conf1.msg[3].tips') }}</span></li>
 				</div>
 			</div>
-			<div class="bg1 wow animate__fadeInUp" :style="{ backgroundImage: `url(${bg1Image})` }" style="background-size: 100% 100%;">
+			<div class="bg1 wow animate__fadeInUp" :style="{ backgroundImage: `url(${bg1Image})` }"
+				style="background-size: 100% 100%;">
 				<div class="box1" :class="bg1_MouseMove ? 'box1_active' : 'box1_default'">
 					<li class="title" :style="{ opacity: bg1Image != bg1_default ? 0 : 1 }">{{ t('page1.conf1.banner.title') }}
 					</li>
@@ -97,7 +99,8 @@
 				<div class="card">
 					<img class="img" v-full :src="`/home/map.png`">
 					<div class="item" v-for="(item, index) in areaList" :key="index" @mouseover="showMapTip(index)">
-						<div class="tooltip" :style="'display:'+ (activeMap===index?'block':'none')">{{item.tooltipText}}</div>
+						<div class="tooltip" :style="'display:' + (activeMap === index ? 'block' : 'none')">{{ item.tooltipText }}
+						</div>
 						<li class="name">{{ item.name }}</li>
 						<li class="address-item">{{ item.address }}</li>
 						<li class="msg">{{ item.msg }}</li>
@@ -179,43 +182,43 @@ const areaList = [
 		name: '01 中国办事处',
 		address: '上海市闵行区程家桥路168弄39号，308室',
 		msg: '邮编 201103',
-		tooltipText:'Shanghai'
+		tooltipText: 'Shanghai'
 	},
 	{
 		name: '02 新加坡办事处',
 		address: '新家皮丝丝街105号建春大厦13楼',
 		msg: '邮编 069534',
-		tooltipText:'Singapore'
+		tooltipText: 'Singapore'
 	},
 	{
 		name: '03 马来西亚办事处',
 		address: '吉隆坡孟沙南城3号大道29-01',
 		msg: '邮编 59200',
-		tooltipText:'Malaysia'
+		tooltipText: 'Malaysia'
 	},
 	{
 		name: '04 印度办事处',
 		address: '马哈拉施特拉邦 Inspire Hub Andheri West JP 大道',
 		msg: '邮编 40053',
-		tooltipText:'India'
+		tooltipText: 'India'
 	},
 	{
 		name: '05 澳大利亚办事处',
 		address: '悉尼克拉伦斯街50号，新南威尔士州，澳大利亚',
 		msg: '邮编 2000',
-		tooltipText:'Australia'
+		tooltipText: 'Australia'
 	},
 	{
 		name: '06 英国办事处',
 		address: '伦敦城市路160号肯普之家，英国',
 		msg: '邮编 EC1V 2NX',
-		tooltipText:'Britain'
+		tooltipText: 'Britain'
 	}
 ]
 const bg1Image = ref(bg1_default);
 const bg1_MouseMove = ref(false)
 onMounted(() => {
-	
+
 });
 
 const showMapTip = (key: number) => {
@@ -244,9 +247,9 @@ onUnmounted(() => {
  */
 // 页面是否是第一次进入，第一次进入时banner里的文字动画从上到下展现
 const isFirstEnter = ref(true)
-let currentCarouselIndex:Ref<number> = ref(0)
-const handleCarousel = (index:number)=>{
-	console.log('handleCarousel',index)
+let currentCarouselIndex: Ref<number> = ref(0)
+const handleCarousel = (index: number) => {
+	console.log('handleCarousel', index)
 	isFirstEnter.value = false
 	currentCarouselIndex.value = index
 }
@@ -268,8 +271,9 @@ $backgroundColor: linear-gradient(90deg, rgba(0, 0, 0, 0.67) 0%, rgba(0, 0, 0, 0
 		position: absolute;
 		top: 38%;
 		left: 120px;
+
 		&.info_animate {
-			animation: fadeInUp; 
+			animation: fadeInUp;
 			animation-duration: 2s;
 		}
 
@@ -338,7 +342,6 @@ $backgroundColor: linear-gradient(90deg, rgba(0, 0, 0, 0.67) 0%, rgba(0, 0, 0, 0
 			line-height: 36px;
 			align-items: center;
 			transition: all ease-in-out 0.5s;
-		
 
 			.txt-1 {
 				margin-top: 12px;
@@ -351,22 +354,26 @@ $backgroundColor: linear-gradient(90deg, rgba(0, 0, 0, 0.67) 0%, rgba(0, 0, 0, 0
 				margin-top: 12px;
 				// display: none;
 				overflow: hidden;
+
 				// transition: all ease-in-out 0.5s;
-				span{
+				span {
 					display: block;
 					width: 420px;
 				}
 			}
+
 			@keyframes text2 {
-				0%{
+				0% {
 					width: 0;
 					opacity: 0;
 				}
-				100%{
+
+				100% {
 					width: 420px;
 					opacity: 1;
 				}
 			}
+
 			&:hover {
 				color: #fff;
 				width: 512px;
@@ -374,6 +381,7 @@ $backgroundColor: linear-gradient(90deg, rgba(0, 0, 0, 0.67) 0%, rgba(0, 0, 0, 0
 				word-wrap: break-word;
 				white-space: pre-wrap;
 				background: linear-gradient(180deg, #E30214 0%, #F16B57 100%);
+
 				// overflow: hidden;
 				.txt-1 {
 					margin-top: 12px;
@@ -568,6 +576,7 @@ $backgroundColor: linear-gradient(90deg, rgba(0, 0, 0, 0.67) 0%, rgba(0, 0, 0, 0
 			width: auto;
 			padding-bottom: 40px;
 		}
+
 		@keyframes tooltip {
 			0% {
 				opacity: 0;
@@ -580,67 +589,77 @@ $backgroundColor: linear-gradient(90deg, rgba(0, 0, 0, 0.67) 0%, rgba(0, 0, 0, 0
 				transform: translateY(0) scale(1.3);
 				// animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
 			}
+
 			100% {
 				transform: scale(1);
 				// animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 			}
 		}
+
 		.card {
 			position: relative;
 			margin-top: 12px;
 			display: flex;
 			justify-content: space-between;
 			flex-wrap: wrap;
-			img{
-				width:100%;
+
+			img {
+				width: 100%;
 			}
-			.tooltip{
+
+			.tooltip {
 				position: absolute;
-				width:304px;
+				width: 304px;
 				height: 290px;
-				background:url('@/assets/home/rectangle1.svg')   no-repeat;
-				background-size:100% 100%;
-				color:#E30214;
+				background: url('@/assets/home/rectangle1.svg') no-repeat;
+				background-size: 100% 100%;
+				color: #E30214;
 				font-size: 20px;
 				font-weight: 400;
 				text-align: center;
 				padding: 34px 80px 0 81px;
 				animation: tooltip 1s ease-in-out forwards;
 			}
+
 			.item:nth-child(2) {
-				.tooltip{
+				.tooltip {
 					left: 889px;
-    			top: 235px;
+					top: 235px;
 				}
 			}
+
 			.item:nth-child(3) {
-				.tooltip{
+				.tooltip {
 					left: 814px;
-    			top: 304px;
+					top: 304px;
 				}
 			}
+
 			.item:nth-child(4) {
-				.tooltip{
+				.tooltip {
 					left: 835px;
-   				top: 378px;
+					top: 378px;
 				}
 			}
+
 			.item:nth-child(5) {
-				.tooltip{
+				.tooltip {
 					left: 717px;
-    			top: 274px;
+					top: 274px;
 				}
 			}
+
 			.item:nth-child(6) {
-				.tooltip{
+				.tooltip {
 					left: 984px;
-    			top: 502px;
+					top: 502px;
 				}
 			}
+
 			.item:nth-child(7) {
-				.tooltip{
+				.tooltip {
 					left: 514px;
-    			top: 82px;
+					top: 82px;
 				}
 			}
 
@@ -755,7 +774,7 @@ $backgroundColor: linear-gradient(90deg, rgba(0, 0, 0, 0.67) 0%, rgba(0, 0, 0, 0
 
 			.card {
 				width: 173px;
-				height: 137px;
+				height: 110px;
 				border: 1px solid #B0A7A7;
 				padding: 16px;
 				border-radius: 12px;
@@ -763,6 +782,10 @@ $backgroundColor: linear-gradient(90deg, rgba(0, 0, 0, 0.67) 0%, rgba(0, 0, 0, 0
 				line-height: 20px;
 				transition: all 0.5s;
 				margin: 8px 0;
+
+				img {
+					width: 40px;
+				}
 
 				&:hover {
 					color: #fff;
@@ -876,9 +899,8 @@ $backgroundColor: linear-gradient(90deg, rgba(0, 0, 0, 0.67) 0%, rgba(0, 0, 0, 0
 
 			.card {
 				width: auto;
-				height: 310px;
-				overflow-x: scroll;
-				overflow-y: hidden;
+				height: 300px;
+				overflow-x: auto;
 				display: flex;
 
 				.card-box {
@@ -892,7 +914,7 @@ $backgroundColor: linear-gradient(90deg, rgba(0, 0, 0, 0.67) 0%, rgba(0, 0, 0, 0
 					border: 1px solid #B0A7A7;
 
 					&:hover {
-						box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+						box-shadow: 0 8px 8px -8px rgb(0 0 0 / 0.25);
 					}
 
 					.img {
@@ -903,6 +925,7 @@ $backgroundColor: linear-gradient(90deg, rgba(0, 0, 0, 0.67) 0%, rgba(0, 0, 0, 0
 
 					.info {
 						text-align: left;
+						height: 170px;
 						font-size: 16px;
 						font-weight: 500;
 						line-height: 21px;
@@ -955,6 +978,7 @@ $backgroundColor: linear-gradient(90deg, rgba(0, 0, 0, 0.67) 0%, rgba(0, 0, 0, 0
 				width: auto;
 				height: 201px;
 			}
+
 			@keyframes tooltip {
 				0% {
 					opacity: 0;
@@ -967,64 +991,74 @@ $backgroundColor: linear-gradient(90deg, rgba(0, 0, 0, 0.67) 0%, rgba(0, 0, 0, 0
 					transform: translateY(0) scale(1.3);
 					// animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
 				}
+
 				100% {
 					transform: scale(1);
 					// animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 				}
 			}
+
 			.card {
 				margin-top: 12px;
 				display: flex;
 				flex-wrap: wrap;
-				.tooltip{
+
+				.tooltip {
 					position: absolute;
 					width: 152px;
-        	height: 145px;
-					background:url('@/assets/home/rectangle1.svg')   no-repeat;
-					background-size:100% 100%;
-					color:#E30214;
+					height: 145px;
+					background: url('@/assets/home/rectangle1.svg') no-repeat;
+					background-size: 100% 100%;
+					color: #E30214;
 					font-size: 12px;
 					font-weight: 400;
 					text-align: center;
 					padding: 12px 40px 0 40px;
 					animation: tooltip 1s ease-in-out forwards;
 				}
+
 				.item:nth-child(2) {
-					.tooltip{
+					.tooltip {
 						left: 212px;
-        		top: 43px;
+						top: 43px;
 					}
 				}
+
 				.item:nth-child(3) {
-					.tooltip{
+					.tooltip {
 						left: 191px;
-        		top: 63px;
+						top: 63px;
 					}
 				}
+
 				.item:nth-child(4) {
-					.tooltip{
+					.tooltip {
 						left: 197px;
-        		top: 83px;
+						top: 83px;
 					}
 				}
+
 				.item:nth-child(5) {
-					.tooltip{
+					.tooltip {
 						left: 165px;
-        		top: 55px;
+						top: 55px;
 					}
 				}
+
 				.item:nth-child(6) {
-					.tooltip{
+					.tooltip {
 						left: 238px;
-        		top: 117px;
+						top: 117px;
 					}
 				}
+
 				.item:nth-child(7) {
-					.tooltip{
+					.tooltip {
 						left: 109px;
-        		top: 1px;
+						top: 1px;
 					}
 				}
+
 				.item {
 					flex: 0 0 auto;
 					width: 173px;
@@ -1049,6 +1083,11 @@ $backgroundColor: linear-gradient(90deg, rgba(0, 0, 0, 0.67) 0%, rgba(0, 0, 0, 0
 						font-weight: 500;
 						line-height: 21px;
 						margin-bottom: 8px;
+					}
+
+					.address-item {
+						margin-top: 4px;
+						line-height: 20px;
 					}
 				}
 			}

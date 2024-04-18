@@ -39,15 +39,15 @@
 				<!-- <div class="box1"></div> -->
 				<img class="left-img" src="@/assets/myService/img.png" alt="">
 				<div class="btns">
-					<div class="btn-items" :style="'margin-top:'+processMarginTop+'px'">
-						<div class="btn-item" v-for="(item, index) in steps" :key="index" @mouseenter="toggleProcess(index,true)"
-						@mouseleave="toggleProcess(index,false)" >
+					<div class="btn-items" :style="'margin-top:' + processMarginTop + 'px'">
+						<div class="btn-item" v-for="(item, index) in steps" :key="index" @mouseenter="toggleProcess(index, true)"
+							@mouseleave="toggleProcess(index, false)">
 							<div class="title">
 								<li>
 									<span class="line"></span>
 									<span>{{ item.name }}</span>
 								</li>
-								<li class="step">Step-0{{index+1}}</li>
+								<li class="step">Step-0{{ index + 1 }}</li>
 							</div>
 							<img class="btn-bg" src="/myService/step-bg.png" alt="">
 							<div v-for="(t, index) in item.msg" :key="index">
@@ -55,13 +55,13 @@
 							</div>
 						</div>
 					</div>
-					
+
 				</div>
 			</div>
 			<div class="bg2 wow animate__fadeInUp">
 				<li class="title">如何甄选人才</li>
 				<div class="card" v-for="(item, index) in List" :key="index" @mouseenter="toggleHover(true)"
-					@mouseleave="toggleHover(false)" @click="toCase1(index+1)">
+					@mouseleave="toggleHover(false)" @click="toCase1(index + 1)">
 					<div class="left">
 						<li class="flex items-center">
 							<span class="line"></span>
@@ -157,7 +157,9 @@
 					<img src="@/assets/myService/Frame509.png" alt="">
 					<div class="inner">
 						<div class="question">什么是驻场人事</div>
-						<div class="desc">驻场人事服务指的是在企业内部设立办公室或工作场所的专业人力资源（HR）专家或团队，与企业管理层和员工紧密合作，提供广泛的人力资源支持，解决与员工和组织相关的各种问题。此类服务通常由外部独立的专业人力资源咨询公司或服务提供商提供。</div>
+						<div class="desc">
+							驻场人事服务指的是在企业内部设立办公室或工作场所的专业人力资源（HR）专家或团队，与企业管理层和员工紧密合作，提供广泛的人力资源支持，解决与员工和组织相关的各种问题。此类服务通常由外部独立的专业人力资源咨询公司或服务提供商提供。
+						</div>
 						<div class="more">查看详情</div>
 					</div>
 				</div>
@@ -169,7 +171,7 @@
 <script setup lang='ts'>
 import { onMounted, onUnmounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useRouter,useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 const router = useRouter();
 const route = useRoute();
 const { t } = useI18n()
@@ -300,7 +302,7 @@ const toggleHover = (data: boolean) => {
 	isHover.value = data;
 }
 // case1 返回之后滚动的位置
-let topArr = [2000,2380,2710]
+let topArr = [2000, 2380, 2710]
 onMounted(() => {
 	// timer.value = setInterval(() => {
 	// 	active.value < 5 ? active.value++ : active.value = 0
@@ -309,15 +311,15 @@ onMounted(() => {
 	// case1 返回之后滚动到之前位置
 	if (route.query && route.query.step) {
 		window.scrollTo({
-			top: topArr[Number(route.query.step)-1],
+			top: topArr[Number(route.query.step) - 1],
 		})
 	}
 });
 // case1通过step参数来确定，case1页面点击返回时，回到哪个位置
-const toCase1 = (index:number) =>{
+const toCase1 = (index: number) => {
 	router.push({
 		path: '/service/case1',
-		query: { step: index}
+		query: { step: index }
 	}).then(() => {
 		window.scrollTo(0, 0);
 	})
@@ -331,15 +333,15 @@ const toDetail = (idx: string) => {
 }
 // 处理招聘流程和时间表动画
 const processMarginTop = ref(0)
-let processTimer:any = null
+let processTimer: any = null
 let documentWidth = document.documentElement.clientWidth
-const toggleProcess = (index:number,type:boolean) =>{
-	if (documentWidth >576 && index === 4) {
+const toggleProcess = (index: number, type: boolean) => {
+	if (documentWidth > 576 && index === 4) {
 		if (type) {
 			clearInterval(processTimer)
-			processTimer = setTimeout(() =>{
+			processTimer = setTimeout(() => {
 				processMarginTop.value = -72
-			},500)
+			}, 500)
 		} else {
 			processMarginTop.value = 0
 		}
@@ -497,10 +499,12 @@ onUnmounted(() => {
 			justify-content: space-between;
 			height: 640px;
 			overflow: hidden;
+
 			// overflow: scroll;
 			.btn-items {
 				transition: all 0.5s ease-in-out;
 			}
+
 			.btn-item {
 				position: relative;
 				flex: 0 0 auto;
@@ -517,6 +521,7 @@ onUnmounted(() => {
 				padding: 0 32px;
 				line-height: 90px;
 				overflow: hidden;
+
 				.btn-bg {
 					display: none;
 				}
@@ -757,11 +762,12 @@ onUnmounted(() => {
 	.bg4 {
 		height: 100%;
 		padding-bottom: 40px;
-		video{
+
+		video {
 			width: 100%;
 			object-fit: cover;
 		}
-		
+
 		.title {
 			font-size: 50px;
 			font-weight: 500;
@@ -978,39 +984,44 @@ onUnmounted(() => {
 		// .img5 {
 		// 	cursor: pointer;
 		// }
-		.detail{
+		.detail {
 			position: relative;
 			cursor: pointer;
-			color:  #FFF;
+			color: #FFF;
 			font-weight: 400;
-			.inner{
+
+			.inner {
 				position: absolute;
-				top:205px;
-				left:64px;
+				top: 205px;
+				left: 64px;
 				width: 448px;
 				text-align: justify;
 			}
-			.question{
+
+			.question {
 				font-size: 28px;
 			}
-			.desc{
+
+			.desc {
 				font-size: 20px;
-				margin-top:12px;
+				margin-top: 12px;
 				white-space: wrap;
 			}
-			.more{
-				background-color: 	#fff;
+
+			.more {
+				background-color: #fff;
 				border-radius: 8px;
 				height: 56px;
-				width:160px;
-				line-height:56px;
-				text-align:center;
+				width: 160px;
+				line-height: 56px;
+				text-align: center;
 				margin-top: 64px;
 				font-size: 16px;
-				color:#231C1E;
+				color: #231C1E;
 				transition: all 0.5s linear;
-				&:hover{
-					font-size:20px
+
+				&:hover {
+					font-size: 20px
 				}
 			}
 		}
@@ -1057,6 +1068,8 @@ onUnmounted(() => {
 		margin: 0 auto;
 
 		.box1 {
+			word-wrap: break-word;
+			white-space: pre-wrap;
 			padding-top: 0;
 
 			.title {
