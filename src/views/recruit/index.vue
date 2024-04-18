@@ -2,16 +2,16 @@
 	<div class="recruit-container">
 		<div class="banner">
 			<div v-if="isSmallSize" class="animate__animated animate__fadeInUp">
-				<li class="name">招聘</li>
+				<li class="name">{{t('common.routes.menu3')}}</li>
 				<img src="/recruit/banner-s-1.png" alt="" class="">
-				<div class="info animate__animated animate__fadeInDown">
+				<div class="info animate__animated animate__fadeInUp">
 					<li class="title">发掘潜力，连接未来</li>
 					<li class="msg text-wrap">我们的致力于为您的带来无限的商业可能，提前赢得更多的机会</li>
 				</div>
 			</div>
 			<div v-else class="img">
 				<img w-full src="/recruit/banner.png" alt="" class="">
-				<div class="info animate__animated animate__fadeInDown">
+				<div class="info animate__animated animate__fadeInUp">
 					<li class="title">发掘潜力，连接未来</li>
 					<li class="msg text-wrap">我们的致力于为您的带来无限的商业可能，提前赢得更多的机会</li>
 				</div>
@@ -82,7 +82,8 @@
 import { onMounted, reactive, ref } from 'vue';
 
 import { jdList } from './jdList';
-
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n()
 const isSmallSize = ref(window.innerWidth < 576)
 const filterV = reactive({
 	key: '',

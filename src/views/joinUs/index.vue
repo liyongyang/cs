@@ -2,14 +2,14 @@
 	<div class="join-container">
 		<div class="banner">
 			<div v-if="isSmallSize" class="animate__animated animate__fadeInUp">
-				<li class="name">加入我们</li>
+				<li class="name">{{t('common.routes.menu5')}}</li>
 				<img src="/joinUs/banner-s-1.png" alt="" class="" />
 			</div>
 			<div v-else class="img">
 				<img w-full src="/joinUs/banner.png" alt="" class="" />
-				<div class="info animate__animated animate__fadeInDown">
-					<li class="title">发掘潜力，连接未来</li>
-					<li class="msg text-wrap">我们的致力于为您的带来无限的商业可能，提前赢得更多的机会</li>
+				<div class="info animate__animated animate__fadeInUp">
+					<li class="title">{{t('page_joinUs.banner.title')}}</li>
+					<li class="msg text-wrap">{{t('page_joinUs.banner.msg')}}</li>
 				</div>
 			</div>
 		</div>
@@ -21,7 +21,7 @@
 				</li>
 			</div>
 			<div v-if="active === 0" class="tab-box">
-				<li class="title wow animate__fadeInUp">团建、照片集</li>
+				<li class="title wow animate__fadeInUp">{{t('page_joinUs.conf1.title')}}</li>
 				<div class="conf1 wow animate__fadeInUp">
 					<el-carousel :interval="40000" type="card" class="carousel-imgs">
 						<el-carousel-item v-for="(item, index) in 10" :key="item">
@@ -30,21 +30,32 @@
 					</el-carousel>
 				</div>
 
-				<li class="title wow animate__fadeInUp">员工声音</li>
+				<li class="title wow animate__fadeInUp">{{t('page_joinUs.conf1.title2')}}</li>
 				<div class="conf2 wow animate__fadeInUp">
-					<div class="card" v-for="(item, index) in conf2Card" :key="index" @click="handleDetail(index)">
+					<!-- <div class="card" v-for="(item, index) in conf2Card" :key="index" @click="handleDetail(index)">
 						<img class="img" :src="`/joinUs/conf2-` + index + `.png`" alt="" />
 						<div class="msg">
 							<li class="line"></li>
 							<li class="txt">{{ item }}</li>
 						</div>
-					</div>
+					</div> -->
+					<el-carousel :interval="40000" :autoplay="false" class="carousel-imgs" height="351px">
+						<el-carousel-item v-for="(item, index) in conf2Card" :key="index" >
+							<div class="card" v-for="(child, i) in item" @click="handleDetail(index)">
+								<img class="img" :src="`/joinUs/conf2-` + ((index+1)*i) + `.png`" alt="" />
+								<div class="msg">
+									<li class="line"></li>
+									<li class="txt">{{ child }}</li>
+								</div>
+							</div>
+						</el-carousel-item>
+					</el-carousel>
 				</div>
 
-				<li class="title wow animate__fadeInUp">晋升机制</li>
+				<li class="title wow animate__fadeInUp">{{t('page_joinUs.conf1.title3')}}</li>
 				<div class="conf3 wow animate__fadeInUp">
 					<li>
-						企业的晋升机制透明化和明确清晰性不仅有助于员工的职业发展和满意度，还有助于组织的稳定和发展。透明的晋升机制可以促进公平、激励、信任和绩效，为企业创造一个更健康和积极的工作环境。
+						{{t('page_joinUs.conf1.desc')}}
 					</li>
 					<img class="conf3-img" src="/joinUs/conf3.png" alt="" />
 				</div>
@@ -52,7 +63,7 @@
 				<li class="title wow animate__fadeInUp">Mother and care</li>
 				<img class="conf4-img wow animate__fadeInUp" src="/joinUs/conf4.png" alt="" />
 
-				<li class="title wow animate__fadeInUp">文章分享</li>
+				<li class="title wow animate__fadeInUp">{{t('page_joinUs.conf1.title4')}}</li>
 				<div class="conf5 wow animate__fadeInUp">
 					<div class="card" v-for="item in 6" :key="item">
 						<li class="article-title">{{ articleList.title }}</li>
@@ -62,30 +73,30 @@
 			</div>
 			<div v-else class="tab-jd">
 				<div class="jd-content wow animate__fadeInUp">
-					<li class="jd-title">在招职位</li>
+					<li class="jd-title">{{t('page_joinUs.conf2.title')}}</li>
 					<div class="list">
 						<div class="item-conf" v-for="(item, index) in list" :key="item.name" @click="handlActive(index)">
 							<li class="item-conf-head">
 								{{ item.name }}
 							</li>
 							<div class="item-conf-jd">
-								<li class="tips" v-if="item.conf.tip">职位概述：</li>
+								<li class="tips" v-if="item.conf.tip">{{t('page_joinUs.conf2.tip')}}</li>
 								<li class="desc" v-for="(t, index) in item.conf.tip" :key="index">
 									{{ t }}
 								</li>
-								<li class="tips" v-if="item.conf.jd1">工作职责：</li>
+								<li class="tips" v-if="item.conf.jd1">{{t('page_joinUs.conf2.jd1')}}</li>
 								<li class="desc" v-for="(t, index) in item.conf.jd1" :key="index">
 									{{ index + 1 }}. {{ t }}
 								</li>
-								<li class="tips" v-if="item.conf.jd2">资格要求：</li>
+								<li class="tips" v-if="item.conf.jd2">{{t('page_joinUs.conf2.jd2')}}</li>
 								<li class="desc" v-for="(t, index) in item.conf.jd2" :key="index">
 									{{ index + 1 }}. {{ t }}
 								</li>
-								<li class="tips" v-if="item.conf.jd3">我们能提供：</li>
+								<li class="tips" v-if="item.conf.jd3">{{t('page_joinUs.conf2.jd3')}}</li>
 								<li class="desc" v-for="(t, index) in item.conf.jd3" :key="index">
 									{{ index + 1 }}. {{ t }}
 								</li>
-								<span v-if="!isSmallSize" class="jd-create">发布时间：{{ item.time }}</span>
+								<span v-if="!isSmallSize" class="jd-create">{{t('page_joinUs.conf2.timeText')}}{{ item.time }}</span>
 							</div>
 						</div>
 					</div>
@@ -113,152 +124,125 @@
 <script setup lang='ts'>
 import { onMounted, ref } from 'vue';
 import { useRouter } from "vue-router";
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n()
 const router = useRouter();
 
 const isSmallSize = ref(window.innerWidth < 576)
 const tab = ['企业文化', '加入我们']
 const active = ref(0)
 const conf2Card = [
-	'公司为我们每一位员工提供了宽广的发展平台和丰富的职业资源，让我们都有机会展现自己的才华、追求梦想。',
+	['公司为我们每一位员工提供了宽广的发展平台和丰富的职业资源，让我们都有机会展现自己的才华、追求梦想。',
 	'Csuite是一个学校，一座熔炉。我们通过学习、工作和锻炼，在工作中学习，在前进中成长。',
 	'作为Csuite的一位员工，我深感自豪和幸运。我们公司不仅为客户带来了高品质的服务，还为员工营造了一个不断进取的工作氛围。',
+	'公司为我们每一位员工提供了宽广的发展平台和丰富的职业资源，让我们都有机会展现自己的才华、追求梦想。'],
+	['公司为我们每一位员工提供了宽广的发展平台和丰富的职业资源，让我们都有机会展现自己的才华、追求梦想。',
 	'公司为我们每一位员工提供了宽广的发展平台和丰富的职业资源，让我们都有机会展现自己的才华、追求梦想。',
 	'公司为我们每一位员工提供了宽广的发展平台和丰富的职业资源，让我们都有机会展现自己的才华、追求梦想。',
-	'公司为我们每一位员工提供了宽广的发展平台和丰富的职业资源，让我们都有机会展现自己的才华、追求梦想。',
-	'公司为我们每一位员工提供了宽广的发展平台和丰富的职业资源，让我们都有机会展现自己的才华、追求梦想。',
-	'公司为我们每一位员工提供了宽广的发展平台和丰富的职业资源，让我们都有机会展现自己的才华、追求梦想。',
+	'公司为我们每一位员工提供了宽广的发展平台和丰富的职业资源，让我们都有机会展现自己的才华、追求梦想。'],
 ]
 const showDetail = ref(false)
 const activeDetail = ref(0)
 const conf2CardDetail = [
-	'作为Csuite的一名员工，我深刻体验到了这里的企业文化和价值观。在这里，我不仅找到了自己的价值和方向，还获得了无数的成长机会。公司为我们每一位员工提供了宽广的发展平台和丰富的职业资源，让我们都有机会展现自己的才华、追求梦想。更值得一提的是，公司不仅注重业务发展，也非常重视员工的个人成长和职业规划。无论是内部培训，还是外部学习机会，Csuite都愿意为员工投资，确保每一个人都能得到提升。这样的企业环境使我深感自豪，并激励我为公司的未来持续付出努力。我坚信，在Csuite，每个人都能找到自己的舞台，实现自己的价值和目标。累下来的经验和自己的优势，为更多人带来价值。',
-
-	'csuite是一个学校，一座熔炉。我们通过学习、工作和锻炼，在工作中学习，在前进中成长。同时，csuite提供给我们发展的平台、表演的舞台、客观公正的评价。我欣喜地看到，在我们企业从小到大的发展过程中，已经为客户输送了大批人才，他们在企业的各个岗位发挥着越来越重要的作用。客户评价客户评价客户评价客户评价客户评价客户评价客户评价',
-
-	'加入Csuite后，我的综合技能得到了很大提升。这得益于我司对客户拜访、顾问面试、offer谈判等各个环节的要求都很高，并且会给予顾问个性化的培训。也因此，客户对我们团队很满意。在这里工作，我充分认识到了一位合格顾问的职责和价值，并付诸实践、不断进步。此外，公司的工作氛围很好，这是一个活力满满、简单纯粹的组织。',
-
-	'来到CSuite的最大感受是整体工作效率的提高。我的boss教会我如何更好地做time management，合理规划好每天的时间来争取最大的成果，同时count on every step 工作环境很透明很积极，同事也都是可以一起玩一起成长的小伙伴，都有各自的人生规划，我也有很多需要向她们学习的地方希望有更多小伙伴能够加入到我们当中，只要你hungry for something and willing to learn，相信在这里你会快速成长！',
-
-	'加入Csuite最大的感受是，领导教会我如何去做一名更专业的猎头，同事们都很专业热情，我向他们学习了很多，同时在这里工作氛围积极向上，同事们像朋友一样相处。我在这里提升了自己的能力，学习了不同行业的知识，快速成长了许多，很高兴能够加入Csuite，期待未来共同成长进步。',
-
-	'我是一个刚刚加入csuite的新员工。虽然只有两个月的时间，但我已经对这里有了深深的感情。首先，每个人都愿意为团队付出，与他人分享。当遇到问题时，同事和上司都会给予指导，帮助我克服挑战。其次，csuite真正关心个人和职业发展。我参与了多次内部培训，让我不断增强专业技能。期待你的加入，一起创造更多的辉煌！客户评价客户评价客户评价客户评价客户评价客户评价客户评价',
-
-	`我们的猎头公司，是我职业生涯的一座黄金舞台，一个充满机遇和挑战的家园。作为管理层的一员，我不仅感到自豪，更感到幸运。
-	这里不仅仅是一家企业，而是一个充满创新和专业成长的平台。公司的培训和发展机会让我在专业领域取得了巨大进步，使我能够不断提升自己的技能和知识。
-	更重要的是，这里让我有机会建立自己的团队，并培养出色的人才。看着我的团队成员不断壮大和进步，我感受到了无法言喻的价值感。协助他们实现职业目标，分享他们的成功，是我职业生涯中最大的成就之一。
-	我深知，公司不仅仅是一个工作场所，更是一个让人实现梦想的平台。我们致力于为员工提供一个充满挑战和成长机会的环境，同时也注重每个人的职业发展和幸福感。我希望能将这个特殊的平台介绍给更多人，因为我们相信，每一个人都有自己的梦想，而在这里，我们努力为实现这些梦想提供坚实的支持。加入我们，让我们一同努力，共同创造更美好的明天！
-	客户评价客户评价客户评价客户评价客户评价客户评价客户评价`,
-
-	`作为猎企的一名员工，我深感自豪和幸运。我们的公司不仅提供卓越的服务，还构建了一个令人难忘的工作环境。我们的培训机制精心设计，为员工提供了无限成长机会，使我们不断进步。多样的员工活动充实了我们的日常生活，促进了紧密的团队关系。
-	公司文化以开明、包容为核心，让每个员工在这里都感到受尊重，无论其背景如何。同事之间互帮互助，构建了一种和谐的工作氛围，我们在这里真正像一个大家庭。
-	值得一提的是，公司老板拥有丰富的资源，这为我们提供了更多机会，让我们的职业生涯蓬勃发展。
-	我真诚邀请大家一同了解我们的公司，因为我们不仅提供卓越的服务，更打造了一个充满活力和机遇的工作环境。加入我们，一起创造更美好的未来！
-	客户评价客户评价客户评价客户评价客户评价客户评价客户评价`
-
-
-]
+	t('page_joinUs.conf1.details[0]'),
+	t('page_joinUs.conf1.details[1]'),
+	t('page_joinUs.conf1.details[2]'),
+	t('page_joinUs.conf1.details[3]'),
+	t('page_joinUs.conf1.details[4]'),
+	t('page_joinUs.conf1.details[5]'),
+	t('page_joinUs.conf1.details[6]'),
+	t('page_joinUs.conf1.details[7]'),
+	]
 const articleList = {
 	title: '文字标题',
 	content: '填充文本填充文本填充文本填充文本填充文本填充文本填充文本填充文本填充文本填充文本填充文本填充文本'
 }
 const list = ref([
 	{
-		name: '猎头',
+		name: t('page_joinUs.conf2.jdDetails[0].name'),
 		time: '2023-08-25',
 		conf: {
 			jd1: [
-				'团队搭建与管理：负责所辖团队成员招聘与培训，带领团队完成年度目标；',
-				'客户开发及维护：寻求和挖掘业务信息，开发优质客户，与现有客户保持良好关系，成为战略合作伙伴；',
-				'招聘咨询服务：负责客户委托的招聘项目，专注行业中高端候选人寻访，负责候选人面试、薪资谈判、 offer 发放、入职及试用期跟进等一系列招聘事宜；',
-				'候选人管理：积累丰富的行业候选人资源，与候选人保持良好的关系，成为候选人的职业导师，为候选人提供中长期职业生涯规划',
-				'人才市场调研：密切关注人才市场信息，进行人才地图绘制、行业定向 mapping ，及时捕捉商机，主动向客户及候选人销售'
+			t('page_joinUs.conf2.jdDetails[0].conf.jd1[0]'),
+			t('page_joinUs.conf2.jdDetails[0].conf.jd1[1]'),
+			t('page_joinUs.conf2.jdDetails[0].conf.jd1[2]'),
+			t('page_joinUs.conf2.jdDetails[0].conf.jd1[3]'),
+			t('page_joinUs.conf2.jdDetails[0].conf.jd1[4]')
 			],
 			jd2: [
-				'本科及以上学历；',
-				'良好的英语听说读写能力；',
-				'5年及以上猎头工作经验；同行公司 TL 或 top 顾问优先，热爱猎头行业',
-				'极强的业务敏感度和销售特质，丰富的客户开发经验，有团队管理经验',
-				'优秀的沟通及人际交往能力，思路清晰，关注细节',
-				'极强的自我驱动力，结果导向，高度的责任感和较强的抗压能力'
+			t('page_joinUs.conf2.jdDetails[0].conf.jd2[0]'),
+			t('page_joinUs.conf2.jdDetails[0].conf.jd2[1]'),
+			t('page_joinUs.conf2.jdDetails[0].conf.jd2[2]'),
+			t('page_joinUs.conf2.jdDetails[0].conf.jd2[3]'),
+			t('page_joinUs.conf2.jdDetails[0].conf.jd2[4]'),
+			t('page_joinUs.conf2.jdDetails[0].conf.jd2[5]'),
 			]
 		}
 	},
 	{
-		name: '猎头顾问',
+		name: t('page_joinUs.conf2.jdDetails[1].name'),
 		time: '2023-08-25',
 		conf: {
 			jd1: [
-				'根据公司业务需要积极拓展客户：',
-				'根据公司以及职位的分析，制定目标候选人的寻访招聘方案；',
-				'进行相关候选人资料的收集、分类、整理，对简历做初步筛选：',
-				'通过各种渠道快速寻访候选人，进行面试评估；',
-				'提供候选人评价和推荐报告，向项目负责人或客户推荐；',
-				'沟通协调候选人与公司之间的面试安排，跟进进展并及时反馈；',
-				'候选人背景调查，薪酬谈判，offer 跟进，入职跟进等；'
+			t('page_joinUs.conf2.jdDetails[1].conf.jd1[0]'),
+			t('page_joinUs.conf2.jdDetails[1].conf.jd1[1]'),
+			t('page_joinUs.conf2.jdDetails[1].conf.jd1[2]'),
+			t('page_joinUs.conf2.jdDetails[1].conf.jd1[3]'),
+			t('page_joinUs.conf2.jdDetails[1].conf.jd1[4]'),
+			t('page_joinUs.conf2.jdDetails[1].conf.jd1[5]'),
+			t('page_joinUs.conf2.jdDetails[1].conf.jd1[6]'),
 			],
 			jd2: [
-				'本科及以上学历；',
-				'英语流利优先（工作语言以中文为主）;',
-				'愿意在人力资源行业长期发展◇较强的学习能力，自我成长欲望强；',
-				'目标意识明确，结果导向，主动意识强，具有良好的沟通表达能力和团队合作意识'
+			t('page_joinUs.conf2.jdDetails[1].conf.jd2[0]'),
+			t('page_joinUs.conf2.jdDetails[1].conf.jd2[1]'),
+			t('page_joinUs.conf2.jdDetails[1].conf.jd2[2]'),
+			t('page_joinUs.conf2.jdDetails[1].conf.jd2[3]'),
 			]
 		}
 	},
 	{
-		name: '实习生',
+		name: t('page_joinUs.conf2.jdDetails[2].name'),
 		time: '2023-08-25',
 		conf: {
 			jd3: [
-				'学习到猎头咨询/市场咨询行业知识',
-				'快速的职业发展',
-				'积极热情的团队氛围',
-				'丰厚的佣金计划',
-				'如果感兴趣的话，请发您的简历至以下邮箱地址',
-				'Email：tingting.wu@csuite.com.cn'
+			t('page_joinUs.conf2.jdDetails[2].conf.jd3[0]'),
+			t('page_joinUs.conf2.jdDetails[2].conf.jd3[1]'),
+			t('page_joinUs.conf2.jdDetails[2].conf.jd3[2]'),
+			t('page_joinUs.conf2.jdDetails[2].conf.jd3[3]'),
+			t('page_joinUs.conf2.jdDetails[2].conf.jd3[4]'),
+			t('page_joinUs.conf2.jdDetails[2].conf.jd3[5]'),
 			]
 		}
 	},
 	{
-		name: '总经理（Managing Director ）',
+		name: t('page_joinUs.conf2.jdDetails[3].name'),
 		time: '2023-08-25',
 		conf: {
 			tip: [
-				'作为猎头公司的总经理，职责包括领导和管理公司的日常运营，涉及招聘、客户关系管理、团队管理、业务战略发展和绩效管理等方面。总经理的职责还包括确保公司实现其业务目标，并提供高质量的高管搜寻和人才招聘服务。'
+			t('page_joinUs.conf2.jdDetails[3].conf.tip'),
 			],
 			jd1: [
-				`公司领导与战略规划：
-   - 制定公司的长期和短期战略计划，确保公司增长和发展。
-   - 领导公司的管理团队，监督各个部门的运作。`,
+			t('page_joinUs.conf2.jdDetails[3].conf.jd1[0]'),
 
-				`客户关系管理：
-   - 建立并维护与客户之间的紧密关系，了解他们的招聘需求。
-   - 确保客户满意度，处理投诉并提供解决方案。`,
+			t('page_joinUs.conf2.jdDetails[3].conf.jd1[1]'),
 
-				`团队管理与发展：
-   - 招聘、培训和指导公司的猎头团队，确保团队的高绩效。
-   - 设定目标和绩效标准，监督员工的绩效。`,
+			t('page_joinUs.conf2.jdDetails[3].conf.jd1[2]'),
 
-				`业务发展：
-   - 寻找新的业务机会，开拓新市场，扩大公司的客户基础。
-   - 管理公司的销售和市场活动，以实现业务目标。`,
+			t('page_joinUs.conf2.jdDetails[3].conf.jd1[3]'),
 
-				`质量控制：
-   - 确保公司的猎头服务符合高质量标准，监督招聘流程。
-   - 处理招聘项目，确保候选人的质量和匹配度。`,
+			t('page_joinUs.conf2.jdDetails[3].conf.jd1[4]'),
 
-				`财务管理：
-   - 管理公司的财务预算，确保公司的财务健康。
-   - 负责成本管理和利润最大化。`
+			t('page_joinUs.conf2.jdDetails[3].conf.jd1[5]'),
 
 			],
 			jd2: [
-				`学士学位或以上，人力资源管理、商业管理或相关领域优先。`,
-				`丰富的猎头行业经验，包括招聘和候选人甄选。`,
-				`卓越的领导和团队管理技能。`,
-				`出色的沟通和客户关系管理能力。`,
-				`商业洞察力和战略规划能力。`,
-				`良好的财务管理和预算控制技能。`,
-				`对业界趋势和法规的敏感性。`
+			t('page_joinUs.conf2.jdDetails[3].conf.jd2[0]'),
+			t('page_joinUs.conf2.jdDetails[3].conf.jd2[1]'),
+			t('page_joinUs.conf2.jdDetails[3].conf.jd2[2]'),
+			t('page_joinUs.conf2.jdDetails[3].conf.jd2[3]'),
+			t('page_joinUs.conf2.jdDetails[3].conf.jd2[4]'),
+			t('page_joinUs.conf2.jdDetails[3].conf.jd2[5]'),
+			t('page_joinUs.conf2.jdDetails[3].conf.jd2[6]'),
 			]
 		}
 	},
@@ -305,6 +289,8 @@ const handleDetail = (idx: number) => {
 				font-size: 48px;
 				font-weight: 500;
 				line-height: 64px;
+				word-wrap: break-word;
+			white-space: pre-wrap;
 			}
 
 			.msg {
@@ -376,10 +362,15 @@ const handleDetail = (idx: number) => {
 			}
 
 			.conf2 {
-				display: flex;
-				justify-content: space-between;
-				overflow-x: scroll;
-
+			
+				:deep(.el-carousel) {
+					width: 100%;
+				}
+				:deep(.el-carousel__item) {
+					display: flex;
+					justify-content: space-between;
+					overflow-x: scroll;
+				}
 				.card {
 					flex: 0 0 auto;
 					width: 318px;

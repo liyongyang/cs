@@ -1,45 +1,48 @@
 <template>
 	<div class="detail-container">
 		<div class="head flex">
-			<el-icon class="icon-back cursor-pointer" @click="goBack">
-				<ArrowLeftBold />
-			</el-icon>
-			<li class="flex-initial w-full text-center animate__animated animate__fadeInDown">专业人才评测</li>
+			<div class="icon_wrap" ref="backIconRef" @click="goBack">
+				<el-icon class="icon-back cursor-pointer" >
+					<ArrowLeftBold />
+				</el-icon>
+				<span>返回</span>
+			</div>
+			<li class="flex-initial w-full text-center wow animate__fadeInUp">专业人才评测</li>
 		</div>
-		<img class="img" src="@/assets/myService/detail_4_1.png" alt="">
-		<div class="conf-info">
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_4_1.png" alt="">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="msg" v-for="(item, index) in conf1" :key="index">{{ item }}</li>
 		</div>
-		<li class="h12"></li>
+		<li class="h12 wow animate__fadeInUp"></li>
 
-		<img class="img" src="@/assets/myService/detail_4_2.png" alt="">
-		<div class="conf-info">
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_4_2.png" alt="">
+		<div class="conf-info wow animate__fadeInUp">
 			<div class="msg" v-for="(item, index) in conf2" :key="index">
 				<li v-for="(t, idx) in item" :key="idx">{{ t }}</li>
 			</div>
 		</div>
 		<!-- <li class="h24"></li> -->
-		<div class="head-name">评估工具-<br />Everything Disc@报告</div>
-		<img class="img" src="@/assets/myService/detail_4_3.png" alt="">
-		<div class="head-name2">DisC®可以帮助我们</div>
-		<img class="img" src="@/assets/myService/detail_4_4.png" alt="">
-		<div class="conf-info">
+		<div class="head-name wow animate__fadeInUp">评估工具-<br />Everything Disc@报告</div>
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_4_3.png" alt="">
+		<div class="head-name2 wow animate__fadeInUp">DisC®可以帮助我们</div>
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_4_4.png" alt="">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">实战案例-测评助力人才甄选</li>
 		</div>
-		<img class="img" src="@/assets/myService/detail_4_5.png" alt="">
-		<div class="head-name">评估工具-<br />职业锚测评报告</div>
-		<img class="img" src="@/assets/myService/detail_4_6.png" alt="">
-		<div class="conf-info">
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_4_5.png" alt="">
+		<div class="head-name wow animate__fadeInUp">评估工具-<br />职业锚测评报告</div>
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_4_6.png" alt="">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">为何“职业错”? 职业价值观</li>
 			<li class="msg">指当一个人不得不做出选择的时候，他无论如何都不会放弃的职业中的那种至关重要的东西</li>
 		</div>
-		<img class="img" src="@/assets/myService/detail_4_6_2.png" alt="">
-		<div class="head-name">理念和方法</div>
-		<div class="conf-info">
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_4_6_2.png" alt="">
+		<div class="head-name wow animate__fadeInUp">理念和方法</div>
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">建设方法论</li>
 		</div>
-		<img class="img" src="@/assets/myService/detail_4_7.png" alt="">
-		<div class="conf-info">
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_4_7.png" alt="">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="msg">
 				我们认为可持续发展是一个旅程，企业要获得可持续成功，首先制定策略和目标，在赋能管理和执行者必要的工具和知识的同时教练的陪伴有助于他们释放领导力潜能，打造高绩效团队，推动组织成功。
 			</li>
@@ -47,19 +50,19 @@
 				打造可持续发展组织，并让组织中的每个个体得到可持续提升
 			</li>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">服务和交代? 职业价值观</li>
 			<li class="msg mt8">
 				我们为客户提供可持续发展的战略的解码、组织转型、文化重塑、领导力发展和员工敬业度等的咨询服务解决方案
 			</li>
 		</div>
-		<img class="img" src="@/assets/myService/detail_4_8.png" alt="">
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_4_8.png" alt="">
 
 	</div>
 </template>
 
 <script setup lang='ts'>
-import { onMounted } from 'vue';
+import { onMounted,ref,reactive,onUnmounted } from 'vue';
 import { useRouter } from "vue-router";
 const router = useRouter();
 const conf1 = [
@@ -85,7 +88,6 @@ const conf2 = [
 		'- 带领来自各行各业的20多位董事长参加了为期一年的个人发现之旅，其中包括小组讨论和一对一辅导的环节。'
 	]
 ]
-onMounted(() => { });
 const goBack = () => {
 	router.go(-1)
 	// router.push('/service')
@@ -105,9 +107,35 @@ const goBack = () => {
 		line-height: 63px;
 		font-weight: 500;
 		padding-bottom: 40px;
-
+		.icon_wrap{
+			position: fixed;
+			top:109px;
+			// display: flex;
+			height:80px;
+			width: 80px;
+			border-radius: 40px;
+			background: #fff;
+			// padding-top:23px;
+			text-align: center;
+			&:hover span{
+				opacity: 1;
+				display: inline-block;
+			}
+			span{
+				display: none;
+				opacity: 0;
+				position: relative;
+				left: -2px;
+				height: 32px;
+				line-height: 32px;
+				font-size: 18px;
+				transition: all 0.5s ease-in-out;
+			}
+		}
 		.icon-back {
+			display: inline-block;
 			font-size: 32px;
+			vertical-align: sub;
 		}
 	}
 

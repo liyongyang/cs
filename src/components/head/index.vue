@@ -116,6 +116,7 @@ const toContact = () => {
 }
 const changeLang = () => {
 	localStorage.setItem('locale', locale.value)
+	window.location.reload()
 }
 const changePage = (item: any, i: number) => {
 	activeRoute.value = i
@@ -189,6 +190,26 @@ const changePage = (item: any, i: number) => {
 
 		:deep(.el-select__placeholder) {
 			color: #20262e;
+		}
+		:deep(.el-input) {
+			height: 48px;
+			
+		}
+		:deep(.el-input__inner) {
+			color:#231C1E;
+		}
+		:deep(.el-input__wrapper) {
+			position: relative;
+			border-radius: 12px;
+			padding-left:56px;
+			box-shadow: 0 0 0 1px #B0A7A7 inset
+		}
+		:deep(.el-input__suffix){
+			position: absolute;
+			left:20px;
+			svg{
+				color:#231C1E;
+			}
 		}
 	}
 

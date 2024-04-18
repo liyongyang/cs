@@ -2,25 +2,25 @@
 	<div>
 		<div class="banner">
 			<div v-if="isSmallSize" class="img animate__animated animate__fadeInUp">
-				<li class="name">我们的服务</li>
+				<li class="name">{{ t('common.routes.menu2') }}</li>
 				<img w-full src="@/assets/myService/banner-s-1.png" alt="" class="">
-				<div class="info animate__animated animate__fadeInDown">
-					<li class="title">猎头服务</li>
-					<li class="msg">作为一家现代招聘服务企业，CSUITE EXECUTIVE旨在针对如今挑战重重的中国市场环境提出解决方案</li>
+				<div class="info animate__animated animate__fadeInUp">
+					<li class="title">{{ t('page_server.banner.title') }}</li>
+					<li class="msg">{{ t('page_server.banner.msg') }}</li>
 				</div>
 			</div>
 			<div v-else class="img">
 				<img w-full src="@/assets/myService/banner.png" alt="" class="">
-				<div class="info animate__animated animate__fadeInDown">
-					<li class="title">猎头服务</li>
-					<li class="msg">作为一家现代招聘服务企业，CSUITE EXECUTIVE旨在针对如今挑战重重的中国市场环境提出解决方案</li>
+				<div class="info animate__animated animate__fadeInUp">
+					<li class="title">{{ t('page_server.banner.title') }}</li>
+					<li class="msg">{{ t('page_server.banner.msg') }}</li>
 				</div>
 			</div>
 		</div>
 		<div class="content">
 			<div class="box1 wow animate__fadeInUp">
-				<li class="title text-8">覆盖的行业</li>
-				<li class="msg">为了助力客户及候选人取得长期成功，我们依托丰富的行业经验，横跨精专领域招聘更适合的中高端人才</li>
+				<li class="title text-8">{{ t('page_server.conf1.title') }}</li>
+				<li class="msg">{{ t('page_server.conf1.msg') }}</li>
 			</div>
 			<div class="box2 wow animate__fadeInUp">
 				<div class="card" v-for="(item, index) in cardList" :key="index" @mouseover="activeVector = index"
@@ -32,8 +32,8 @@
 				</div>
 			</div>
 			<div class="box1 wow animate__fadeInUp">
-				<li class="title text-8">招聘流程和时间表</li>
-				<li class="msg">招聘流程和时间表可能因不同企业、行业和职位而有所不同，但通常包括以下五个阶段</li>
+				<li class="title text-8">{{ t('page_server.conf2.title') }}</li>
+				<li class="msg">{{ t('page_server.conf2.msg') }}</li>
 			</div>
 			<div class="bg1 wow animate__fadeInUp">
 				<!-- <div class="box1"></div> -->
@@ -59,7 +59,7 @@
 				</div>
 			</div>
 			<div class="bg2 wow animate__fadeInUp">
-				<li class="title">如何甄选人才</li>
+				<li class="title">{{ t('page_server.conf3.title') }}</li>
 				<div class="card" v-for="(item, index) in List" :key="index" @mouseenter="toggleHover(true)"
 					@mouseleave="toggleHover(false)" @click="toCase1(index + 1)">
 					<div class="left">
@@ -73,7 +73,7 @@
 				</div>
 			</div>
 			<div class="bg3 wow animate__fadeInUp">
-				<li class="title">高管招聘</li>
+				<li class="title">{{ t('page_server.conf4.title') }}</li>
 				<img class="img" src="@/assets/myService/banner2.png" alt="">
 				<div class="card">
 					<div class="item" @click="toDetail('case2')" v-for="(item, index) in list2" :key="index">
@@ -86,7 +86,7 @@
 				</div>
 			</div>
 			<div class="bg4 wow animate__fadeInUp">
-				<li class="title">人才盘点</li>
+				<li class="title">{{ t('page_server.conf5.title') }}</li>
 				<div class="card">
 					<div class="item" v-for="(item, index) in list3" :key="index">
 						<div>
@@ -96,7 +96,7 @@
 							</li>
 							<li class="txt">{{ item.txt }}</li>
 						</div>
-						<li class="more" @click="toDetail('case3')">了解更多 </li>
+						<li class="more" @click="toDetail('case3')">{{ t('page_server.conf5.more') }} </li>
 					</div>
 				</div>
 				<video controls class="img" :poster="`/video/map.jpg`">
@@ -104,11 +104,11 @@
 				</video>
 			</div>
 			<div class="bg5 wow animate__fadeInUp">
-				<li class="title">专业人才测评</li>
+				<li class="title">{{ t('page_server.conf6.title') }}</li>
 				<div class="content">
 					<div class="btns">
 						<img v-if="isSmallSize" class="img5" src="@/assets/myService/img5.png" alt="">
-						<div class="item" v-for="(item, index) in list3" :key="index">
+						<div class="item" v-for="(item, index) in list4" :key="index">
 							<div class="left">
 								<li class="name">
 									<span class="line"></span>
@@ -116,51 +116,47 @@
 								</li>
 								<li class="txt">{{ item.txt }}</li>
 							</div>
-							<li class="more" @click="toDetail('case4')">了解更多 ></li>
+							<li class="more" @click="toDetail('case4')">{{ t('page_server.conf6.more') }} ></li>
 						</div>
 					</div>
 					<img v-if="!isSmallSize" class="img5" src="@/assets/myService/img5.png" alt="">
 				</div>
 			</div>
 			<div class="bg5 wow animate__fadeInUp">
-				<li class="title">市场资讯服务</li>
+				<li class="title">{{ t('page_server.conf7.title') }}</li>
 				<div class="content">
 					<img class="img5" src="@/assets/myService/img6.png" alt="">
 					<div class="info5">
 						<div>
-							<li class="name5">研亚咨询</li>
-							<li class="txt5-1">致力于更好的支持合作伙伴的业务成长和持续发展</li>
-							<li class="txt5-2">
-								研亚咨询致力于通过深度、定制化的市场研究服务，帮助客户洞察技术发展趋势、发现新的业务机会、制定差异化的竞争策略、探寻产业链上合作伙伴，进一步为客户战略制定提供关键决策信息，从而实现业务的可持续增长研亚咨询在性能材料与特种化学品、新能源汽车、半导体/显示/电子、光伏、精密仪器等领域，系统研究与经验积累超过15年；服务于上述领域的全球领先企业，包括：万华、3M、赢创、亨斯迈、汉高、西门子、丰田、电装、日立化成、英飞凌、东丽、住友化学等
-							</li>
+							<li class="name5">{{ t('page_server.conf7.name') }}</li>
+							<li class="txt5-1">{{ t('page_server.conf7.txt1') }}</li>
+							<li class="txt5-2">{{ t('page_server.conf7.txt2') }}</li>
 						</div>
-						<li class="more5" @click="toDetail('case7')">了解更多 ></li>
+						<li class="more5" @click="toDetail('case7')">{{ t('page_server.conf7.more') }} ></li>
 					</div>
 				</div>
 			</div>
 			<div class="bg6 wow animate__fadeInUp">
-				<li class="title">职业教练</li>
+				<li class="title">{{ t('page_server.conf8.title') }}</li>
 				<!-- <img class="img5" src="@/assets/myService/banner3.png" alt="" @click="toDetail('case5')"> -->
 				<div class="detail" @click="toDetail('case5')">
 					<img src="@/assets/myService/Frame182.png" alt="">
 					<div class="inner">
-						<div class="question">什么是高管教练？</div>
-						<div class="desc">⾼管教练通过⼀个结构性、伙伴性的陪伴过程，帮助管理者实现⼼智模式和领导⾏为的双重改变和提升，更好地应对业务挑战。</div>
-						<div class="more">了解详情</div>
+						<div class="question">{{ t('page_server.conf8.name') }}</div>
+						<div class="desc">{{ t('page_server.conf8.txt1') }}</div>
+						<div class="more">{{ t('page_server.conf8.more') }}</div>
 					</div>
 				</div>
 			</div>
 			<div class="bg6 wow animate__fadeInUp">
-				<li class="title">驻场人事</li>
+				<li class="title">{{ t('page_server.conf9.title') }}</li>
 				<!-- <img class="img5" src="@/assets/myService/banner4.png" alt="" @click="toDetail('case6')"> -->
 				<div class="detail" @click="toDetail('case6')">
 					<img src="@/assets/myService/Frame509.png" alt="">
 					<div class="inner">
-						<div class="question">什么是驻场人事</div>
-						<div class="desc">
-							驻场人事服务指的是在企业内部设立办公室或工作场所的专业人力资源（HR）专家或团队，与企业管理层和员工紧密合作，提供广泛的人力资源支持，解决与员工和组织相关的各种问题。此类服务通常由外部独立的专业人力资源咨询公司或服务提供商提供。
-						</div>
-						<div class="more">查看详情</div>
+						<div class="question">{{ t('page_server.conf9.name') }}</div>
+						<div class="desc">{{ t('page_server.conf9.txt1') }}</div>
+						<div class="more">{{ t('page_server.conf9.more') }}</div>
 					</div>
 				</div>
 			</div>
@@ -185,114 +181,131 @@ const isSmallSize = ref(window.innerWidth < 576)
 const timer = ref()
 const activeVector = ref(-1)
 const cardList = [
-	'财务会计',
-	'数字营销',
-	'行政文秘',
-	'教育培训',
-	'金融服务',
-	'快销零售',
-	'人力资源',
-	'IT互联网',
-	'法务律师',
-	'生命科学',
-	'智造研发',
-	'市场营销',
-	'运营',
-	'供应链和采购',
+	t('page_server.conf1.cardtxt1'),
+	t('page_server.conf1.cardtxt2'),
+	t('page_server.conf1.cardtxt3'),
+	t('page_server.conf1.cardtxt4'),
+	t('page_server.conf1.cardtxt5'),
+	t('page_server.conf1.cardtxt6'),
+	t('page_server.conf1.cardtxt7'),
+	t('page_server.conf1.cardtxt8'),
+	t('page_server.conf1.cardtxt9'),
+	t('page_server.conf1.cardtxt10'),
+	t('page_server.conf1.cardtxt11'),
+	t('page_server.conf1.cardtxt12'),
+	t('page_server.conf1.cardtxt13'),
+	t('page_server.conf1.cardtxt14'),
 ]
 const steps = [
 	{
-		name: '定义',
+		name: t('page_server.conf2.step[0].name'),
 		msg: [
-			'了解客户业务',
-			'建立招聘需求',
-			'统一寻访方向及成功条件',
-			'统一寻访策略及时间框架'
+			t('page_server.conf2.step[0].msg[0]'),
+			t('page_server.conf2.step[0].msg[1]'),
+			t('page_server.conf2.step[0].msg[2]'),
+			t('page_server.conf2.step[0].msg[3]'),
 		]
 	},
 	{
-		name: '研究',
+		name: t('page_server.conf2.step[1].name'),
 		msg: [
-			'明确目标行业及公司',
-			'开展积极有效的候选人筛选，实践搜索策略',
-			'横向纵向调查市场',
-			'定位并吸引候选人，行为面试潜在优秀候选人'
+			t('page_server.conf2.step[1].msg[0]'),
+			t('page_server.conf2.step[1].msg[1]'),
+			t('page_server.conf2.step[1].msg[2]'),
+			t('page_server.conf2.step[1].msg[3]'),
 		]
 	},
 	{
-		name: '交付',
+		name: t('page_server.conf2.step[2].name'),
 		msg: [
-			'依据成功标准做出评估',
-			'向客户发回市场反馈，列出候选人职位及公司',
-			'与客户确定下一轮候选人',
-			'提供入围候选人名单报告及客户面试 （第2-4周）'
+			t('page_server.conf2.step[2].msg[0]'),
+			t('page_server.conf2.step[2].msg[1]'),
+			t('page_server.conf2.step[2].msg[2]'),
 		]
 	},
 	{
-		name: '完成',
+		name: t('page_server.conf2.step[3].name'),
 		msg: [
-			'学历检查及360度背景调查',
-			'完成最终候选人的心理测',
-			'协商条款、条件及录用功条件',
-			'与客户及候选人进行就业安置服务 （第4-6周）'
+			t('page_server.conf2.step[3].msg[0]'),
+			t('page_server.conf2.step[3].msg[1]'),
+			t('page_server.conf2.step[3].msg[2]'),
+			t('page_server.conf2.step[3].msg[3]'),
 		]
 	},
 	{
-		name: '定义',
+		name: t('page_server.conf2.step[4].name'),
 		msg: [
-			'离职辅导及离职期进展跟进',
-			'入职体检等入职前准备跟进',
-			'到岗确认及反馈了解',
-			'启动收款并跟进进程',
-			'人选保证期跟进，持续更进候选人入职情况'
+			t('page_server.conf2.step[4].msg[0]'),
+			t('page_server.conf2.step[4].msg[1]'),
+			t('page_server.conf2.step[4].msg[2]'),
+			t('page_server.conf2.step[4].msg[3]'),
+			t('page_server.conf2.step[4].msg[4]'),
 		]
 	},
 ]
 
 const List = [
 	{
-		title: '甄选的渠道',
-		txt: 'CSUITE通常使用多种渠道来甄选候选人，通常会结合多种渠道，以确保我们找到最合适的候选人来满足客户的需求。不同的渠道有不同的优点和缺点，因此灵活运用是关键。',
+		title: t('page_server.conf3.details[0].title'),
+		txt: t('page_server.conf3.details[0].txt'),
 		img: img2_1
 	},
 	{
-		title: '甄选的过程',
-		txt: 'Csuite 在候选人甄选渠道方面表现出色， 我们在特定领域的深度专业化让我们在该领域内脱颖而出。并建立广泛的专业网络，积极参与行业活动、协会会议和社交媒体，以扩大专业网络。与潜在候选人建立关系，使客户能够第一时间能够更容易接触到高质量的候选人。',
+		title: t('page_server.conf3.details[1].title'),
+		txt: t('page_server.conf3.details[1].txt'),
 		img: img2_2
 	},
 	{
-		title: '我们的服务成就你的业务',
-		txt: 'CSUITE通常使用多种渠道来甄选候选人，通常会结合多种渠道，以确保我们找到最合适的候选人来满足客户的需求。不同的渠道有不同的优点和缺点，因此灵活运用是关键。',
+		title: t('page_server.conf3.details[2].title'),
+		txt: t('page_server.conf3.details[2].txt'),
 		img: img2_3
 	}
 ]
 
 const list2 = [
 	{
-		name: '管理者画像与关键岗位画像的区别',
-		txt: '能够成为高绩效的管理员，不仅取决于其与岗位的匹配程度，还受其与组织匹配程度的影响。'
+		name: t('page_server.conf4.details[0].name'),
+		txt: t('page_server.conf4.details[0].txt')
 	},
 	{
-		name: '人与组织匹配逻辑',
-		txt: '不同发展成熟度的组织需要对应的领导风格和领导特质'
+		name: t('page_server.conf4.details[1].name'),
+		txt: t('page_server.conf4.details[1].txt')
 	}
 ]
 const list3 = [
 	{
-		name: '什么是人才地图',
-		txt: '能够成为高绩效的管理员，不仅取决于其与岗位的匹配程度，还受其与组织匹配程度的影响。'
+		name: t('page_server.conf5.details[0].name'),
+		txt: t('page_server.conf5.details[0].txt'),
 	},
 	{
-		name: '什么是人才方法论',
-		txt: '能够成为高绩效的管理员，不仅取决于其与岗位的匹配程度，还受其与组织匹配程度的影响。'
+		name: t('page_server.conf5.details[1].name'),
+		txt: t('page_server.conf5.details[1].txt'),
 	},
 	{
-		name: '我们应该mapping什么',
-		txt: '能够成为高绩效的管理员，不仅取决于其与岗位的匹配程度，还受其与组织匹配程度的影响。'
+		name: t('page_server.conf5.details[2].name'),
+		txt: t('page_server.conf5.details[2].txt'),
 	},
 	{
-		name: '如何绘制人才地图',
-		txt: '能够成为高绩效的管理员，不仅取决于其与岗位的匹配程度，还受其与组织匹配程度的影响。'
+		name: t('page_server.conf5.details[3].name'),
+		txt: t('page_server.conf5.details[3].txt'),
+	},
+]
+const list4 = [
+	{
+		name: t('page_server.conf6.details[0].name'),
+		txt: t('page_server.conf6.details[0].txt'),
+	},
+	{
+		name: t('page_server.conf6.details[1].name'),
+		txt: t('page_server.conf6.details[1].txt'),
+	},
+	{
+		name: t('page_server.conf6.details[2].name'),
+		txt: t('page_server.conf6.details[2].txt'),
+	},
+	{
+		name: t('page_server.conf6.details[3].name'),
+		txt: t('page_server.conf6.details[3].txt'),
 	},
 ]
 const isHover = ref(false);
@@ -340,7 +353,7 @@ const toggleProcess = (index: number, type: boolean) => {
 		if (type) {
 			clearInterval(processTimer)
 			processTimer = setTimeout(() => {
-				processMarginTop.value = -72
+				processMarginTop.value = -156
 			}, 500)
 		} else {
 			processMarginTop.value = 0
@@ -384,6 +397,8 @@ onUnmounted(() => {
 			font-size: 48px;
 			font-weight: 500;
 			line-height: 64px;
+			word-wrap: break-word;
+			white-space: pre-wrap;
 		}
 
 		.msg {
@@ -416,6 +431,7 @@ onUnmounted(() => {
 			line-height: 32px;
 			letter-spacing: 0em;
 			text-align: left;
+
 		}
 
 		.msg {
@@ -425,6 +441,8 @@ onUnmounted(() => {
 			line-height: 26px;
 			letter-spacing: 0em;
 			text-align: left;
+			word-wrap: break-word;
+			white-space: pre-wrap;
 		}
 	}
 
@@ -457,6 +475,8 @@ onUnmounted(() => {
 
 			.card-name {
 				display: none;
+				word-wrap: break-word;
+				white-space: pre-wrap;
 			}
 
 			&:hover {
@@ -517,7 +537,7 @@ onUnmounted(() => {
 				border-radius: 8px;
 				border: #B0A7A7 1px solid;
 				transition: all 0.35s;
-				margin-bottom: 16px;
+				margin-bottom: 37px;
 				padding: 0 32px;
 				line-height: 90px;
 				overflow: hidden;
@@ -1068,8 +1088,6 @@ onUnmounted(() => {
 		margin: 0 auto;
 
 		.box1 {
-			word-wrap: break-word;
-			white-space: pre-wrap;
 			padding-top: 0;
 
 			.title {

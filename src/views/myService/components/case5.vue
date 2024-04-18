@@ -1,13 +1,16 @@
 <template>
 	<div class="qa-container">
 		<div class="head flex">
-			<el-icon class="icon-back cursor-pointer" @click="goBack">
-				<ArrowLeftBold />
-			</el-icon>
-			<li class="flex-initial w-full text-center animate__animated animate__fadeInDown">职业教练</li>
+			<div class="icon_wrap" ref="backIconRef" @click="goBack">
+				<el-icon class="icon-back cursor-pointer">
+					<ArrowLeftBold />
+				</el-icon>
+				<span>返回</span>
+			</div>
+			<li class="flex-initial w-full text-center wow animate__fadeInUp">职业教练</li>
 		</div>
-		<img class="img" src="@/assets/myService/detail_5_1.png" alt="">
-		<div class="conf-info">
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_5_1.png" alt="">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf1.title }}</li>
 			<div class="cards">
 				<div class="card" v-for="(item, index) in pageInfo.conf1.card" :key="index">
@@ -17,7 +20,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf2.title }}</li>
 			<div class="cards">
 				<div class="card2" v-for="(item, index) in pageInfo.conf2.card" :key="index">
@@ -27,7 +30,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf3.title }}</li>
 			<div class="cards">
 				<div class="card" v-for="(item, index) in pageInfo.conf3.card" :key="index">
@@ -37,7 +40,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf4.title }}</li>
 			<div class="cards2">
 				<img class="conf4-img" src="/myService/icons/detail5_3_1.png" alt="">
@@ -50,20 +53,20 @@
 				</div>
 			</div>
 		</div>
-		<img class="img" src="@/assets/myService/detail_5_2.png" alt="">
-		<div class="conf-info">
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_5_2.png" alt="">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf5.title }}</li>
 			<img class="img" src="@/assets/myService/detail_5_3.png" alt="">
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf6.title }}</li>
 			<img class="img" src="@/assets/myService/detail_5_4.png" alt="">
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf7.title }}</li>
 			<li class="conf7-msg" v-for="(t, idx) in pageInfo.conf7.msg" :key="idx">{{ t }}</li>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf8.title }}</li>
 			<img class="img" src="@/assets/myService/detail_5_5.png" alt="">
 			<div class="conf8-msg" v-for="(item, idx) in pageInfo.conf8.msg" :key="idx">
@@ -72,14 +75,14 @@
 			<img class="img" src="@/assets/myService/detail_5_6.png" alt="">
 			<img class="img" src="@/assets/myService/detail_5_7.png" alt="">
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf9.title }}</li>
 			<div class="person-card">
 				<img v-for="index in 8" :key="index" :src="`/myService/icons/detail_5-card` + index + `.png`" alt="">
 			</div>
 			<li class="title2">{{ pageInfo.conf9.title2 }}</li>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf10.title }}</li>
 			<div class="cards4">
 				<img v-for="index in 4" :key="index" :src="`/myService/icons/detail_5_card2-` + index + `.png`" alt="">
@@ -89,7 +92,7 @@
 </template>
 
 <script setup lang='ts'>
-import { onMounted } from 'vue';
+import {onMounted,ref,reactive,onUnmounted } from 'vue';
 import { useRouter } from "vue-router";
 const router = useRouter();
 const qaList = [
@@ -282,7 +285,7 @@ const pageInfo = {
 		title: '部分代表产品'
 	}
 }
-onMounted(() => { });
+
 const goBack = () => {
 	router.go(-1)
 	// router.push('/service')
@@ -302,9 +305,35 @@ const goBack = () => {
 		line-height: 63px;
 		font-weight: 500;
 		padding-bottom: 40px;
-
+		.icon_wrap{
+			position: fixed;
+			top:109px;
+			// display: flex;
+			height:80px;
+			width: 80px;
+			border-radius: 40px;
+			background: #fff;
+			// padding-top:23px;
+			text-align: center;
+			&:hover span{
+				opacity: 1;
+				display: inline-block;
+			}
+			span{
+				display: none;
+				opacity: 0;
+				position: relative;
+				left: -2px;
+				height: 32px;
+				line-height: 32px;
+				font-size: 18px;
+				transition: all 0.5s ease-in-out;
+			}
+		}
 		.icon-back {
+			display: inline-block;
 			font-size: 32px;
+			vertical-align: sub;
 		}
 	}
 

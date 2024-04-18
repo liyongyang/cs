@@ -1,9 +1,12 @@
 <template>
 	<div class="case-container">
 		<div class="head">
-			<el-icon class="icon-back cursor-pointer animate__animated animate__headShake" @click="goBack">
-				<ArrowLeftBold />
-			</el-icon>
+			<div class="icon_wrap" ref="backIconRef" @click="goBack">
+				<el-icon class="icon-back cursor-pointer" >
+					<ArrowLeftBold />
+				</el-icon>
+				<span>返回</span>
+			</div>
 			<img class="banner animate__animated animate__fadeInDown" :src="`/customer/case/banner_case` + idx + `.png`"
 				alt="">
 		</div>
@@ -33,7 +36,7 @@
 </template>
 
 <script setup lang='ts'>
-import { onMounted, ref } from 'vue';
+import { Ref, onMounted,ref,reactive,onUnmounted } from 'vue';
 import { useRoute, useRouter } from "vue-router";
 import config from "./source";
 const route = useRoute();
@@ -41,7 +44,6 @@ const router = useRouter()
 
 const idx = ref(+route.params.case + 1)
 const activeConf = ref()
-
 onMounted(() => {
 	activeConf.value = config[idx.value - 1]
 	console.log(activeConf.value)
@@ -64,17 +66,35 @@ const goBack = () => {
 	.head {
 		position: relative;
 		margin-top: 48px;
-
-		.icon-back {
-			z-index: 9;
-			position: absolute;
-			top: -40px;
-			left: 0;
-			font-size: 32px;
+		.icon_wrap{
+			position: fixed;
+			top:109px;
+			// display: flex;
+			height:80px;
 			width: 80px;
-			height: 80px;
-			border-radius: 100%;
-			background-color: #ffffff;
+			border-radius: 40px;
+			background: #fff;
+			// padding-top:23px;
+			text-align: center;
+			&:hover span{
+				opacity: 1;
+				display: inline-block;
+			}
+			span{
+				display: none;
+				opacity: 0;
+				position: relative;
+				left: -2px;
+				height: 32px;
+				line-height: 32px;
+				font-size: 18px;
+				transition: all 0.5s ease-in-out;
+			}
+		}
+		.icon-back {
+			display: inline-block;
+			font-size: 32px;
+			vertical-align: sub;
 		}
 
 		.banner {

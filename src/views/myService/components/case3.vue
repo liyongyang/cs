@@ -1,21 +1,24 @@
 <template>
 	<div class="qa-container">
 		<div class="head flex">
-			<el-icon class="icon-back cursor-pointer" @click="goBack">
-				<ArrowLeftBold />
-			</el-icon>
-			<li class="flex-initial w-full text-center animate__animated animate__fadeInDown">人才地图</li>
+			<div class="icon_wrap" ref="backIconRef" @click="goBack" >
+				<el-icon class="icon-back cursor-pointer" >
+					<ArrowLeftBold />
+				</el-icon>
+				<span>返回</span>
+			</div>
+			<li class="flex-initial w-full text-center  wow animate__fadeInUp">人才地图</li>
 		</div>
-		<div class="conf-info">
-			<li class="title">{{ pageInfo.conf1.title }}</li>
+		<div class="conf-info wow animate__fadeInUp">
+			<li class="title  ">{{ pageInfo.conf1.title }}</li>
 			<div class="cards">
-				<div class="card" v-for="(item, index) in pageInfo.conf1.cards" :key="index">
+				<div class="card " v-for="(item, index) in pageInfo.conf1.cards" :key="index">
 					<li class="item-name">{{ item.name }}</li>
 					<li class="item-msg" v-for="(t, index) in item.msg" :key="index">{{ t }}</li>
 				</div>
 			</div>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf2.title }}</li>
 			<li class="msg">{{ pageInfo.conf2.info }}</li>
 			<img class="img" src="@/assets/myService/detail_3_1.png" alt="">
@@ -27,7 +30,7 @@
 			</div>
 			<li class="msg">{{ pageInfo.conf2.text }}</li>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf3.title }}</li>
 			<div class="cards">
 				<div class="card2" v-for="(item, index) in pageInfo.conf3.cards" :key="index">
@@ -36,7 +39,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf4.title }}</li>
 			<li class="msg">{{ pageInfo.conf4.info }}</li>
 			<div v-for="(item, index) in pageInfo.conf4.items" :key="index">
@@ -75,7 +78,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info  wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf5.title }}</li>
 			<div class="box-flex">
 				<img class="img2" src="@/assets/myService/detail_3_2.png" alt="">
@@ -84,11 +87,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf6.title }}</li>
 			<li class="item-msg" v-for="(t, index) in pageInfo.conf6.msg" :key="index">{{ t }}</li>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info  wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf6_more[0].name }}</li>
 			<div class="cards">
 				<div class="card" v-for="(item, index) in pageInfo.conf6_more[0].cards" :key="index">
@@ -99,20 +102,20 @@
 			<li class="title">{{ pageInfo.conf6_more[1].name }}</li>
 			<li class="item-msg">{{ pageInfo.conf6_more[1].msg }}</li>
 		</div>
-		<img class="img" src="@/assets/myService/detail_3_3.png" alt="">
-		<div class="conf-info">
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_3_3.png" alt="">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf6_more[2].name }}</li>
 		</div>
-		<img class="img" src="@/assets/myService/detail_3_4.png" alt="">
-		<div class="conf-info">
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_3_4.png" alt="">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf6_more[2].msg }}</li>
 		</div>
-		<img class="img" src="@/assets/myService/detail_3_5.png" alt="">
-		<div class="conf-info">
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_3_5.png" alt="">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf6_more[3].name }}</li>
 		</div>
-		<img class="img" src="@/assets/myService/detail_3_6.png" alt="">
-		<div class="conf-info">
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_3_6.png" alt="">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf6_more[3].msg }}</li>
 		</div>
 		<img class="img" src="@/assets/myService/detail_3_7.png" alt="">
@@ -120,7 +123,7 @@
 </template>
 
 <script setup lang='ts'>
-import { onMounted } from 'vue';
+import { onMounted,ref,reactive,onUnmounted } from 'vue';
 import { useRouter } from "vue-router";
 const router = useRouter();
 const pageInfo = {
@@ -295,7 +298,6 @@ const pageInfo = {
 		}
 	]
 }
-onMounted(() => { });
 const goBack = () => {
 	router.go(-1)
 	// router.push('/service')
@@ -315,9 +317,35 @@ const goBack = () => {
 		line-height: 63px;
 		font-weight: 500;
 		padding-bottom: 40px;
-
+		.icon_wrap{
+			position: fixed;
+			top:109px;
+			// display: flex;
+			height:80px;
+			width: 80px;
+			border-radius: 40px;
+			background: #fff;
+			// padding-top:23px;
+			text-align: center;
+			&:hover span{
+				opacity: 1;
+				display: inline-block;
+			}
+			span{
+				display: none;
+				opacity: 0;
+				position: relative;
+				left: -2px;
+				height: 32px;
+				line-height: 32px;
+				font-size: 18px;
+				transition: all 0.5s ease-in-out;
+			}
+		}
 		.icon-back {
+			display: inline-block;
 			font-size: 32px;
+			vertical-align: sub;
 		}
 	}
 

@@ -5,7 +5,7 @@
 				<el-carousel-item class="banner-item" v-for="(item, index) in bannerList" :key="index">
 					<img w-full :src="item.img" alt="" class="img-item">
 					<div
-						:class="['info', 'animate__animated', isFirstEnter && currentCarouselIndex === index ? 'animate__fadeInDown' : '', !isFirstEnter && currentCarouselIndex === index ? 'info_animate' : '']">
+						:class="['info', 'animate__animated', isFirstEnter && currentCarouselIndex === index ? 'animate__fadeInUp' : '', !isFirstEnter && currentCarouselIndex === index ? 'animate__fadeInUp' : '']">
 						<li class="title">{{ item.txt }} </li>
 						<li class="msg">{{ item.msg }}</li>
 					</div>
@@ -76,7 +76,7 @@
 			<div class="bg2 wow animate__fadeInUp">
 				<div class="flex justify-between items-center">
 					<li class="title">{{ t('page1.conf2.title') }}</li>
-					<li class="toMore" @click="toDetail">查看更多</li>
+					<li class="toMore" @click="toDetail">{{ t('page1.conf2.more') }}</li>
 				</div>
 
 				<div class="card">
@@ -84,7 +84,7 @@
 						<img class="img" :src="item.img" alt="">
 						<div class="info">
 							<div class="space-y-2">
-								<li>{{ item.name }}</li>
+								<li v-if="language === 'zh'">{{ item.name }}</li>
 								<li>{{ item.Ename }}</li>
 								<li class="line"></li>
 							</div>
@@ -131,34 +131,35 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 const { t } = useI18n()
+const language = ref(useI18n().locale.value)
 const timer = ref()
 const activeMap = ref(0)
 const activeVector = ref(-1)
 const bannerList = [
 	{
 		img: `/img/home/banner1.png`,
-		txt: '我们是谁',
-		msg: '作为一家现代招聘服务企业，CSUITE EXECUTIVE旨在针对如今挑战重重的中国市场环境提出解决方案'
+		txt: t('page1.banner.title'),
+		msg: t('page1.banner.msg.txt1')
 	},
 	{
 		img: `/img/home/banner2.png`,
-		txt: '我们是谁',
-		msg: '我们致力提供足可媲美全球顶尖的五大高端招聘公司的服务规格，而服务方式更为灵活，更加个性化，更贴合客户的特定需求。'
+		txt: t('page1.banner.title'),
+		msg: t('page1.banner.msg.txt2'),
 	},
 	{
 		img: `/img/home/banner3.png`,
-		txt: '我们是谁',
-		msg: '我们的服务主打专业、充满热情的小型资深顾问团队，以客户的长期战略为重，围绕长期发展策略而发掘合适的人才资源，并且符合客户的当下需求，而非只是从现成的人才库中做简单筛选。'
+		txt: t('page1.banner.title'),
+		msg: t('page1.banner.msg.txt3'),
 	},
 	{
 		img: `/img/home/banner4.png`,
-		txt: '我们是谁',
-		msg: '我们以客户为中心，注重与重点客户建立长期稳固的合作关系，提供人才招聘、人才管理与市场调研工作等全方位服务。'
+		txt: t('page1.banner.title'),
+		msg: t('page1.banner.msg.txt4'),
 	},
 	{
 		img: `/img/home/banner5.png`,
-		txt: '我们是谁',
-		msg: '用热情、坚持和创造力将不可能变为可能，CSUITE EXECUTIVE以在每一个环节为客户创造更多价值而自豪。'
+		txt: t('page1.banner.title'),
+		msg: t('page1.banner.msg.txt4'),
 	}
 ]
 
@@ -167,51 +168,50 @@ const teamList = [
 		img: `/home/person1.png`,
 		name: '吴婷婷',
 		Ename: 'TING TING BIO',
-		more: 'CSUITE 的执行合伙人兼首席执行官，同时也是 SM² Consulting 咨询委员会的成员。TingTing 拥有超过15年的人才招聘经验。'
+		more: t('page1.conf2.msg[0].tips')
 	},
 	{
 		img: `/home/person2.png`,
 		name: '',
 		Ename: 'Shane McGowan',
-		more: 'CSUITE 的执行合伙人兼首席执行官，同时也是 SM² Consulting 咨询委员会的成员。TingTing 拥有超过15年的人才招聘经验。'
+		more: t('page1.conf2.msg[1].tips')
 	}
 ]
-
 const areaList = [
 	{
-		name: '01 中国办事处',
-		address: '上海市闵行区程家桥路168弄39号，308室',
-		msg: '邮编 201103',
+		name: t('page1.conf3.msg[0].txt'),
+		address: t('page1.conf3.msg[0].location'),
+		msg: t('page1.conf3.msg[0].Email'),
 		tooltipText: 'Shanghai'
 	},
 	{
-		name: '02 新加坡办事处',
-		address: '新家皮丝丝街105号建春大厦13楼',
-		msg: '邮编 069534',
+		name: t('page1.conf3.msg[1].txt'),
+		address: t('page1.conf3.msg[1].location'),
+		msg: t('page1.conf3.msg[1].Email'),
 		tooltipText: 'Singapore'
 	},
 	{
-		name: '03 马来西亚办事处',
-		address: '吉隆坡孟沙南城3号大道29-01',
-		msg: '邮编 59200',
+		name: t('page1.conf3.msg[2].txt'),
+		address: t('page1.conf3.msg[2].location'),
+		msg: t('page1.conf3.msg[2].Email'),
 		tooltipText: 'Malaysia'
 	},
 	{
-		name: '04 印度办事处',
-		address: '马哈拉施特拉邦 Inspire Hub Andheri West JP 大道',
-		msg: '邮编 40053',
+		name: t('page1.conf3.msg[3].txt'),
+		address: t('page1.conf3.msg[3].location'),
+		msg: t('page1.conf3.msg[3].Email'),
 		tooltipText: 'India'
 	},
 	{
-		name: '05 澳大利亚办事处',
-		address: '悉尼克拉伦斯街50号，新南威尔士州，澳大利亚',
-		msg: '邮编 2000',
+		name: t('page1.conf3.msg[4].txt'),
+		address: t('page1.conf3.msg[4].location'),
+		msg: t('page1.conf3.msg[4].Email'),
 		tooltipText: 'Australia'
 	},
 	{
-		name: '06 英国办事处',
-		address: '伦敦城市路160号肯普之家，英国',
-		msg: '邮编 EC1V 2NX',
+		name: t('page1.conf3.msg[5].txt'),
+		address: t('page1.conf3.msg[5].location'),
+		msg: t('page1.conf3.msg[5].Email'),
 		tooltipText: 'Britain'
 	}
 ]
@@ -322,6 +322,8 @@ $backgroundColor: linear-gradient(90deg, rgba(0, 0, 0, 0.67) 0%, rgba(0, 0, 0, 0
 			line-height: 26px;
 			letter-spacing: 0em;
 			text-align: left;
+			word-wrap: break-word;
+			white-space: pre-wrap;
 		}
 	}
 

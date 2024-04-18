@@ -1,25 +1,28 @@
 <template>
 	<div class="qa-container">
 		<div class="head flex">
-			<el-icon class="icon-back cursor-pointer" @click="goBack">
-				<ArrowLeftBold />
-			</el-icon>
-			<li class="flex-initial w-full text-center animate__animated animate__fadeInDown">驻场人事</li>
+			<div class="icon_wrap" ref="backIconRef" @click="goBack">
+				<el-icon class="icon-back cursor-pointer">
+					<ArrowLeftBold />
+				</el-icon>
+				<span>返回</span>
+			</div>
+			<li class="flex-initial w-full text-center wow animate__fadeInUp">驻场人事</li>
 		</div>
-		<img class="img" src="@/assets/myService/detail_6_1.png" alt="">
-		<div class="conf-info">
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_6_1.png" alt="">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf1.title }}</li>
 			<li class="msg" v-for="(item, index) in pageInfo.conf1.msg" :key="index">{{ item }}</li>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf2.title }}</li>
 			<li class="msg" v-for="(item, index) in pageInfo.conf2.msg" :key="index">{{ item }}</li>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf3.title }}</li>
 			<li class="msg" v-for="(item, index) in pageInfo.conf3.msg" :key="index">{{ item }}</li>
 		</div>
-		<div class="conf-info">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf4.title }}</li>
 			<li class="msg" v-for="(item, index) in pageInfo.conf4.msg" :key="index">{{ item }}</li>
 		</div>
@@ -27,7 +30,7 @@
 </template>
 
 <script setup lang='ts'>
-import { onMounted } from 'vue';
+import {onMounted,ref,reactive,onUnmounted } from 'vue';
 import { useRouter } from "vue-router";
 const router = useRouter();
 const pageInfo = {
@@ -74,7 +77,6 @@ const pageInfo = {
 		]
 	}
 }
-onMounted(() => { });
 const goBack = () => {
 	router.go(-1)
 	// router.push('/service')
@@ -94,9 +96,35 @@ const goBack = () => {
 		line-height: 63px;
 		font-weight: 500;
 		padding-bottom: 40px;
-
+		.icon_wrap{
+			position: fixed;
+			top:109px;
+			// display: flex;
+			height:80px;
+			width: 80px;
+			border-radius: 40px;
+			background: #fff;
+			// padding-top:23px;
+			text-align: center;
+			&:hover span{
+				opacity: 1;
+				display: inline-block;
+			}
+			span{
+				display: none;
+				opacity: 0;
+				position: relative;
+				left: -2px;
+				height: 32px;
+				line-height: 32px;
+				font-size: 18px;
+				transition: all 0.5s ease-in-out;
+			}
+		}
 		.icon-back {
+			display: inline-block;
 			font-size: 32px;
+			vertical-align: sub;
 		}
 	}
 

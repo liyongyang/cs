@@ -1,28 +1,32 @@
 <template>
 	<div class="qa-container">
 		<div class="head flex">
-			<el-icon class="icon-back cursor-pointer" @click="goBack">
-				<ArrowLeftBold />
-			</el-icon>
-			<li class="flex-initial w-full text-center animate__animated animate__fadeInDown">如何甄选人才</li>
+			<div class="icon_wrap" ref="backIconRef" @click="goBack">
+				<el-icon class="icon-back cursor-pointer">
+					<ArrowLeftBold />
+				</el-icon>
+				<span>返回</span>
+			</div>
+			
+			<li class="flex-initial w-full text-center wow animate__fadeInUp">如何甄选人才</li>
 		</div>
-		<img class="img" src="@/assets/myService/detail_1_1.png" alt="">
-		<div class="conf-info">
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_1_1.png" alt="">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf1.title }}</li>
 			<li class="msg">{{ pageInfo.conf1.msg }}</li>
 			<li class="tip" v-for="(item, index) in pageInfo.conf1.tips" :key="index">
 				{{ index + 1 }}. {{ item }}
 			</li>
 		</div>
-		<img class="img" src="@/assets/myService/detail_1_2.png" alt="">
-		<div class="conf-info">
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_1_2.png" alt="">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf2.title }}</li>
 			<li class="tip" v-for="(item, index) in pageInfo.conf2.msg" :key="index">
 				{{ item }}
 			</li>
 		</div>
-		<img class="img" src="@/assets/myService/detail_1_3.png" alt="">
-		<div class="conf-info">
+		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_1_3.png" alt="">
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf3.title }}</li>
 			<li class="msg">{{ pageInfo.conf3.msg }}</li>
 			<li class="tip" v-for="(item, index) in pageInfo.conf3.tips" :key="index">
@@ -33,7 +37,7 @@
 </template>
 
 <script setup lang='ts'>
-import { onMounted } from 'vue';
+import {onMounted,ref,reactive,onUnmounted } from 'vue';
 import { useRouter, useRoute} from "vue-router";
 const router = useRouter();
 const route = useRoute();
@@ -75,7 +79,35 @@ const pageInfo = {
 		]
 	},
 }
-onMounted(() => { });
+// 头部返回滚动
+let backIconRef=ref<HTMLElement | null>(null)
+let backStyle= reactive({
+	style:{
+		position:'fixed',
+	}
+})
+const backScroll = ()=>{
+	let backIconHeight =backIconRef.value!.getBoundingClientRect().top
+	// 获取滚动条的高度
+	let scrollTop = document.documentElement.scrollTop
+		if (scrollTop>0) {
+			backStyle.style = {
+				position:'fixed',
+				top:backIconHeight+'px'
+			}
+		} else {
+			backStyle.style = {
+				position:'relative',
+				top:'0'
+			}
+		}
+}
+onMounted(() => { 
+	// window.addEventListener('scroll', backScroll);
+});
+onUnmounted(() => {	
+	// window.removeEventListener('scroll', backScroll)
+})
 const goBack = () => {
 	// router.go(-1)
 	console.log(route.query?.step)
@@ -99,9 +131,35 @@ const goBack = () => {
 		line-height: 63px;
 		font-weight: 500;
 		padding-bottom: 40px;
-
+		.icon_wrap{
+			position: fixed;
+			top:109px;
+			height:80px;
+			width: 80px;
+			// border-radius: 40px;
+			background: #fff;
+			// padding-top:23px;
+			text-align: center;
+			transform: scale(1);
+			&:hover span{
+				opacity: 1;
+				display: inline-block;
+			}
+			span{
+				display: none;
+				opacity: 0;
+				position: relative;
+				left: -2px;
+				height: 32px;
+				line-height: 32px;
+				font-size: 18px;
+				transition: all 0.5s ease-in-out;
+			}
+		}
 		.icon-back {
+			display: inline-block;
 			font-size: 32px;
+			vertical-align: sub;
 		}
 	}
 
