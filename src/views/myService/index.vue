@@ -353,7 +353,7 @@ const toggleProcess = (index:number,type:boolean) =>{
 		if (type) {
 			clearInterval(processTimer)
 			processTimer = setTimeout(() =>{
-				processMarginTop.value = -72
+				processMarginTop.value = -156
 			},500)
 		} else {
 			processMarginTop.value = 0
