@@ -125,6 +125,7 @@ const goBack = () => {
 		.icon_wrap{
 			position: fixed;
 			top:109px;
+			z-index:100;
 			// display: flex;
 			height:80px;
 			width: 80px;

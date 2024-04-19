@@ -46,7 +46,7 @@
 					<li class="title" :style="{ opacity: bg1Image != bg1_default ? 0 : 1 }">{{ t('page1.conf1.banner.title') }}
 					</li>
 					<div class="btn">
-						<div class="btn-item" @mouseover="handleMouseMove(bg1_1)" @mouseleave="handleMouseLeave()">
+						<div class="btn-item" @mouseover="handleMouseMove(language ==='zh'?bg1_1:bg1_1_en)" @mouseleave="handleMouseLeave()">
 							<li>
 								{{ t('page1.conf1.banner.msg[0].txt') }}
 							</li>
@@ -54,7 +54,7 @@
 								<Right />
 							</el-icon>
 						</div>
-						<div class="btn-item" @mouseover="handleMouseMove(bg1_2)" @mouseleave="handleMouseLeave()">
+						<div class="btn-item" @mouseover="handleMouseMove(language ==='zh'?bg1_2:bg1_2_en)" @mouseleave="handleMouseLeave()">
 							<li>
 								{{ t('page1.conf1.banner.msg[1].txt') }}
 							</li>
@@ -62,7 +62,7 @@
 								<Right />
 							</el-icon>
 						</div>
-						<div class="btn-item" @mouseover="handleMouseMove(bg1_3)" @mouseleave="handleMouseLeave()">
+						<div class="btn-item" @mouseover="handleMouseMove(language ==='zh'?bg1_3:bg1_3_en)" @mouseleave="handleMouseLeave()">
 							<li>
 								{{ t('page1.conf1.banner.msg[2].txt') }}
 							</li>
@@ -120,6 +120,9 @@ import Vector4_act from '@/assets/home/act-vector4.svg?url';
 import bg1_1 from '@/assets/home/bg1-1-1.png'; // 导入图片资源
 import bg1_2 from '@/assets/home/bg1-1-2.png'; // 导入图片资源
 import bg1_3 from '@/assets/home/bg1-1-3.png'; // 导入图片资源
+import bg1_1_en from '@/assets/home/bg1-1-1-en.png'; // 导入图片资源
+import bg1_2_en from '@/assets/home/bg1-1-2-en.png'; // 导入图片资源
+import bg1_3_en from '@/assets/home/bg1-1-3-en.png'; // 导入图片资源
 import bg1_default from '@/assets/home/bg1-1.jpeg'; // 导入图片资源
 import Vector1 from '@/assets/home/vector1.svg?url';
 import Vector2 from '@/assets/home/vector2.svg?url';
