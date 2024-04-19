@@ -77,16 +77,15 @@ div:focus {
 }
 
 *::-webkit-scrollbar-thumb {
-  background: var(--v3-sidebar-menu-bg-color); // 滑块颜色
   border-radius: 5px; // 滑块圆角
 }
 
 // 兼容Firefox、IE
 * {
   scrollbar-width: 8px;
-  scrollbar-base-color: var(--v3-sidebar-menu-bg-color);
-  scrollbar-track-color: var(--v3-sidebar-menu-bg-color);
-  scrollbar-arrow-color: var(--v3-sidebar-menu-bg-color);
+  // scrollbar-base-color: var(--v3-sidebar-menu-bg-color);
+  // scrollbar-track-color: var(--v3-sidebar-menu-bg-color);
+  // scrollbar-arrow-color: var(--v3-sidebar-menu-bg-color);
 }
 
 li {
@@ -101,7 +100,7 @@ li {
 ::-webkit-scrollbar-thumb {
   border-radius: 6px;
   -webkit-box-shadow: none;
-  background: var(--el-color-primary);
+  // background: var(--el-color-primary);
   -webkit-box-shadow: none;
 }
 
@@ -109,6 +108,6 @@ li {
   padding: 0 4px;
   -webkit-box-shadow: none;
   border-radius: 6px;
-  background: var(--el-menu-active-color);
+  // background: var(--el-menu-active-color);
   -webkit-box-shadow: none;
 }

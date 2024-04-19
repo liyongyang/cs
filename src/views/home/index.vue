@@ -249,7 +249,6 @@ onUnmounted(() => {
 const isFirstEnter = ref(true)
 let currentCarouselIndex: Ref<number> = ref(0)
 const handleCarousel = (index: number) => {
-	console.log('handleCarousel', index)
 	isFirstEnter.value = false
 	currentCarouselIndex.value = index
 }
