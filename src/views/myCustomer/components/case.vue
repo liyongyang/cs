@@ -1,11 +1,10 @@
 <template>
 	<div class="case-container">
-		<div class="head">
-			<div class="icon_wrap" ref="backIconRef" @click="goBack">
-				<el-icon class="icon-back cursor-pointer" >
+		<div class="head animate__animated animate__fadeIn">
+			<div class="icon_wrap" @click="goBack">
+				<el-icon class="icon-back cursor-pointer">
 					<ArrowLeftBold />
 				</el-icon>
-				<span>返回</span>
 			</div>
 			<img class="banner animate__animated animate__fadeInDown" :src="`/customer/case/banner_case` + idx + `.png`"
 				alt="">
@@ -14,19 +13,19 @@
 			<li class="case-name flex-initial w-full text-center">{{
 				activeConf.title }}</li>
 
-			<li class="case-opt">大致介绍</li>
+			<li class="case-opt">{{ t('customer_case.tit1') }}</li>
 			<li class="case-msg" v-for="(item, idx) in activeConf.conf1" :key="idx">{{ item }}</li>
 
-			<li class="case-opt">{{ activeConf.name }}介绍</li>
+			<li class="case-opt">{{ activeConf.name }}{{ t('customer_case.tit2') }}</li>
 			<li class="case-msg" v-for="(item, idx) in activeConf.conf2" :key="idx">{{ item }}</li>
 
-			<li class="case-opt">项目简介</li>
+			<li class="case-opt">{{ t('customer_case.tit3') }}</li>
 			<li class="case-msg" v-for="(item, idx) in activeConf.conf3" :key="idx">{{ item }}</li>
 
-			<li class="case-opt">成果</li>
+			<li class="case-opt">{{ t('customer_case.tit4') }}</li>
 			<li class="case-msg" v-for="(item, idx) in activeConf.conf4" :key="idx">{{ item }}</li>
 
-			<li class="case-opt">搜索方法</li>
+			<li class="case-opt">{{ t('customer_case.tit5') }}</li>
 			<div class="cards" v-for="(item, idx) in activeConf.card" :key="idx">
 				<li class="card-name">{{ item.name }}</li>
 				<li class="card-msg" v-for="(msg, i) in item.msg" :key="i">{{ msg }}</li>
@@ -36,17 +35,354 @@
 </template>
 
 <script setup lang='ts'>
-import { Ref, onMounted,ref,reactive,onUnmounted } from 'vue';
+import { onMounted, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from "vue-router";
-import config from "./source";
+
+const { t } = useI18n()
 const route = useRoute();
 const router = useRouter()
 
 const idx = ref(+route.params.case + 1)
 const activeConf = ref()
+const config = [
+	{
+		name: t("customer_case.case1.name"),
+		title: t("customer_case.case1.title"),
+		conf1: [
+			t("customer_case.case1.conf1[0]"),
+			t("customer_case.case1.conf1[1]"),
+			t("customer_case.case1.conf1[2]"),
+		],
+		conf2: [
+			t("customer_case.case1.conf2[0]"),
+		],
+		conf3: [
+			t("customer_case.case1.conf3[0]"),
+			t("customer_case.case1.conf3[1]"),
+		],
+		conf4: [
+			t("customer_case.case1.conf4[0]"),
+			t("customer_case.case1.conf4[1]"),
+		],
+		card: [
+			{
+				name: t("customer_case.case1.card[0].name"),
+				msg: [
+					t("customer_case.case1.card[0].msg[0]"),
+				],
+			},
+			{
+				name: t("customer_case.case1.card[1].name"),
+				msg: [
+					t("customer_case.case1.card[1].msg[0]"),
+					t("customer_case.case1.card[1].msg[1]"),
+				],
+			},
+			{
+				name: t("customer_case.case1.card[2].name"),
+				msg: [
+					t("customer_case.case1.card[2].msg[0]"),
+					t("customer_case.case1.card[2].msg[1]"),
+					t("customer_case.case1.card[2].msg[2]"),
+				],
+			},
+		],
+	},
+	{
+		name: t("customer_case.case2.name"),
+		title: t("customer_case.case2.title"),
+		conf1: [
+			t("customer_case.case2.conf1[0]"),
+			t("customer_case.case2.conf1[1]"),
+			t("customer_case.case2.conf1[2]"),
+		],
+		conf2: [
+			t("customer_case.case2.conf2[0]"),
+		],
+		conf3: [
+			t("customer_case.case2.conf3[0]"),
+			t("customer_case.case2.conf3[1]"),
+		],
+		conf4: [
+			t("customer_case.case2.conf4[0]"),
+		],
+		card: [
+			{
+				name: t("customer_case.case2.card[0].name"),
+				msg: [
+					t("customer_case.case2.card[0].msg[0]"),
+				],
+			},
+			{
+				name: t("customer_case.case2.card[1].name"),
+				msg: [
+					t("customer_case.case2.card[1].msg[0]"),
+					t("customer_case.case2.card[1].msg[1]"),
+					t("customer_case.case2.card[1].msg[2]"),
+				],
+			},
+			{
+				name: t("customer_case.case2.card[2].name"),
+				msg: [
+					t("customer_case.case2.card[2].msg[0]"),
+					t("customer_case.case2.card[2].msg[1]"),
+					t("customer_case.case2.card[2].msg[2]"),
+				],
+			},
+		],
+	},
+	{
+		name: t("customer_case.case3.name"),
+		title: t("customer_case.case3.title"),
+		conf1: [
+			t("customer_case.case3.conf1[0]"),
+			t("customer_case.case3.conf1[1]"),
+			t("customer_case.case3.conf1[2]"),
+		],
+		conf2: [
+			t("customer_case.case3.conf2[0]"),
+			t("customer_case.case3.conf2[1]"),
+		],
+		conf3: [
+			t("customer_case.case3.conf3[0]"),
+		],
+		conf4: [
+			t("customer_case.case3.conf4[0]"),
+		],
+		card: [
+			{
+				name: t("customer_case.case3.card[0].name"),
+				msg: [
+					t("customer_case.case3.card[0].msg[0]"),
+				],
+			},
+			{
+				name: t("customer_case.case3.card[1].name"),
+				msg: [
+					t("customer_case.case3.card[1].msg[0]"),
+					t("customer_case.case3.card[1].msg[1]"),
+				],
+			},
+			{
+				name: t("customer_case.case3.card[2].name"),
+				msg: [
+					t("customer_case.case3.card[2].msg[0]"),
+					t("customer_case.case3.card[2].msg[1]"),
+					t("customer_case.case3.card[2].msg[2]"),
+				],
+			},
+		],
+	},
+	{
+		name: t("customer_case.case4.name"),
+		title: t("customer_case.case4.title"),
+		conf1: [
+			t("customer_case.case4.conf1[0]"),
+			t("customer_case.case4.conf1[1]"),
+			t("customer_case.case4.conf1[2]"),
+		],
+		conf2: [
+			t("customer_case.case4.conf2[0]"),
+		],
+		conf3: [
+			t("customer_case.case4.conf3[0]"),
+		],
+		conf4: [
+			t("customer_case.case4.conf4[0]"),
+			t("customer_case.case4.conf4[1]"),
+			t("customer_case.case4.conf4[2]"),
+		],
+		card: [
+			{
+				name: t("customer_case.case4.card[0].name"),
+				msg: [
+					t("customer_case.case4.card[0].msg[0]"),
+				],
+			},
+			{
+				name: t("customer_case.case4.card[1].name"),
+				msg: [
+					t("customer_case.case4.card[1].msg[0]"),
+					t("customer_case.case4.card[1].msg[1]"),
+				],
+			},
+			{
+				name: t("customer_case.case4.card[2].name"),
+				msg: [
+					t("customer_case.case4.card[2].msg[0]"),
+					t("customer_case.case4.card[2].msg[1]"),
+					t("customer_case.case4.card[2].msg[2]"),
+				],
+			},
+		],
+	},
+	{
+		name: t("customer_case.case5.name"),
+		title: t("customer_case.case5.title"),
+		conf1: [
+			t("customer_case.case5.conf1[0]"),
+			t("customer_case.case5.conf1[1]"),
+			t("customer_case.case5.conf1[2]"),
+		],
+		conf2: [
+			t("customer_case.case5.conf2[0]"),
+			t("customer_case.case5.conf2[1]"),
+		],
+		conf3: [
+			t("customer_case.case5.conf3[0]"),
+		],
+		conf4: [
+			t("customer_case.case5.conf4[0]"),
+		],
+		card: [
+			{
+				name: t("customer_case.case5.card[0].name"),
+				msg: [
+					t("customer_case.case5.card[0].msg[0]"),
+				],
+			},
+			{
+				name: t("customer_case.case5.card[1].name"),
+				msg: [
+					t("customer_case.case5.card[1].msg[0]"),
+					t("customer_case.case5.card[1].msg[1]"),
+				],
+			},
+			{
+				name: t("customer_case.case5.card[2].name"),
+				msg: [
+					t("customer_case.case5.card[2].msg[0]"),
+					t("customer_case.case5.card[2].msg[1]"),
+					t("customer_case.case5.card[2].msg[2]"),
+				],
+			},
+		],
+	},
+	{
+		name: t("customer_case.case6.name"),
+		title: t("customer_case.case6.title"),
+		conf1: [
+			t("customer_case.case6.conf1[0]"),
+			t("customer_case.case6.conf1[1]"),
+		],
+		conf2: [
+			t("customer_case.case6.conf2[0]"),
+			t("customer_case.case6.conf2[1]"),
+		],
+		conf3: [
+			t("customer_case.case6.conf3[0]"),
+		],
+		conf4: [
+			t("customer_case.case6.conf4[0]"),
+		],
+		card: [
+			{
+				name: t("customer_case.case6.card[0].name"),
+				msg: [
+					t("customer_case.case6.card[0].msg[0]"),
+				],
+			},
+			{
+				name: t("customer_case.case6.card[1].name"),
+				msg: [
+					t("customer_case.case6.card[1].msg[0]"),
+				],
+			},
+			{
+				name: t("customer_case.case6.card[2].name"),
+				msg: [
+					t("customer_case.case6.card[2].msg[0]"),
+					t("customer_case.case6.card[2].msg[1]"),
+					t("customer_case.case6.card[2].msg[2]"),
+				],
+			},
+		],
+	},
+	{
+		name: t("customer_case.case7.name"),
+		title: t("customer_case.case7.title"),
+		conf1: [
+			t("customer_case.case7.conf1[0]"),
+			t("customer_case.case7.conf1[1]"),
+			t("customer_case.case7.conf1[2]"),
+		],
+		conf2: [
+			t("customer_case.case7.conf2[0]"),
+		],
+		conf3: [
+			t("customer_case.case7.conf3[0]"),
+		],
+		conf4: [
+			t("customer_case.case7.conf4[0]"),
+		],
+		card: [
+			{
+				name: t("customer_case.case7.card[0].name"),
+				msg: [
+					t("customer_case.case7.card[0].msg[0]"),
+				],
+			},
+			{
+				name: t("customer_case.case7.card[1].name"),
+				msg: [
+					t("customer_case.case7.card[1].msg[0]"),
+				],
+			},
+			{
+				name: t("customer_case.case7.card[2].name"),
+				msg: [
+					t("customer_case.case7.card[2].msg[0]"),
+					t("customer_case.case7.card[2].msg[1]"),
+					t("customer_case.case7.card[2].msg[2]"),
+				],
+			},
+		],
+	},
+	{
+		name: t("customer_case.case8.name"),
+		title: t("customer_case.case8.title"),
+		conf1: [
+			t("customer_case.case8.conf1[0]"),
+			t("customer_case.case8.conf1[1]"),
+			t("customer_case.case8.conf1[2]"),
+		],
+		conf2: [
+			t("customer_case.case8.conf2[0]"),
+		],
+		conf3: [
+			t("customer_case.case8.conf3[0]"),
+		],
+		conf4: [
+			t("customer_case.case8.conf4[0]"),
+		],
+		card: [
+			{
+				name: t("customer_case.case8.card[0].name"),
+				msg: [
+					t("customer_case.case8.card[0].msg[0]"),
+				],
+			},
+			{
+				name: t("customer_case.case8.card[1].name"),
+				msg: [
+					t("customer_case.case8.card[1].msg[0]"),
+					t("customer_case.case8.card[1].msg[1]"),
+				],
+			},
+			{
+				name: t("customer_case.case8.card[2].name"),
+				msg: [
+					t("customer_case.case8.card[2].msg[0]"),
+					t("customer_case.case8.card[2].msg[1]"),
+					t("customer_case.case8.card[2].msg[2]"),
+				],
+			},
+		],
+	},
+];
 onMounted(() => {
 	activeConf.value = config[idx.value - 1]
-	console.log(activeConf.value)
 });
 
 const goBack = () => {
@@ -66,36 +402,32 @@ const goBack = () => {
 	.head {
 		position: relative;
 		margin-top: 48px;
-		.icon_wrap{
-			position: fixed;
-			top:109px;
-			// display: flex;
-			height:80px;
+
+		.icon_wrap {
+			position: absolute;
+			top: -40px;
+			height: 80px;
 			width: 80px;
-			border-radius: 40px;
+			cursor: pointer;
 			background: #fff;
-			// padding-top:23px;
 			text-align: center;
-			&:hover span{
-				opacity: 1;
+			padding: 12px;
+			border-radius: 100%;
+			z-index: 99;
+
+			&:hover {
+				box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.8);
+
+			}
+
+			.icon-back {
+				margin: 10px auto;
 				display: inline-block;
+				font-size: 32px;
 			}
-			span{
-				display: none;
-				opacity: 0;
-				position: relative;
-				left: -2px;
-				height: 32px;
-				line-height: 32px;
-				font-size: 18px;
-				transition: all 0.5s ease-in-out;
-			}
+
 		}
-		.icon-back {
-			display: inline-block;
-			font-size: 32px;
-			vertical-align: sub;
-		}
+
 
 		.banner {
 			width: 100%;

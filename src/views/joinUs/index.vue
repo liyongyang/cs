@@ -2,14 +2,14 @@
 	<div class="join-container">
 		<div class="banner">
 			<div v-if="isSmallSize" class="animate__animated animate__fadeInUp">
-				<li class="name">{{t('common.routes.menu5')}}</li>
+				<li class="name">{{ t('common.routes.menu5') }}</li>
 				<img src="/joinUs/banner-s-1.png" alt="" class="" />
 			</div>
 			<div v-else class="img">
 				<img w-full src="/joinUs/banner.png" alt="" class="" />
 				<div class="info animate__animated animate__fadeInUp">
-					<li class="title">{{t('page_joinUs.banner.title')}}</li>
-					<li class="msg text-wrap">{{t('page_joinUs.banner.msg')}}</li>
+					<li class="title">{{ t('page_joinUs.banner.title') }}</li>
+					<li class="msg text-wrap">{{ t('page_joinUs.banner.msg') }}</li>
 				</div>
 			</div>
 		</div>
@@ -21,7 +21,7 @@
 				</li>
 			</div>
 			<div v-if="active === 0" class="tab-box">
-				<li class="title wow animate__fadeInUp">{{t('page_joinUs.conf1.title')}}</li>
+				<li class="title wow animate__fadeInUp">{{ t('page_joinUs.conf1.title') }}</li>
 				<div class="conf1 wow animate__fadeInUp">
 					<el-carousel :interval="40000" type="card" class="carousel-imgs">
 						<el-carousel-item v-for="(item, index) in 10" :key="item">
@@ -30,7 +30,7 @@
 					</el-carousel>
 				</div>
 
-				<li class="title wow animate__fadeInUp">{{t('page_joinUs.conf1.title2')}}</li>
+				<li class="title wow animate__fadeInUp">{{ t('page_joinUs.conf1.title2') }}</li>
 				<div class="conf2 wow animate__fadeInUp">
 					<!-- <div class="card" v-for="(item, index) in conf2Card" :key="index" @click="handleDetail(index)">
 						<img class="img" :src="`/joinUs/conf2-` + index + `.png`" alt="" />
@@ -40,9 +40,9 @@
 						</div>
 					</div> -->
 					<el-carousel :interval="40000" :autoplay="false" class="carousel-imgs" height="351px">
-						<el-carousel-item v-for="(item, index) in conf2Card" :key="index" >
+						<el-carousel-item v-for="(item, index) in conf2Card" :key="index">
 							<div class="card" v-for="(child, i) in item" @click="handleDetail(index)">
-								<img class="img" :src="`/joinUs/conf2-` + ((index+1)*i) + `.png`" alt="" />
+								<img class="img" :src="`/joinUs/conf2-` + ((index + 1) * i) + `.png`" alt="" />
 								<div class="msg">
 									<li class="line"></li>
 									<li class="txt">{{ child }}</li>
@@ -52,51 +52,50 @@
 					</el-carousel>
 				</div>
 
-				<li class="title wow animate__fadeInUp">{{t('page_joinUs.conf1.title3')}}</li>
+				<li class="title wow animate__fadeInUp">{{ t('page_joinUs.conf1.title3') }}</li>
 				<div class="conf3 wow animate__fadeInUp">
 					<li>
-						{{t('page_joinUs.conf1.desc')}}
+						{{ t('page_joinUs.conf1.desc') }}
 					</li>
 					<img class="conf3-img" src="/joinUs/conf3.png" alt="" />
 				</div>
 
 				<li class="title wow animate__fadeInUp">Mother and care</li>
-				<img class="conf4-img wow animate__fadeInUp" src="/joinUs/conf4.png" alt="" />
+				<img class="conf4-img wow animate__fadeInUp" :src="t('page_joinUs.conf1.img')" alt="" />
 
-				<li class="title wow animate__fadeInUp">{{t('page_joinUs.conf1.title4')}}</li>
+				<li class="title wow animate__fadeInUp">{{ t('page_joinUs.conf1.title4') }}</li>
 				<div class="conf5 wow animate__fadeInUp">
-					<div class="card" v-for="item in 6" :key="item">
-						<li class="article-title">{{ articleList.title }}</li>
-						<li class="article-txt">{{ articleList.content }}</li>
+					<div class="card" v-for="(item, index) in articleList" :key="index">
+						<li class="article-title">{{ item.title }}</li>
 					</div>
 				</div>
 			</div>
 			<div v-else class="tab-jd">
 				<div class="jd-content wow animate__fadeInUp">
-					<li class="jd-title">{{t('page_joinUs.conf2.title')}}</li>
+					<li class="jd-title">{{ t('page_joinUs.conf2.title') }}</li>
 					<div class="list">
 						<div class="item-conf" v-for="(item, index) in list" :key="item.name" @click="handlActive(index)">
 							<li class="item-conf-head">
 								{{ item.name }}
 							</li>
 							<div class="item-conf-jd">
-								<li class="tips" v-if="item.conf.tip">{{t('page_joinUs.conf2.tip')}}</li>
+								<li class="tips" v-if="item.conf.tip">{{ t('page_joinUs.conf2.tip') }}</li>
 								<li class="desc" v-for="(t, index) in item.conf.tip" :key="index">
 									{{ t }}
 								</li>
-								<li class="tips" v-if="item.conf.jd1">{{t('page_joinUs.conf2.jd1')}}</li>
+								<li class="tips" v-if="item.conf.jd1">{{ t('page_joinUs.conf2.jd1') }}</li>
 								<li class="desc" v-for="(t, index) in item.conf.jd1" :key="index">
 									{{ index + 1 }}. {{ t }}
 								</li>
-								<li class="tips" v-if="item.conf.jd2">{{t('page_joinUs.conf2.jd2')}}</li>
+								<li class="tips" v-if="item.conf.jd2">{{ t('page_joinUs.conf2.jd2') }}</li>
 								<li class="desc" v-for="(t, index) in item.conf.jd2" :key="index">
 									{{ index + 1 }}. {{ t }}
 								</li>
-								<li class="tips" v-if="item.conf.jd3">{{t('page_joinUs.conf2.jd3')}}</li>
+								<li class="tips" v-if="item.conf.jd3">{{ t('page_joinUs.conf2.jd3') }}</li>
 								<li class="desc" v-for="(t, index) in item.conf.jd3" :key="index">
 									{{ index + 1 }}. {{ t }}
 								</li>
-								<span v-if="!isSmallSize" class="jd-create">{{t('page_joinUs.conf2.timeText')}}{{ item.time }}</span>
+								<span v-if="!isSmallSize" class="jd-create">{{ t('page_joinUs.conf2.timeText') }}{{ item.time }}</span>
 							</div>
 						</div>
 					</div>
@@ -123,23 +122,30 @@
 
 <script setup lang='ts'>
 import { onMounted, ref } from 'vue';
-import { useRouter } from "vue-router";
 import { useI18n } from 'vue-i18n';
+import { useRouter } from "vue-router";
 const { t } = useI18n()
 const router = useRouter();
 
 const isSmallSize = ref(window.innerWidth < 576)
-const tab = ['企业文化', '加入我们']
+const tab = [
+	t('page_joinUs.type[0]'),
+	t('page_joinUs.type[1]'),
+]
 const active = ref(0)
 const conf2Card = [
-	['公司为我们每一位员工提供了宽广的发展平台和丰富的职业资源，让我们都有机会展现自己的才华、追求梦想。',
-	'Csuite是一个学校，一座熔炉。我们通过学习、工作和锻炼，在工作中学习，在前进中成长。',
-	'作为Csuite的一位员工，我深感自豪和幸运。我们公司不仅为客户带来了高品质的服务，还为员工营造了一个不断进取的工作氛围。',
-	'公司为我们每一位员工提供了宽广的发展平台和丰富的职业资源，让我们都有机会展现自己的才华、追求梦想。'],
-	['公司为我们每一位员工提供了宽广的发展平台和丰富的职业资源，让我们都有机会展现自己的才华、追求梦想。',
-	'公司为我们每一位员工提供了宽广的发展平台和丰富的职业资源，让我们都有机会展现自己的才华、追求梦想。',
-	'公司为我们每一位员工提供了宽广的发展平台和丰富的职业资源，让我们都有机会展现自己的才华、追求梦想。',
-	'公司为我们每一位员工提供了宽广的发展平台和丰富的职业资源，让我们都有机会展现自己的才华、追求梦想。'],
+	[
+		t('page_joinUs.conf1.card[0]'),
+		t('page_joinUs.conf1.card[1]'),
+		t('page_joinUs.conf1.card[2]'),
+		t('page_joinUs.conf1.card[3]'),
+	],
+	[
+		t('page_joinUs.conf1.card[4]'),
+		t('page_joinUs.conf1.card[5]'),
+		t('page_joinUs.conf1.card[6]'),
+		t('page_joinUs.conf1.card[7]'),
+	],
 ]
 const showDetail = ref(false)
 const activeDetail = ref(0)
@@ -152,30 +158,46 @@ const conf2CardDetail = [
 	t('page_joinUs.conf1.details[5]'),
 	t('page_joinUs.conf1.details[6]'),
 	t('page_joinUs.conf1.details[7]'),
-	]
-const articleList = {
-	title: '文字标题',
-	content: '填充文本填充文本填充文本填充文本填充文本填充文本填充文本填充文本填充文本填充文本填充文本填充文本'
-}
+]
+const articleList = [
+	{
+		title: 'Csuite分享 | 创业: 走出舒适圈的征程',
+	},
+	{
+		title: '再给我五年，我要成为这个行业的专家',
+	},
+	{
+		title: '中国这40年之我见-沈达理(Shane Tedjarati)',
+	},
+	{
+		title: '学做一个会沟通的人',
+	},
+	{
+		title: '格局打开，交一个猎头朋友',
+	},
+	{
+		title: '金三银四真的是金三银四么？',
+	},
+]
 const list = ref([
 	{
 		name: t('page_joinUs.conf2.jdDetails[0].name'),
 		time: '2023-08-25',
 		conf: {
 			jd1: [
-			t('page_joinUs.conf2.jdDetails[0].conf.jd1[0]'),
-			t('page_joinUs.conf2.jdDetails[0].conf.jd1[1]'),
-			t('page_joinUs.conf2.jdDetails[0].conf.jd1[2]'),
-			t('page_joinUs.conf2.jdDetails[0].conf.jd1[3]'),
-			t('page_joinUs.conf2.jdDetails[0].conf.jd1[4]')
+				t('page_joinUs.conf2.jdDetails[0].conf.jd1[0]'),
+				t('page_joinUs.conf2.jdDetails[0].conf.jd1[1]'),
+				t('page_joinUs.conf2.jdDetails[0].conf.jd1[2]'),
+				t('page_joinUs.conf2.jdDetails[0].conf.jd1[3]'),
+				t('page_joinUs.conf2.jdDetails[0].conf.jd1[4]')
 			],
 			jd2: [
-			t('page_joinUs.conf2.jdDetails[0].conf.jd2[0]'),
-			t('page_joinUs.conf2.jdDetails[0].conf.jd2[1]'),
-			t('page_joinUs.conf2.jdDetails[0].conf.jd2[2]'),
-			t('page_joinUs.conf2.jdDetails[0].conf.jd2[3]'),
-			t('page_joinUs.conf2.jdDetails[0].conf.jd2[4]'),
-			t('page_joinUs.conf2.jdDetails[0].conf.jd2[5]'),
+				t('page_joinUs.conf2.jdDetails[0].conf.jd2[0]'),
+				t('page_joinUs.conf2.jdDetails[0].conf.jd2[1]'),
+				t('page_joinUs.conf2.jdDetails[0].conf.jd2[2]'),
+				t('page_joinUs.conf2.jdDetails[0].conf.jd2[3]'),
+				t('page_joinUs.conf2.jdDetails[0].conf.jd2[4]'),
+				t('page_joinUs.conf2.jdDetails[0].conf.jd2[5]'),
 			]
 		}
 	},
@@ -184,19 +206,19 @@ const list = ref([
 		time: '2023-08-25',
 		conf: {
 			jd1: [
-			t('page_joinUs.conf2.jdDetails[1].conf.jd1[0]'),
-			t('page_joinUs.conf2.jdDetails[1].conf.jd1[1]'),
-			t('page_joinUs.conf2.jdDetails[1].conf.jd1[2]'),
-			t('page_joinUs.conf2.jdDetails[1].conf.jd1[3]'),
-			t('page_joinUs.conf2.jdDetails[1].conf.jd1[4]'),
-			t('page_joinUs.conf2.jdDetails[1].conf.jd1[5]'),
-			t('page_joinUs.conf2.jdDetails[1].conf.jd1[6]'),
+				t('page_joinUs.conf2.jdDetails[1].conf.jd1[0]'),
+				t('page_joinUs.conf2.jdDetails[1].conf.jd1[1]'),
+				t('page_joinUs.conf2.jdDetails[1].conf.jd1[2]'),
+				t('page_joinUs.conf2.jdDetails[1].conf.jd1[3]'),
+				t('page_joinUs.conf2.jdDetails[1].conf.jd1[4]'),
+				t('page_joinUs.conf2.jdDetails[1].conf.jd1[5]'),
+				t('page_joinUs.conf2.jdDetails[1].conf.jd1[6]'),
 			],
 			jd2: [
-			t('page_joinUs.conf2.jdDetails[1].conf.jd2[0]'),
-			t('page_joinUs.conf2.jdDetails[1].conf.jd2[1]'),
-			t('page_joinUs.conf2.jdDetails[1].conf.jd2[2]'),
-			t('page_joinUs.conf2.jdDetails[1].conf.jd2[3]'),
+				t('page_joinUs.conf2.jdDetails[1].conf.jd2[0]'),
+				t('page_joinUs.conf2.jdDetails[1].conf.jd2[1]'),
+				t('page_joinUs.conf2.jdDetails[1].conf.jd2[2]'),
+				t('page_joinUs.conf2.jdDetails[1].conf.jd2[3]'),
 			]
 		}
 	},
@@ -205,12 +227,12 @@ const list = ref([
 		time: '2023-08-25',
 		conf: {
 			jd3: [
-			t('page_joinUs.conf2.jdDetails[2].conf.jd3[0]'),
-			t('page_joinUs.conf2.jdDetails[2].conf.jd3[1]'),
-			t('page_joinUs.conf2.jdDetails[2].conf.jd3[2]'),
-			t('page_joinUs.conf2.jdDetails[2].conf.jd3[3]'),
-			t('page_joinUs.conf2.jdDetails[2].conf.jd3[4]'),
-			t('page_joinUs.conf2.jdDetails[2].conf.jd3[5]'),
+				t('page_joinUs.conf2.jdDetails[2].conf.jd3[0]'),
+				t('page_joinUs.conf2.jdDetails[2].conf.jd3[1]'),
+				t('page_joinUs.conf2.jdDetails[2].conf.jd3[2]'),
+				t('page_joinUs.conf2.jdDetails[2].conf.jd3[3]'),
+				t('page_joinUs.conf2.jdDetails[2].conf.jd3[4]'),
+				t('page_joinUs.conf2.jdDetails[2].conf.jd3[5]'),
 			]
 		}
 	},
@@ -219,30 +241,30 @@ const list = ref([
 		time: '2023-08-25',
 		conf: {
 			tip: [
-			t('page_joinUs.conf2.jdDetails[3].conf.tip'),
+				t('page_joinUs.conf2.jdDetails[3].conf.tip'),
 			],
 			jd1: [
-			t('page_joinUs.conf2.jdDetails[3].conf.jd1[0]'),
+				t('page_joinUs.conf2.jdDetails[3].conf.jd1[0]'),
 
-			t('page_joinUs.conf2.jdDetails[3].conf.jd1[1]'),
+				t('page_joinUs.conf2.jdDetails[3].conf.jd1[1]'),
 
-			t('page_joinUs.conf2.jdDetails[3].conf.jd1[2]'),
+				t('page_joinUs.conf2.jdDetails[3].conf.jd1[2]'),
 
-			t('page_joinUs.conf2.jdDetails[3].conf.jd1[3]'),
+				t('page_joinUs.conf2.jdDetails[3].conf.jd1[3]'),
 
-			t('page_joinUs.conf2.jdDetails[3].conf.jd1[4]'),
+				t('page_joinUs.conf2.jdDetails[3].conf.jd1[4]'),
 
-			t('page_joinUs.conf2.jdDetails[3].conf.jd1[5]'),
+				t('page_joinUs.conf2.jdDetails[3].conf.jd1[5]'),
 
 			],
 			jd2: [
-			t('page_joinUs.conf2.jdDetails[3].conf.jd2[0]'),
-			t('page_joinUs.conf2.jdDetails[3].conf.jd2[1]'),
-			t('page_joinUs.conf2.jdDetails[3].conf.jd2[2]'),
-			t('page_joinUs.conf2.jdDetails[3].conf.jd2[3]'),
-			t('page_joinUs.conf2.jdDetails[3].conf.jd2[4]'),
-			t('page_joinUs.conf2.jdDetails[3].conf.jd2[5]'),
-			t('page_joinUs.conf2.jdDetails[3].conf.jd2[6]'),
+				t('page_joinUs.conf2.jdDetails[3].conf.jd2[0]'),
+				t('page_joinUs.conf2.jdDetails[3].conf.jd2[1]'),
+				t('page_joinUs.conf2.jdDetails[3].conf.jd2[2]'),
+				t('page_joinUs.conf2.jdDetails[3].conf.jd2[3]'),
+				t('page_joinUs.conf2.jdDetails[3].conf.jd2[4]'),
+				t('page_joinUs.conf2.jdDetails[3].conf.jd2[5]'),
+				t('page_joinUs.conf2.jdDetails[3].conf.jd2[6]'),
 			]
 		}
 	},
@@ -290,7 +312,7 @@ const handleDetail = (idx: number) => {
 				font-weight: 500;
 				line-height: 64px;
 				word-wrap: break-word;
-			white-space: pre-wrap;
+				white-space: pre-wrap;
 			}
 
 			.msg {
@@ -362,15 +384,17 @@ const handleDetail = (idx: number) => {
 			}
 
 			.conf2 {
-			
+
 				:deep(.el-carousel) {
 					width: 100%;
 				}
+
 				:deep(.el-carousel__item) {
 					display: flex;
 					justify-content: space-between;
 					overflow-x: scroll;
 				}
+
 				.card {
 					flex: 0 0 auto;
 					width: 318px;
@@ -450,6 +474,7 @@ const handleDetail = (idx: number) => {
 					margin-bottom: 16px;
 					border-radius: 12px;
 					border: #b0a7a7 solid 1px;
+
 
 					&:hover {
 						color: #fff;

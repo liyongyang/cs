@@ -1,6 +1,9 @@
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+
 const config = [
   {
-    name: "Occhio",
+    name: t("customer_case.case1.name"),
     title: "案例一：Occhio",
     conf1: [
       "客户（Occhio）：Occhio是德国设计界的一家顶尖企业，也是获得全球设计大奖的高端照明灯具设计集团。以卓越的灯光质量、设计工艺和使用体验为每个空间提供解决方案，是照明设计领域创新和发展速度最快的公司之一。",

@@ -13,22 +13,25 @@
 
 <script setup lang='ts'>
 import { onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n()
 const conf = {
 	name: '璞偌芳德商务咨询有限公司',
 	msg: [
 		[
-			'吴婷婷 | 执行合伙人',
-			'座机: +86 21 5470 0562',
-			'手机: +86 186 2196 6191',
-			'邮箱: tingting.wu@csuite.com.cn',
-			'公司网址: www.cs-executive.com',
-			'营业执照: 3101120101054'
+			t('footer.conf1.txt2'),
+			t('footer.conf1.txt3'),
+			t('footer.conf1.txt4'),
+			t('footer.conf1.txt5'),
+			t('footer.conf1.txt6'),
 		],
 		[
-			'新加坡及亚太区联系方式:',
-			'Shane McGowan | 高级总监',
-			'座机: +65 6871 4088 | +65 8611 2243',
-			'劳务执照: 20S0282',
+			t('footer.conf2.txt1'),
+			t('footer.conf2.txt2'),
+			t('footer.conf2.txt3'),
+			t('footer.conf2.txt4'),
+
 		]
 	]
 }

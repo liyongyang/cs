@@ -2,12 +2,12 @@
 	<div class="qa-container">
 		<div class="head flex">
 			<div class="icon_wrap" ref="backIconRef" @click="goBack">
-				<el-icon class="icon-back cursor-pointer" >
+				<el-icon class="icon-back cursor-pointer">
 					<ArrowLeftBold />
 				</el-icon>
-				<span>返回</span>
+				<span class="animate__animated animate__fadeIn">{{ t('common.return') }}</span>
 			</div>
-			<li class="flex-initial w-full text-center wow animate__fadeInUp">市场资讯服务</li>
+			<li class="flex-initial w-full text-center wow animate__fadeInUp">{{ pageInfo.title }}</li>
 		</div>
 		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_7_1.png" alt="">
 		<div class="conf-info wow animate__fadeInUp">
@@ -38,17 +38,16 @@
 		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf5.title }}</li>
 			<div class="cards2">
-				<img class="img" v-for="index in 5" :key="index" :src="`/myService/icons/detail7_card_` + index + `.png`"
-					alt="">
+				<img class="img" v-for="(item, index) in pageInfo.conf5.img" :key="index" :src="item" alt="">
 			</div>
 		</div>
 		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf6.title }}</li>
-			<img class="img" src="/myService/icons/detail7_card2_1.png" alt="">
+			<img class="img" :src="t('server_case7.conf6.img')" alt="">
 		</div>
 		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf7.title }}</li>
-			<img class="img" src="/myService/icons/detail7_card2_2.png" alt="">
+			<img class="img" :src="t('server_case7.conf7.img')" alt="">
 		</div>
 		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf8.title }}</li>
@@ -61,7 +60,7 @@
 				<li class="cards3-msg" v-for="t in item.msg" :key="t">{{ t }}</li>
 			</div>
 		</div>
-		<div class="conf-info wow animate__fadeInUp" >
+		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf10.title }}</li>
 			<img class="img" src="/myService/icons/detail7_card2_3.png" alt="">
 		</div>
@@ -69,95 +68,105 @@
 </template>
 
 <script setup lang='ts'>
-import {onMounted,ref,reactive,onUnmounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useRouter } from "vue-router";
+
+const { t } = useI18n()
 const router = useRouter();
 const pageInfo = {
+	title: t('server_case7.title'),
 	conf1: {
-		title: '关于研亚咨询',
+		title: t('server_case7.conf1.title'),
 		msg: [
-			'研亚咨询致力于通过深度、定制化的市场研究服务，帮助客户洞察技术发展趋势、发现新的业务机会、制定差异化的竞争策略、探寻产业链上合作伙伴，进一步为客户战略制定提供关键决策信息，从而实现业务的可持续增长研亚咨询在性能材料与特种化学品、新能源汽车、半导体/显示/电子、光伏、精密仪器等领域，系统研究与经验积累超过15年；服务于上述领域的全球领先企业，包括：万华、3M、赢创、亨斯迈、汉高、西门子、丰田、电装、日立化成、英飞凌、东丽、住友化学等'
+			t('server_case7.conf1.msg[0]')
 		]
 	},
 	conf2: {
-		title: '研亚咨询的使命',
+		title: t('server_case7.conf2.title'),
 		msg: [
-			'研亚咨询致力于通过深度、定制化的市场研究服务，帮助客户洞察技术发展趋势、发现新的业务机会、制定差异化的竞争策略、探寻产业链上合作伙伴，进一步为客户战略制定提供关键决策信息，从而实现业务的可持续增长。',
+			t('server_case7.conf2.msg[0]')
 		]
 	},
 	conf3: {
-		title: '研亚咨询的服务',
+		title: t('server_case7.conf3.title'),
 		card: [
-			'洞察技术发展趋势',
-			'发现新的业务机会',
-			'制定差异化的竞争策略',
-			'优化商业模式&寻找合作伙伴',
-			'规避决策风险'
-		]
+			t('server_case7.conf3.card[0]'),
+			t('server_case7.conf3.card[1]'),
+			t('server_case7.conf3.card[2]'),
+			t('server_case7.conf3.card[3]'),
+			t('server_case7.conf3.card[4]')
+		],
 	},
 	conf4: {
-		title: '研亚咨询的优势',
+		title: t('server_case7.conf4.title'),
 		card: [
-			'横跨科技与材料两个维度的复合研究',
-			'针对材料的系统性研究',
-			'针对众多不同下游领域的多维度研究',
-			'贯穿汽车产业链各个环节的研究',
-			'持续的研究经验积累&定制化设置研究内容',
-			'成熟的数据模型运用',
-			'能够为新业务机会甄选、市场进入提供专业咨询'
+			t('server_case7.conf4.card[0]'),
+			t('server_case7.conf4.card[1]'),
+			t('server_case7.conf4.card[2]'),
+			t('server_case7.conf4.card[3]'),
+			t('server_case7.conf4.card[4]'),
+			t('server_case7.conf4.card[5]'),
+			t('server_case7.conf4.card[6]')
 		]
 	},
 	conf5: {
-		title: '研亚咨询深度研究的经验涉及领域与产品'
+		title: t('server_case7.conf5.title'),
+		img: [
+			t('server_case7.conf5.img[0]'),
+			t('server_case7.conf5.img[1]'),
+			t('server_case7.conf5.img[2]'),
+			t('server_case7.conf5.img[3]'),
+			t('server_case7.conf5.img[4]'),
+		]
 	},
 	conf6: {
-		title: '研亚咨询的产品和服务'
+		title: t('server_case7.conf6.title'),
 	},
 	conf7: {
-		title: '我们是如何持续关注合作伙伴多样的、各自不同的业务挑战'
+		title: t('server_case7.conf7.title'),
 	},
 	conf8: {
-		title: '始终，我们服务于客户的业务的持续增长，与核心竞争力构筑，这基于',
+		title: t('server_case7.conf8.title'),
 		msg: [
-			'1.聚焦下游新的技术趋势、新的应用趋势、新的产品开发，发现新的业务机会',
-			'2.贯穿产业链的研究，针对核心竞争要素、关键成功因素的深度分析'
+			t('server_case7.conf8.msg[0]'),
+			t('server_case7.conf8.msg[1]'),
 		]
 	},
 	conf9: {
-		title: '不用阶段不同挑战',
+		title: t('server_case7.conf9.title'),
 		card: [
 			{
-				name: '市场进入期',
+				name: t('server_case7.conf9.card[0].name'),
 				msg: [
-					'谁是首期客户？',
-					'他们需求是什么又如何满足？'
+					t('server_case7.conf9.card[0].msg[0]'),
+					t('server_case7.conf9.card[0].msg[1]'),
 				]
 			},
 			{
-				name: '业务快速成长期',
+				name: t('server_case7.conf9.card[1].name'),
 				msg: [
-					'如何进一步扩大市场份额？'
+					t('server_case7.conf9.card[1].msg[0]'),
 				]
 			},
 			{
-				name: '格局稳定市场份额饱和期',
+				name: t('server_case7.conf9.card[2].name'),
 				msg: [
-					'如何保持持续竞争优势？',
-					'客户忠诚度如何长久维护？'
+					t('server_case7.conf9.card[2].msg[0]'),
+					t('server_case7.conf9.card[2].msg[1]'),
 				]
 			},
 			{
-				name: '业务调整期',
+				name: t('server_case7.conf9.card[3].name'),
 				msg: [
-					'新的机会是什么？',
-					'怎样筛选新的业务机会？',
-					'新业务开发与进入策略？'
+					t('server_case7.conf9.card[3].msg[0]'),
+					t('server_case7.conf9.card[3].msg[1]'),
+					t('server_case7.conf9.card[3].msg[2]'),
 				]
 			}
 		]
 	},
 	conf10: {
-		title: '研亚咨询深服务的客户'
+		title: t('server_case7.conf10.title'),
 	}
 }
 const goBack = () => {
@@ -179,31 +188,36 @@ const goBack = () => {
 		line-height: 63px;
 		font-weight: 500;
 		padding-bottom: 40px;
-		.icon_wrap{
-			position: fixed;
-			top:109px;
-			// display: flex;
-			height:80px;
+
+		.icon_wrap {
+			flex: 0 0 auto;
+			height: 80px;
 			width: 80px;
-			border-radius: 40px;
+			cursor: pointer;
 			background: #fff;
-			// padding-top:23px;
 			text-align: center;
-			&:hover span{
-				opacity: 1;
-				display: inline-block;
+			border-radius: 100%;
+
+			&:hover {
+				box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+
+				span {
+					margin-right: 6px;
+					opacity: 1;
+					display: inline;
+				}
 			}
-			span{
-				display: none;
+
+			span {
 				opacity: 0;
+				display: none;
 				position: relative;
-				left: -2px;
-				height: 32px;
-				line-height: 32px;
 				font-size: 18px;
 				transition: all 0.5s ease-in-out;
 			}
+
 		}
+
 		.icon-back {
 			display: inline-block;
 			font-size: 32px;
@@ -227,6 +241,7 @@ const goBack = () => {
 		}
 
 		.img {
+			max-width: 1312px;
 			margin-bottom: 32px;
 		}
 

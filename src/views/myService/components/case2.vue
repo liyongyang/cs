@@ -1,13 +1,13 @@
 <template>
 	<div class="qa-container">
-		<div class="head flex">
+		<div class="head wow animate__fadeInUp flex justify-between">
 			<div class="icon_wrap" ref="backIconRef" @click="goBack">
 				<el-icon class="icon-back cursor-pointer">
 					<ArrowLeftBold />
 				</el-icon>
-				<span>返回</span>
+				<span class="animate__animated animate__fadeIn">{{ t('common.return') }}</span>
 			</div>
-			<li class="flex-initial w-full text-center wow animate__fadeInUp">高管招聘</li>
+			<li class="flex-initial w-full text-center wow animate__fadeInUp">{{ t('server_case2.title') }}</li>
 		</div>
 		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_2_1.png" alt="">
 		<div class="conf-info">
@@ -44,69 +44,120 @@
 			</div>
 			<li class="msg">{{ pageInfo.conf2.tips }}</li>
 		</div>
-		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_2_2.png" alt="">
+		<img class="img wow animate__fadeInUp" :src="pageInfo.conf2.img" alt="">
 	</div>
 </template>
 
 <script setup lang='ts'>
-import { Ref, onMounted,ref,reactive,onUnmounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useRouter } from "vue-router";
+
+const { t } = useI18n()
 const router = useRouter();
-const qaList = [
-	{
-		q: '为什么要加入CSUITE?',
-		a: '在Csuite，我们相信每一个人。我们专注于寻找他们，了解他们，建立连接并帮助他们成长。在Csuite，我们释放人类潜能的力量。如果您对招聘工作感兴趣，或者您只是准备改变赛道，尝试新的道路并释放自己的潜力 - 那么您来对地方了。今天就和我们谈谈，准备好和我们一起翱翔吧。我们提供基于绩效的透明、更快速的职业发展结构。这不是我们临时做的事情。当我们雇用你时，我们正在寻找潜在的新兴领导者，这些人不仅可以成长为明天的领导者，更可以成长为明天的明星。'
-	}
-]
+
 const pageInfo = {
 	conf1: {
-		title: '管理者画像与关键岗位画像的区别',
-		msg: '能够成为高绩效的管理员，不仅取决于其与岗位的匹配程度，还受其与组织匹配程度的影响。',
+		title: t('server_case2.conf1.title'),
+		msg: t('server_case2.conf1.msg'),
 		cards: [
 			{
-				name: '人-岗匹配',
-				tips: ['岗位铁律型要求', '关键历练要求', '绩效要求', '能力要求']
+				name: t('server_case2.conf1.cards[0].name'),
+				tips: [
+					t('server_case2.conf1.cards[0].tips[0]'),
+					t('server_case2.conf1.cards[0].tips[1]'),
+					t('server_case2.conf1.cards[0].tips[2]'),
+					t('server_case2.conf1.cards[0].tips[3]'),
+				]
 			},
 			{
-				name: '人-组织匹配',
-				tips: ['企业文化', '团队搭配', '组织氛围', '组织发展阶段']
+				name: t('server_case2.conf1.cards[1].name'),
+				tips: [
+					t('server_case2.conf1.cards[1].tips[0]'),
+					t('server_case2.conf1.cards[1].tips[1]'),
+					t('server_case2.conf1.cards[1].tips[2]'),
+					t('server_case2.conf1.cards[1].tips[3]'),
+				]
 			}
 		]
 	},
 	conf2: {
-		title: '人与组织匹配逻辑',
-		msg: '不同发展成熟度的组织需要对应的领导风格和领导特质',
-		steps: ['初创期', '冲突期', '融合期', '高效期'],
+		title: t('server_case2.conf2.title'),
+		msg: t('server_case2.conf2.msg'),
+		steps: [
+			t('server_case2.conf2.steps[0]'),
+			t('server_case2.conf2.steps[1]'),
+			t('server_case2.conf2.steps[2]'),
+			t('server_case2.conf2.steps[3]'),
+		],
 		cards: [
 			{
-				name: '阶段特质',
+				name: t('server_case2.conf2.cards[0].name'),
 				tips: [
-					['互相熟悉', '使用套话', '不互相揭发', '没有冲突'],
-					['团队一致性低', '陈词滥调增加', '冲突增加', '创新变革减少'],
-					['开放的思想', '积极聆听', '团队思想建立', '领导力共享'],
-					['高创造力', '不必寻求太多批准', '强烈的忠诚', '高凝聚力']
+					[
+						t('server_case2.conf2.cards[0].tips[0][0]'),
+						t('server_case2.conf2.cards[0].tips[0][1]'),
+						t('server_case2.conf2.cards[0].tips[0][2]'),
+						t('server_case2.conf2.cards[0].tips[0][3]'),
+					],
+					[
+						t('server_case2.conf2.cards[0].tips[1][0]'),
+						t('server_case2.conf2.cards[0].tips[1][1]'),
+						t('server_case2.conf2.cards[0].tips[1][2]'),
+						t('server_case2.conf2.cards[0].tips[1][3]'),
+					],
+					[
+						t('server_case2.conf2.cards[0].tips[2][0]'),
+						t('server_case2.conf2.cards[0].tips[2][1]'),
+						t('server_case2.conf2.cards[0].tips[2][2]'),
+						t('server_case2.conf2.cards[0].tips[2][3]'),
+					],
+					[
+						t('server_case2.conf2.cards[0].tips[3][0]'),
+						t('server_case2.conf2.cards[0].tips[3][1]'),
+						t('server_case2.conf2.cards[0].tips[3][2]'),
+						t('server_case2.conf2.cards[0].tips[3][3]'),
+					],
 				]
 			},
 			{
-				name: '适合领导风格',
+				name: t('server_case2.conf2.cards[1].name'),
 				tips: [
-					['指导型'],
-					['教练型'],
-					['支持型'],
-					['授权型']
+					[
+						t('server_case2.conf2.cards[1].tips[0][0]'),
+					],
+					[
+						t('server_case2.conf2.cards[1].tips[1][0]'),
+					],
+					[
+						t('server_case2.conf2.cards[1].tips[2][0]'),
+					],
+					[
+						t('server_case2.conf2.cards[1].tips[3][0]'),
+					],
 				]
 			},
 			{
-				name: '适合领导特征',
+				name: t('server_case2.conf2.cards[2].name'),
 				tips: [
-					['控制性高'],
-					['进取性高', '控制性高'],
-					['外向性高', '宜人性高'],
-					['宜人性高']
+					[
+						t('server_case2.conf2.cards[2].tips[0][0]'),
+					],
+					[
+						t('server_case2.conf2.cards[2].tips[1][0]'),
+						t('server_case2.conf2.cards[2].tips[1][1]'),
+					],
+					[
+						t('server_case2.conf2.cards[2].tips[2][0]'),
+						t('server_case2.conf2.cards[2].tips[2][1]'),
+					],
+					[
+						t('server_case2.conf2.cards[2].tips[3][0]'),
+					],
 				]
-			}
+			},
 		],
-		tips: '可从财务、客户、内部运营、队伍建设四个维度来评估不同组织的成熟度情况。同时，针对不同的组织特点，优先选择在性格特质、领导风格、经验、核心能力方面更符合组织要求的干部。'
+		tips: t('server_case2.conf2.tips'),
+		img: t('server_case2.conf2.img')
 	}
 }
 
@@ -129,31 +180,36 @@ const goBack = () => {
 		line-height: 63px;
 		font-weight: 500;
 		padding-bottom: 40px;
-		.icon_wrap{
-			position: fixed;
-			top:109px;
-			// display: flex;
-			height:80px;
+
+		.icon_wrap {
+			flex: 0 0 auto;
+			height: 80px;
 			width: 80px;
-			border-radius: 40px;
+			cursor: pointer;
 			background: #fff;
-			// padding-top:23px;
 			text-align: center;
-			&:hover span{
-				opacity: 1;
-				display: inline-block;
+			border-radius: 100%;
+
+			&:hover {
+				box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+
+				span {
+					margin-right: 6px;
+					opacity: 1;
+					display: inline;
+				}
 			}
-			span{
-				display: none;
+
+			span {
 				opacity: 0;
+				display: none;
 				position: relative;
-				left: -2px;
-				height: 32px;
-				line-height: 32px;
 				font-size: 18px;
 				transition: all 0.5s ease-in-out;
 			}
+
 		}
+
 		.icon-back {
 			display: inline-block;
 			font-size: 32px;

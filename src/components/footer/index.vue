@@ -6,18 +6,18 @@
 				<img src="@/assets/footer/ma2.png" alt="">
 			</div>
 			<div class="conf">
-				<li>中国地区联系方式</li>
-				<li>吴婷婷 | 执行合伙人</li>
-				<li>座机: +86 21 5470 0562</li>
-				<li>邮箱: tingting.wu@csuite.com.cn</li>
-				<li>中国地区联公司网址: www.cs-executive.com</li>
-				<li>营业执照: 3101120101054</li>
+				<li>{{ t('footer.conf1.txt1') }}</li>
+				<li>{{ t('footer.conf1.txt2') }}</li>
+				<li>{{ t('footer.conf1.txt3') }}</li>
+				<li>{{ t('footer.conf1.txt4') }}</li>
+				<li>{{ t('footer.conf1.txt5') }}</li>
+				<li>{{ t('footer.conf1.txt6') }}</li>
 			</div>
 			<div class="conf">
-				<li>新加坡及亚太区联系方式:</li>
-				<li>Shane McGowan | 高级总监</li>
-				<li>座机: +65 6871 4088 | +65 8611 2243</li>
-				<li>劳务执照: 20S0282</li>
+				<li>{{ t('footer.conf2.txt1') }}</li>
+				<li>{{ t('footer.conf2.txt2') }}</li>
+				<li>{{ t('footer.conf2.txt3') }}</li>
+				<li>{{ t('footer.conf2.txt4') }}</li>
 			</div>
 			<div class="conf">
 				<li>网站备案信息</li>
@@ -29,7 +29,10 @@
 </template>
 
 <script setup lang='ts'>
-import { ref, reactive, shallowRef, onMounted, nextTick, onUnmounted, watch, computed } from 'vue'
+import { onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n()
 
 onMounted(() => { });
 

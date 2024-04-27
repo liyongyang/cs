@@ -1,13 +1,13 @@
 <template>
 	<div class="qa-container">
-		<div class="head flex">
-			<div class="icon_wrap" ref="backIconRef" @click="goBack" >
-				<el-icon class="icon-back cursor-pointer" >
+		<div class="head wow animate__fadeInUp flex justify-between">
+			<div class="icon_wrap" ref="backIconRef" @click="goBack">
+				<el-icon class="icon-back cursor-pointer">
 					<ArrowLeftBold />
 				</el-icon>
-				<span>返回</span>
+				<span class="animate__animated animate__fadeIn">{{ t('common.return') }}</span>
 			</div>
-			<li class="flex-initial w-full text-center  wow animate__fadeInUp">人才地图</li>
+			<li class="flex-initial w-full text-center wow animate__fadeInUp">{{ t('server_case3.title') }}</li>
 		</div>
 		<div class="conf-info wow animate__fadeInUp">
 			<li class="title  ">{{ pageInfo.conf1.title }}</li>
@@ -102,199 +102,204 @@
 			<li class="title">{{ pageInfo.conf6_more[1].name }}</li>
 			<li class="item-msg">{{ pageInfo.conf6_more[1].msg }}</li>
 		</div>
-		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_3_3.png" alt="">
+		<img class="img wow animate__fadeInUp" :src="pageInfo.conf6_more[1].img" alt="">
 		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf6_more[2].name }}</li>
 		</div>
-		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_3_4.png" alt="">
+		<img class="img wow animate__fadeInUp" :src="t('server_case3.conf6_more[2].img1')" alt="">
 		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf6_more[2].msg }}</li>
 		</div>
-		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_3_5.png" alt="">
+		<img class="img wow animate__fadeInUp" :src="t('server_case3.conf6_more[2].img2')" alt="">
 		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf6_more[3].name }}</li>
 		</div>
-		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_3_6.png" alt="">
+		<img class="img wow animate__fadeInUp" :src="t('server_case3.conf6_more[3].img1')" alt="">
 		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf6_more[3].msg }}</li>
 		</div>
-		<img class="img" src="@/assets/myService/detail_3_7.png" alt="">
+		<img class="img wow animate__fadeInUp" :src="t('server_case3.conf6_more[3].img2')" alt="">
 	</div>
 </template>
 
 <script setup lang='ts'>
-import { onMounted,ref,reactive,onUnmounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useRouter } from "vue-router";
+
+const { t } = useI18n()
 const router = useRouter();
 const pageInfo = {
 	conf1: {
-		title: '什么是人才地图',
+		title: t('server_case3.conf1.title'),
 		cards: [
 			{
-				name: '对标岗位人才地图',
-				tip: '（行业中所有公司的目标岗位）',
+				name: t('server_case3.conf1.cards[0].name'),
+				tip: t('server_case3.conf1.cards[0].tip'),
 				msg: [
-					'有时候研究对象不是目标公司全部的岗位，而是市场上被关注的热点岗位，也是招聘中存在困难的岗位，甚至是招不到人的一些岗位，这种情况下我们按照目标岗位来划分。比如特定的岗位: 经营的某个岗位、市场的某个岗位、总监的岗位或者经理的岗位都可以。',
-					'这一类目标岗位人才群体的规模在行业有多少人地理位置如何分布、这些人员的资历和背景、工作职责和绩效状况、薪酬水平、跳槽意愿甚至包括对公司是否愿意加入、看法等。都可以放在人才地图的内容里面。'
+					t('server_case3.conf1.cards[0].msg[0]'),
+					t('server_case3.conf1.cards[0].msg[1]'),
 				]
 			},
 			{
-				name: '对标公司及对标岗位人才地图',
-				tip: '（目标公司中的目标岗位）',
+				name: t('server_case3.conf1.cards[1].name'),
+				tip: t('server_case3.conf1.cards[1].tip'),
 				msg: [
-					'目标公司部门布局，业务布局，对标岗位的人才资历背景、工作职责、KPI绩效考评的状况、薪酬水平、和是否有离职意愿。有了这样的一个地图，就像作战时的有了一张部署精准，结构缜密的战图一样，我们对整个行业的人才做到心中有数，了如指掌。',
-					'未来的竞争说的是产品的竞争，但产品它是会改变的无论是渠道、创新，它背后其实都是人才在驱动，所以从根本上来说，我们就要从源头上把握人才Mapping就显得越来越重要了。'
+					t('server_case3.conf1.cards[1].msg[0]'),
+					t('server_case3.conf1.cards[1].msg[1]'),
 				]
-			}
+			},
 		]
 	},
 	conf2: {
-		title: '什么是Mapping?',
-		info: '相对而言，猎头公司对人才地图会更加熟悉。我先来为大家做个解读：什么是人才地图？人才地图的内容是哪些？',
+		title: t('server_case3.conf2.title'),
+		info: t('server_case3.conf2.info'),
 		cards: [
 			{
-				name: '内部-人才盘点',
-				msg: 'OD通过对内部人才盘点，助力于组织发展及搭建培训体系；'
+				name: t('server_case3.conf2.cards[0].name'),
+				msg: t('server_case3.conf2.cards[0].msg'),
 			},
 			{
-				name: '外部-人才地图',
-				msg: '招聘HR通过系统了解并掌握外部人才市场的关键信息，绘制对标行业、公司的人才地图，助力于人才招募。'
-			}
+				name: t('server_case3.conf2.cards[1].name'),
+				msg: t('server_case3.conf2.cards[1].msg'),
+			},
 		],
-		text: '今天主要是分享招聘中关于外部人才市场的人才地图。主要的含义是系统性地去了解、绘制、掌握外部的关键人才的分布、地理位置和公司、资历和背景、薪酬信息、动机等关键信息。'
+		text: t('server_case3.conf2.text'),
 	},
 	conf3: {
-		title: '人才地图有三种分类：',
+		title: t('server_case3.conf3.title'),
 		cards: [
 			{
-				name: '对标公司人才地图 （目标公司的所有岗位）',
-				msg: ['展现形式目标公司的组织架构，担任重要岗位的人才和资历背景、主要的工作职责、KPI绩效考评的状况、以及薪酬水平和是否有离职意愿等等。']
-			},
-			{
-				name: '对标岗位人才地图 （行业中所有公司的目标岗位）',
-				msg: ['有时候研究对象不是目标公司全部的岗位，而是市场上被关注的热点岗位，也是招聘中存在困难的岗位，甚至是招不到人的一些岗位，这种情况下我们按照目标岗位来划分。比如特定的岗位：经营的某个岗位、市场的某个岗位、总监的岗位或者经理的岗位都可以。']
-			},
-			{
-				name: '对标岗位人才地图 （行业中所有公司的目标岗位）',
+				name: t('server_case3.conf3.cards[0].name'),
 				msg: [
-					'有时候研究对象不是目标公司全部的岗位，而是市场上被关注的热点岗位，也是招聘中存在困难的岗位，甚至是招不到人的一些岗位，这种情况下我们按照目标岗位来划分。比如特定的岗位：经营的某个岗位、市场的某个岗位、总监的岗位或者经理的岗位都可以。',
-					'这一类目标岗位人才群体的规模在行业有多少人、地理位置如何分布、这些人员的资历和背景、工作职责和绩效状况、薪酬水平、跳槽意愿甚至包括对公司是否愿意加入、看法等。都可以放在人才地图的内容里面。',
-					'未来的竞争说的是产品的竞争，但产品它是会改变的，无论是渠道、创新，它背后其实都是人才在驱动，所以从根本上来说，我们就要从源头上把握人才，Mapping就显得越来越重要了。'
+					t('server_case3.conf3.cards[0].msg[0]'),]
+			},
+			{
+				name: t('server_case3.conf3.cards[1].name'),
+				msg: [
+					t('server_case3.conf3.cards[1].msg[0]'),]
+			},
+			{
+				name: t('server_case3.conf3.cards[2].name'),
+				msg: [
+					t('server_case3.conf3.cards[2].msg[0]'),
+					t('server_case3.conf3.cards[2].msg[1]'),
+					t('server_case3.conf3.cards[2].msg[2]'),
 				]
-			}
+			},
 		]
 	},
 	conf4: {
-		title: '如何构建人才地图',
-		info: '因为人才地图改变了人力资源管理的定位，人力资源上升到人力资本和人才经营的高度。所以人才地图的构建也要站在更高的高度去搭建才可以。',
+		title: t('server_case3.conf4.title'),
+		info: t('server_case3.conf4.info'),
 		items: [
 			{
-				name: '梳理企业战略需求、组织体系与人才体系',
+				name: t('server_case3.conf4.items[0].name'),
 				cards: [
 					{
-						name: 'A',
-						msg: '企业的发展规划和为实现战略规划的职能与人力资源需求（人力资源管理与人才）。有人说，哪里来的这种需求呀？这种问法也对。因为从来也没有人会直接告诉你这种需求，需要在企业战略规划或战略目标的前提下进行分解，首先是职能需求分解，即为了达到战略目标需要什么样的职能支撑；其次是人才分解，即为了满足支撑战略目标的职能需求，需要匹配什么样的人才和多少数量的人才。'
+						name: t('server_case3.conf4.items[0].cards[0].name'),
+						msg: t('server_case3.conf4.items[0].cards[0].msg'),
 					},
 					{
-						name: 'B',
-						msg: '支撑战略需求的人才图谱以及与之匹配的人力资本投入与收益分析。如何做到人力资源投入产出的最大化。然后反过来，检讨未来人才需求梳理的合理性。'
+						name: t('server_case3.conf4.items[0].cards[1].name'),
+						msg: t('server_case3.conf4.items[0].cards[1].msg'),
 					},
 					{
-						name: 'C',
-						msg: '为了满足未来人才战略，需要的组织形式与胜任标准。'
-					}
+						name: t('server_case3.conf4.items[0].cards[2].name'),
+						msg: t('server_case3.conf4.items[0].cards[2].msg'),
+					},
 				],
 			},
 			{
-				name: '梳理企业的组织体系',
+				name: t('server_case3.conf4.items[1].name'),
 				cards: [
 					{
-						name: 'A',
-						msg: '当前的组织体系，包括组织架构、职级体系、薪级体系、职级通道、岗位编制管理等等。'
+						name: t('server_case3.conf4.items[1].cards[0].name'),
+						msg: t('server_case3.conf4.items[1].cards[0].msg'),
 					},
 					{
-						name: 'B',
-						msg: '基于未来战略实现的组织演变模式和与之匹配的组织架构形式。这里我想特别强调一下，组织架构是根据目标达成和运营模式的要求分解出来的，而不是直接画图画出来的。'
+						name: t('server_case3.conf4.items[1].cards[1].name'),
+						msg: t('server_case3.conf4.items[1].cards[1].msg'),
 					},
 					{
-						name: 'C',
-						msg: '基于不同阶段组织形势下，与企业职级体系匹配的人才胜任需求标准。'
-					}
+						name: t('server_case3.conf4.items[1].cards[2].name'),
+						msg: t('server_case3.conf4.items[1].cards[2].msg'),
+					},
 				],
 			},
 			{
-				name: '梳理企业的人才体系',
+				name: t('server_case3.conf4.items[2].name'),
 				cards: [
 					{
-						name: 'A',
-						msg: '根据企业战略需求与组织需求，确定人才需求的轻重缓急，并定义企业的“人才”标准。'
+						name: t('server_case3.conf4.items[2].cards[0].name'),
+						msg: t('server_case3.conf4.items[2].cards[0].msg'),
 					},
 					{
-						name: 'B',
-						msg: '对现有人才进行盘点，制定盘点表格并形成盘点矩阵和分析报告。对应现有人才的现状确定其未来的岗位匹配及其个人职业提升与发展的轻重缓急及其通道。同时建立起企业人才流动的常规和非常规通道。'
+						name: t('server_case3.conf4.items[2].cards[1].name'),
+						msg: t('server_case3.conf4.items[2].cards[1].msg'),
 					},
 					{
-						name: 'C',
-						msg: '根据人力资源（含人才）盘点报告和分析，找出现有人才与未来人才需求的差距与现有人才的提升潜力。同时拟定补足差距的途径。'
-					}
+						name: t('server_case3.conf4.items[2].cards[2].name'),
+						msg: t('server_case3.conf4.items[2].cards[2].msg'),
+					},
 				],
-			}
+			},
 		]
 	},
 	conf5: {
-		title: '我们到底该Mapping什么？',
+		title: t('server_case3.conf5.title'),
 		msg: [
-			'那我们做Mapping，实际上我们Mapping什么。我们的目标是什么，无非就是这三个：公司、岗位、人。',
-			'我们要分析说，我们的目标公司有哪些，比如说同行业竞争对手肯定是，还有不同行业的相同岗位，给我们行业做服务、做培训、做咨询的，也会有我们需要的人才。所以目标公司我们要首先锁定，我们到底要Mapping哪些，哪些公司我们要进行地毯式的搜索。',
-			'公司定位之后，我们就要定位岗位，你这个公司有哪些岗位是我们关心的，一个部门有多少个这样的岗位，我们也要摸清楚。最后是看人，看这个人的什么，这就涉及到我们后面的内容了。',
-			'作为一个人讲，首先我们要知道他在哪个组织，他所在组织的组织架构、概况、创始人、股东、主要的核心团队、他的部门搭建、部门内的配置然后到这个人他的背景资料、学历、年龄等基本资料；还有职业发展、做过哪些公司、这些公司跟我们市场的业务有没有交集；接下来是成就事件——这也很关键，因为人，我们看背景资料，看职业发展，并不能判断这个人做得好还是不好——我们只能知道这个人是这么客观存在的，区别其实就是在成就事件。'
+			t('server_case3.conf5.msg[0]'),
+			t('server_case3.conf5.msg[1]'),
+			t('server_case3.conf5.msg[2]'),
+			t('server_case3.conf5.msg[3]'),
 		]
 	},
 	conf6: {
-		title: '如何绘制Mapping？',
+		title: t('server_case3.conf6.title'),
 		msg: [
-			'人才地图的呈现方式有很多，EXCEL、word、PPT，还有最近很流行的思维导图都可以，大家根据自己的操作习惯来就好。接下来我们就可以做准备工作了：明确对标行业、公司、岗位、明确具体操作的时间节点，明确人员配置与分工，制定操作计划就可以开始了。人才地图中绘制中的内容，可以包含行业信息（行业发展历程、市场容量、产品分类、发展现状、行业痛点、行业标杆）、公司信息（公司发展历程、公司产品、业务分布、组织架构、风云人物、商业行为、近期大事件）、人才信息（管理层姓名、管理层背景、招聘岗位情况）等等。',
-			'人才地图绘制完成之后，人才地图是死的，人是活的，人在不断的变换，所以我们的地图也要不断的更新才行。怎么去更新呢，大家还是要像前面做mapping一样，不停的反复做，周期性的做都可以。我们可以关注行业的专业媒体，专注行业的动态，新产品出现、高管离职等等报道。还有可以经常参加行业活动，这样可以得到更多的行业信息；还可以用行业的名义组织一些论坛，邀请一些目标群体的人来做下小型行业知识交流会等等，类似这种活动都可以重新认识行业中的大咖大牛们；还有就是自办活动，公司自己组织一些行业内的论坛，跟媒体合作，媒体做报道，邀请大咖们，或者做一些行业人才状况的调查，调查完了之后报告共享等等。',
-			'通过以上方式都可以发现我们人才地图中的一些变化，借以维护和更新。'
+			t('server_case3.conf6.msg[0]'),
+			t('server_case3.conf6.msg[1]'),
+			t('server_case3.conf6.msg[2]'),
 		]
 	},
 	conf6_more: [
 		{
-			name: '1.锁定目标公司',
+			name: t('server_case3.conf6_more[0].name'),
 			cards: [
 				{
-					name: '目标公司常见属性',
+					name: t('server_case3.conf6_more[0].cards[0].name'),
 					msg: [
-						'直接竞争对手',
-						'与公司产品的相近 / 相似、有可能在未来参与竞争的公司',
-						'与公司产品相关联的公司',
-						'人员规模、市场体量相近的公司',
-						'营销渠道及方式、运营管理模式相近的公司',
-						'同行业中“万金油“企业'
+						t('server_case3.conf6_more[0].cards[0].msg[0]'),
+						t('server_case3.conf6_more[0].cards[0].msg[1]'),
+						t('server_case3.conf6_more[0].cards[0].msg[2]'),
+						t('server_case3.conf6_more[0].cards[0].msg[3]'),
+						t('server_case3.conf6_more[0].cards[0].msg[4]'),
+						t('server_case3.conf6_more[0].cards[0].msg[5]'),
 					]
 				},
 				{
-					name: '目标公司目录来源',
+					name: t('server_case3.conf6_more[0].cards[1].name'),
 					msg: [
-						'根据目标公司常见属性自主分析寻找',
-						'搜集我公司参与的各大产品展会的企业名单',
-						'记录参加我公司面试的候选人过往的工作单位、通过面试人选进一步了解业务相近的公司名称',
-						'交一些行业内的朋友并向其进行咨询'
+						t('server_case3.conf6_more[0].cards[1].msg[0]'),
+						t('server_case3.conf6_more[0].cards[1].msg[1]'),
+						t('server_case3.conf6_more[0].cards[1].msg[2]'),
+						t('server_case3.conf6_more[0].cards[1].msg[3]'),
 					]
-				}
+				},
 			]
 		},
 		{
-			name: '2.确定任务画像',
-			msg: '人才画像是以职位说明书为基础，对标目标公司，找出能胜任该职位要求的职位原型。'
+			img: t('server_case3.conf6_more[1].img'),
+			name: t('server_case3.conf6_more[1].name'),
+			msg: t('server_case3.conf6_more[1].msg'),
 		},
 		{
-			name: '3.多个渠道搜索',
-			msg: '渠道使用技巧'
+			name: t('server_case3.conf6_more[2].name'),
+			msg: t('server_case3.conf6_more[2].msg'),
 		},
 		{
-			name: '4.整理信息拼图',
-			msg: '信息拼图的基本原则'
+			name: t('server_case3.conf6_more[3].name'),
+			msg: t('server_case3.conf6_more[3].msg'),
 		}
 	]
 }
@@ -317,31 +322,36 @@ const goBack = () => {
 		line-height: 63px;
 		font-weight: 500;
 		padding-bottom: 40px;
-		.icon_wrap{
-			position: fixed;
-			top:109px;
-			// display: flex;
-			height:80px;
+
+		.icon_wrap {
+			flex: 0 0 auto;
+			height: 80px;
 			width: 80px;
-			border-radius: 40px;
+			cursor: pointer;
 			background: #fff;
-			// padding-top:23px;
 			text-align: center;
-			&:hover span{
-				opacity: 1;
-				display: inline-block;
+			border-radius: 100%;
+
+			&:hover {
+				box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+
+				span {
+					margin-right: 6px;
+					opacity: 1;
+					display: inline;
+				}
 			}
-			span{
-				display: none;
+
+			span {
 				opacity: 0;
+				display: none;
 				position: relative;
-				left: -2px;
-				height: 32px;
-				line-height: 32px;
 				font-size: 18px;
 				transition: all 0.5s ease-in-out;
 			}
+
 		}
+
 		.icon-back {
 			display: inline-block;
 			font-size: 32px;

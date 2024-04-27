@@ -2,18 +2,18 @@
 	<div class="recruit-container">
 		<div class="banner">
 			<div v-if="isSmallSize" class="animate__animated animate__fadeInUp">
-				<li class="name">{{t('common.routes.menu3')}}</li>
+				<li class="name">{{ t('common.routes.menu3') }}</li>
 				<img src="/recruit/banner-s-1.png" alt="" class="">
 				<div class="info animate__animated animate__fadeInUp">
-					<li class="title">发掘潜力，连接未来</li>
-					<li class="msg text-wrap">我们的致力于为您的带来无限的商业可能，提前赢得更多的机会</li>
+					<li class="title">{{ t('page_recruit.banner.title') }}</li>
+					<li class="msg text-wrap">{{ t('page_recruit.banner.msg') }}</li>
 				</div>
 			</div>
 			<div v-else class="img">
 				<img w-full src="/recruit/banner.png" alt="" class="">
 				<div class="info animate__animated animate__fadeInUp">
-					<li class="title">发掘潜力，连接未来</li>
-					<li class="msg text-wrap">我们的致力于为您的带来无限的商业可能，提前赢得更多的机会</li>
+					<li class="title">{{ t('page_recruit.banner.title') }}</li>
+					<li class="msg text-wrap">{{ t('page_recruit.banner.msg') }}</li>
 				</div>
 			</div>
 		</div>
@@ -59,7 +59,7 @@
 							</li>
 						</div>
 						<!-- v-if="item.active" -->
-						<div  class="item-conf-jd">
+						<div class="item-conf-jd">
 							<li class="tips">岗位职责</li>
 							<li class="desc" v-for="(t, index) in item.conf.jd1" :key="index">
 								{{ t }}
@@ -81,8 +81,8 @@
 <script setup lang='ts'>
 import { onMounted, reactive, ref } from 'vue';
 
-import { jdList } from './jdList';
 import { useI18n } from 'vue-i18n';
+import { jdList } from './jdList';
 const { t } = useI18n()
 const isSmallSize = ref(window.innerWidth < 576)
 const filterV = reactive({
@@ -161,6 +161,8 @@ const handlActive = (i: number) => {
 				font-size: 48px;
 				font-weight: 500;
 				line-height: 64px;
+				word-wrap: break-word;
+				white-space: pre-wrap;
 			}
 
 			.msg {
@@ -285,8 +287,9 @@ const handlActive = (i: number) => {
 					&:hover {
 						border-radius: 8px;
 						background: #F2F0F0;
-						.item-conf-jd{
-							max-height:600px;
+
+						.item-conf-jd {
+							max-height: 600px;
 						}
 					}
 
@@ -331,9 +334,10 @@ const handlActive = (i: number) => {
 					.item-conf-jd {
 						position: relative;
 						line-height: 18px;
-						max-height:0;
+						max-height: 0;
 						overflow: hidden;
 						transition: all 1s ease-in-out;
+
 						.tips {
 							margin-bottom: 4px;
 						}
