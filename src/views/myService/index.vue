@@ -140,7 +140,7 @@
 				<li class="title">{{ t('page_server.conf8.title') }}</li>
 				<!-- <img class="img5" src="@/assets/myService/banner3.png" alt="" @click="toDetail('case5')"> -->
 				<div class="detail" @click="toDetail('case5')">
-					<img src="@/assets/myService/Frame182.png" alt="">
+					<img class="img" src="@/assets/myService/Frame182.png" alt="">
 					<div class="inner">
 						<div class="question">{{ t('page_server.conf8.name') }}</div>
 						<div class="desc">{{ t('page_server.conf8.txt1') }}</div>
@@ -152,7 +152,7 @@
 				<li class="title">{{ t('page_server.conf9.title') }}</li>
 				<!-- <img class="img5" src="@/assets/myService/banner4.png" alt="" @click="toDetail('case6')"> -->
 				<div class="detail" @click="toDetail('case6')">
-					<img src="@/assets/myService/Frame509.png" alt="">
+					<img class="img" src="@/assets/myService/Frame509.png" alt="">
 					<div class="inner">
 						<div class="question">{{ t('page_server.conf9.name') }}</div>
 						<div class="desc">{{ t('page_server.conf9.txt1') }}</div>
@@ -1059,9 +1059,8 @@ onUnmounted(() => {
 		}
 
 		.info {
-			color: #fff;
+			color: #4C4143;
 			position: absolute;
-			top: 50%;
 			left: 20px;
 
 			.title {
@@ -1071,7 +1070,7 @@ onUnmounted(() => {
 			}
 
 			.msg {
-				width: 240px;
+				width: 120px;
 				margin-top: 12px;
 				font-size: 14px;
 				font-weight: 400;
@@ -1637,6 +1636,43 @@ onUnmounted(() => {
 				margin: 12px 0;
 				letter-spacing: 0em;
 				text-align: left;
+			}
+
+			.detail {
+				font-size: 12px;
+
+				.inner {
+					position: absolute;
+					top: 10px;
+					left: 10px;
+					width: 300px;
+					text-align: justify;
+
+					.question {
+						font-size: 16px;
+						font-weight: 500;
+					}
+
+					.desc {
+						font-size: 12px;
+						line-height: 14px;
+						margin-top: 6px;
+					}
+
+					.more {
+						color: #FFF;
+						line-height: 32px;
+						width: 120px;
+						height: 32px;
+						margin-top: 0px;
+						background-color: #ffffff00;
+					}
+				}
+			}
+
+
+			.img {
+				width: 358px;
 			}
 
 			.img5 {

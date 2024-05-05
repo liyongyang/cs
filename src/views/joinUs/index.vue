@@ -65,7 +65,7 @@
 
 				<li class="title wow animate__fadeInUp">{{ t('page_joinUs.conf1.title4') }}</li>
 				<div class="conf5 wow animate__fadeInUp">
-					<div class="card" v-for="(item, index) in articleList" :key="index">
+					<div class="card" v-for="(item, index) in articleList" :key="index" @click="toArticle(index)">
 						<li class="article-title">{{ item.title }}</li>
 					</div>
 				</div>
@@ -240,9 +240,6 @@ const list = ref([
 		name: t('page_joinUs.conf2.jdDetails[3].name'),
 		time: '2023-08-25',
 		conf: {
-			tip: [
-				t('page_joinUs.conf2.jdDetails[3].conf.tip'),
-			],
 			jd1: [
 				t('page_joinUs.conf2.jdDetails[3].conf.jd1[0]'),
 
@@ -274,6 +271,13 @@ onMounted(() => {
 const toQA = () => {
 	router.push({
 		path: '/joinUs/qa'
+	}).then(() => {
+		window.scrollTo(0, 0);
+	})
+}
+const toArticle = (index: number) => {
+	router.push({
+		path: `/joinUs/pg` + (+index + 1)
 	}).then(() => {
 		window.scrollTo(0, 0);
 	})

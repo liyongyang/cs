@@ -82,6 +82,36 @@ export const defaultRoutes: RouteRecordRaw[] = [
     meta: { title: "qa", hidden: true },
   },
   {
+    path: "/joinUs/pg1",
+    component: () => import("@/views/joinUs/article/pg1.vue"),
+    meta: { title: "art1", hidden: true },
+  },
+  {
+    path: "/joinUs/pg2",
+    component: () => import("@/views/joinUs/article/pg2.vue"),
+    meta: { title: "art2", hidden: true },
+  },
+  {
+    path: "/joinUs/pg3",
+    component: () => import("@/views/joinUs/article/pg3.vue"),
+    meta: { title: "art3", hidden: true },
+  },
+  {
+    path: "/joinUs/pg4",
+    component: () => import("@/views/joinUs/article/pg4.vue"),
+    meta: { title: "art4", hidden: true },
+  },
+  {
+    path: "/joinUs/pg5",
+    component: () => import("@/views/joinUs/article/pg5.vue"),
+    meta: { title: "art5", hidden: true },
+  },
+  {
+    path: "/joinUs/pg6",
+    component: () => import("@/views/joinUs/article/pg6.vue"),
+    meta: { title: "art6", hidden: true },
+  },
+  {
     path: "/contact",
     component: () => import("@/views/contact/index.vue"),
     meta: { title: "contact", hidden: true },

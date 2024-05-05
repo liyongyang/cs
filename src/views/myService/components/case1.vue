@@ -9,7 +9,7 @@
 			</div>
 			<li class="flex-initial w-full text-center wow animate__fadeInUp">{{ t('server_case1.title') }}</li>
 		</div>
-		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_1_1.png" alt="">
+		<img class="img wow animate__fadeInUp" :src="t('server_case1.banner[0]')" alt="">
 		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf1.title }}</li>
 			<li class="msg">{{ pageInfo.conf1.msg }}</li>
@@ -17,14 +17,14 @@
 				{{ index + 1 }}. {{ item }}
 			</li>
 		</div>
-		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_1_2.png" alt="">
+		<img class="img wow animate__fadeInUp" :src="t('server_case1.banner[1]')" alt="">
 		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf2.title }}</li>
 			<li class="tip" v-for="(item, index) in pageInfo.conf2.msg" :key="index">
 				{{ item }}
 			</li>
 		</div>
-		<img class="img wow animate__fadeInUp" src="@/assets/myService/detail_1_3.png" alt="">
+		<img class="img wow animate__fadeInUp" :src="t('server_case1.banner[2]')" alt="">
 		<div class="conf-info wow animate__fadeInUp">
 			<li class="title">{{ pageInfo.conf3.title }}</li>
 			<li class="msg">{{ pageInfo.conf3.msg }}</li>
@@ -166,6 +166,7 @@ const goBack = () => {
 	}
 
 	.img {
+		max-width: 1312px;
 		margin-top: 40px;
 	}
 

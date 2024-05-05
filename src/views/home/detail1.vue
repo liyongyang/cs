@@ -10,7 +10,7 @@
 				<div class="card animate__animated animate__fadeIn" v-for="(item, idx) in list" :key="idx">
 					<img class="card-img hvr-shrink" :src="item.img" alt="" @click="handleDialog(idx + 1)">
 					<li class="name">{{ item.name }}</li>
-					<li class="more">了解更多</li>
+					<li class="more">{{ t('common.more') }}</li>
 				</div>
 			</div>
 		</div>
@@ -175,7 +175,7 @@ const list = [
 onMounted(() => { });
 
 const goBack = () => {
-	router.push('/')
+	router.go(-1)
 }
 const handleDialog = (idx: number) => {
 	showDialog.value = true
