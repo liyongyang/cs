@@ -82,7 +82,7 @@ const pd = {
 }
 
 const goBack = () => {
-	router.push('/joinUs')
+	router.go(-1)
 }
 </script>
 <style lang='scss' scoped>
