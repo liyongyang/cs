@@ -902,11 +902,11 @@ onUnmounted(() => {
 					line-height: 26px;
 					border-bottom: 1px solid #B0A7A7;
 
-					&:hover {
-						.more {
-							color: var(--active-color);
-						}
-					}
+					// &:hover {
+					// 	.more {
+					// 		color: var(--active-color);
+					// 	}
+					// }
 
 					.left {
 						width: 400px;
@@ -936,6 +936,10 @@ onUnmounted(() => {
 						line-height: 50px;
 						margin-top: 40px;
 						padding-right: 24px;
+
+						&:hover {
+							color: #E30214;
+						}
 					}
 				}
 			}
@@ -1041,7 +1045,7 @@ onUnmounted(() => {
 				transition: all 0.5s linear;
 
 				&:hover {
-					font-size: 20px
+					font-size: 20px;
 				}
 			}
 		}

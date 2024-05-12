@@ -39,10 +39,10 @@
 							<li class="txt">{{ item }}</li>
 						</div>
 					</div> -->
-					<el-carousel :interval="40000" :autoplay="false" class="carousel-imgs" height="351px">
+					<el-carousel :interval="40000" :autoplay="false" class="carousel-imgs" height="400px">
 						<el-carousel-item v-for="(item, index) in conf2Card" :key="index">
-							<div class="card" v-for="(child, i) in item" @click="handleDetail(index)">
-								<img class="img" :src="`/joinUs/conf2-` + ((index + 1) * i) + `.png`" alt="" />
+							<div class="card" v-for="(child, i) in item" :key="i" @click="handleDetail(index, i)">
+								<img class="img" :src="`/joinUs/conf2-` + index + i + `.png`" alt="" />
 								<div class="msg">
 									<li class="line"></li>
 									<li class="txt">{{ child }}</li>
@@ -74,7 +74,7 @@
 				<div class="jd-content wow animate__fadeInUp">
 					<li class="jd-title">{{ t('page_joinUs.conf2.title') }}</li>
 					<div class="list">
-						<div class="item-conf" v-for="(item, index) in list" :key="item.name" @click="handlActive(index)">
+						<div class="item-conf" v-for="(item, index) in list" :key="index" @click="handlActive(index)">
 							<li class="item-conf-head">
 								{{ item.name }}
 							</li>
@@ -110,7 +110,7 @@
 				<el-icon class="close" @click="showDetail = false">
 					<CloseBold />
 				</el-icon>
-				<img class="dia-img" :src="`/joinUs/conf2-` + activeDetail + `.png`" alt="" />
+				<img class="dia-img" :src="`/joinUs/conf2-` + activeimg + `.png`" alt="" />
 				<div class="dia-msg">
 					<li class="line"></li>
 					<li class="txt">{{ conf2CardDetail[activeDetail] }}</li>
@@ -149,6 +149,7 @@ const conf2Card = [
 ]
 const showDetail = ref(false)
 const activeDetail = ref(0)
+const activeimg = ref('')
 const conf2CardDetail = [
 	t('page_joinUs.conf1.details[0]'),
 	t('page_joinUs.conf1.details[1]'),
@@ -282,9 +283,12 @@ const toArticle = (index: number) => {
 		window.scrollTo(0, 0);
 	})
 }
-const handleDetail = (idx: number) => {
+const handleDetail = (idx: number, i: number) => {
+	const num = idx === 0 ? i : i + 4
 	showDetail.value = true
-	activeDetail.value = idx
+	activeDetail.value = num
+	activeimg.value = idx.toString() + i.toString()
+	console.log(activeimg.value)
 }
 
 </script>
@@ -404,12 +408,12 @@ const handleDetail = (idx: number) => {
 					width: 318px;
 					margin-right: 12px;
 					cursor: pointer;
-					text-wrap: wrap;
 					word-wrap: break-word;
 					white-space: pre-wrap;
 					border-radius: 12px;
 					border: 1px solid #b0a7a7;
 					transition: all 0.5s;
+					overflow-y: hidden;
 
 					.img {
 						width: 316px;
@@ -436,7 +440,7 @@ const handleDetail = (idx: number) => {
 					}
 
 					.msg {
-						height: 116px;
+						height: 154px;
 						display: flex;
 						justify-content: space-between;
 						padding: 16px;
@@ -447,6 +451,7 @@ const handleDetail = (idx: number) => {
 							height: 16px;
 							line-height: 21px;
 							margin-right: 4px;
+							margin-top: 4px;
 							border-radius: 12px;
 							background-color: #e30214;
 						}

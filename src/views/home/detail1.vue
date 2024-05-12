@@ -303,6 +303,7 @@ const handleDialog = (idx: number) => {
 	:deep(.el-dialog) {
 		width: 1312px !important;
 		padding: 0 !important;
+		border-radius: 12px;
 	}
 
 	:deep(.el-dialog__body) {

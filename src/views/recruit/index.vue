@@ -27,12 +27,12 @@
 					<el-select v-model="filterV.address" placeholder="全部行业">
 						<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
 					</el-select>
-					<el-select v-model="filterV.type" placeholder="全部职能">
+					<!-- <el-select v-model="filterV.type" placeholder="全部职能">
 						<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
-					</el-select>
-					<el-select v-model="filterV.nature" placeholder="全部职能">
+					</el-select> -->
+					<!-- <el-select v-model="filterV.nature" placeholder="全部职能">
 						<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
-					</el-select>
+					</el-select> -->
 				</div>
 			</div>
 			<div class="result-content wow animate__fadeInUp" v-if="jdConf">
