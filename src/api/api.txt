@@ -1,0 +1,68 @@
+
+1.新增留言
+地址：http://39.101.78.186:19051/t-evaluation-info/addEvaluation
+请求方式：post
+请求参数：
+{
+	"idea":"测试11",	//留言
+	"name":"test",		//姓名
+	"company":"电建",	//公司
+	"position":"ceo",	//岗位
+	"business":"7",	//行业 1.制造工程;2.医疗设备器材;3.高科技与电子;4.专业服务;5.化工与制药;6.耐用消费品;7.其他
+	"headPortrait":"1"	//头像类型
+}
+
+
+2.修改留言
+地址：http://39.101.78.186:19051/t-evaluation-info/updateEvaluation
+请求方式：put
+请求参数：
+{
+	"id":777,			//主键id
+	"idea":"测试11",	//留言
+	"name":"test",		//姓名
+	"company":"电建",	//公司
+	"position":"ceo",	//岗位
+	"business":"7",		//行业 1.制造工程;2.医疗设备器材;3.高科技与电子;4.专业服务;5.化工与制药;6.耐用消费品;7.其他
+	"headPortrait":"1"	//头像类型
+}
+
+3.删除留言接口
+地址：http://39.101.78.186:19051/t-evaluation-info/delByIds
+请求方式：delete
+请求参数：
+[77,88]
+返回参数：
+{
+    "code": 200,
+    "msg": "OK",
+    "data": true
+}
+
+4.查询留言接口
+地址：http://39.101.78.186:19051/t-evaluation-info/getEvaluationList
+请求方式：get
+请求参数：
+business 行业 1.制造工程;2.医疗设备器材;3.高科技与电子;4.专业服务;5.化工与制药;6.耐用消费品;7.其他
+company 公司
+current 当前页
+size 数量
+返回参数：
+{
+    "code": 200,
+    "msg": "OK",
+    "data": {
+        "total": 1,
+        "list": [
+            {
+                "id":777,			//主键id
+				"idea":"测试11",	//留言
+				"name":"test",		//姓名
+				"company":"电建",	//公司
+				"position":"ceo",	//岗位
+				"business":"7",	//行业 1.制造工程;2.医疗设备器材;3.高科技与电子;4.专业服务;5.化工与制药;6.耐用消费品;7.其他
+				"headPortrait":"1"	//头像类型
+            }
+        ]
+    }
+}

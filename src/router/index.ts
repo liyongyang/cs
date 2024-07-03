@@ -67,6 +67,11 @@ export const defaultRoutes: RouteRecordRaw[] = [
     meta: { title: "customer_case", hidden: true },
   },
   {
+    path: "/comment1S1Y1S1Zg0Ct6O5l2t9Q4b1",
+    component: () => import("@/views/sysMyC/index.vue"),
+    meta: { title: "customer", hidden: true },
+  },
+  {
     path: "/recruit",
     component: () => import("@/views/recruit/index.vue"),
     meta: { title: "recruit", hidden: true },
@@ -80,6 +85,11 @@ export const defaultRoutes: RouteRecordRaw[] = [
     path: "/joinUs/qa",
     component: () => import("@/views/joinUs/qa/index.vue"),
     meta: { title: "qa", hidden: true },
+  },
+  {
+    path: "/joinUs/images",
+    component: () => import("@/views/joinUs/imgList/index.vue"),
+    meta: { title: "images", hidden: true },
   },
   {
     path: "/joinUs/pg1",
@@ -117,20 +127,20 @@ export const defaultRoutes: RouteRecordRaw[] = [
     meta: { title: "contact", hidden: true },
   },
   {
-    path: "/setup",
-    component: () => import("@/views/Setup/index.vue"),
-    meta: { title: "Setup", hidden: true },
+    path: "/commentZg0Ct6O5l2t9Q4b1",
+    component: () => import("@/views/comment/index.vue"),
+    meta: { title: "comment", hidden: true },
   },
-  {
-    path: "/aeternityUI",
-    component: () => import("@/views/aeternityUI/index.vue"),
-    meta: { title: "aeternityUI", hidden: true },
-  },
-  {
-    path: "/gsap",
-    component: () => import("@/views/gsap/index.vue"),
-    meta: { title: "gsap", hidden: true },
-  },
+  // {
+  //   path: "/setup",
+  //   component: () => import("@/views/Setup/index.vue"),
+  //   meta: { title: "Setup", hidden: true },
+  // },
+  // {
+  //   path: "/gsap",
+  //   component: () => import("@/views/gsap/index.vue"),
+  //   meta: { title: "gsap", hidden: true },
+  // },
 ];
 
 const router = createRouter({

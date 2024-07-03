@@ -6,7 +6,11 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start:local": "vite --host --mode loc",
+    "build:local": "vite build --mode loc",
+    "start:master": "vite --host --mode master",
+    "build:master": "vite build --mode master"
   },
   "dependencies": {
     "@aeternity/aepp-components": "^2.0.15",
@@ -25,6 +29,7 @@
     "hover.css": "^2.3.2",
     "js-cookie": "^3.0.5",
     "pinia": "^2.1.7",
+    "rxjs": "^7.8.1",
     "sass": "^1.69.5",
     "unocss": "^0.58.0",
     "vue": "^3.3.11",
@@ -32,6 +37,8 @@
     "vue-i18n": "^9.9.0",
     "vue-property-decorator": "10.0.0-rc.3",
     "vue-router": "^4.1.5",
+    "vue-waterfall-easy": "^2.4.4",
+    "vue-waterfall-plugin-next": "^2.4.3",
     "vue3-seamless-scroll": "^2.0.1",
     "wow.js": "^1.2.2"
   },

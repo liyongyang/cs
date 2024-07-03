@@ -1,5 +1,150 @@
 const jdList = [
   {
+    name: "Field Application Engineer",
+    tag: "全职",
+    type: "电子技术类",
+    com: "一家全球电量传感器的知名企业",
+    address: "深圳、上海",
+    time: "2024/5/17",
+    conf: {
+      jd1: [
+        "1.负责行业细分领域的现场应用知识，作为销售和客户的第一级技术接口，根据客户的需求(现有产品或新开发)定义和推广最合适的解决方案。",
+        "2.参与公司的新产品开发，获取应用信息，支持新产品的设计和客户应用验证。",
+        "3.储存、交流和应用培训和经验教训，负责对销售机构/客户/经销商进行基础和应用培训。",
+      ],
+      jd2: [
+        "1.5年以上电力电子行业工作经验",
+        "2.大学学历，电子/机电一体化专业",
+        "3.英语沟通流利",
+      ],
+    },
+  },
+  {
+    name: "National Personal Safety Sales Manager",
+    tag: "全职",
+    type: "销售类",
+    com: "One of the world's leadingmanufacturers of filters and components",
+    address: "苏州",
+    time: "2024/5/17",
+    conf: {
+      jd1: [
+        "1.Identifying new customers for products",
+        "2.Scheduling and attending meetings and phone and e-mail follow-up with customers to keep pace with all customer product development or engineering activities that could lead to product opportunities ",
+        "3.Collecting pertinent market data/information to be used in accurate sales forecasting",
+        "4.Responsible for the sales numbers for his/her own product line",
+      ],
+      jd2: [
+        "1.5+ years working experience in selling industrial products through distributors: ideal candidate has previous working experience in PPE European/international company, working experience in Facemask business is not a must but a plus;",
+        "2.Good selling skills and selling channels,having distributors management experience,excellent communication skill,hard working and able to travel frequently;",
+        "3.Good verbal and written English communication skills;",
+      ],
+    },
+  },
+  {
+    name: "Paralegal-APAC",
+    tag: "全职",
+    type: "法律类",
+    com: "A world leader in mineral-based specialties",
+    address: "上海",
+    time: "2024/5/17",
+    conf: {
+      jd1: [
+        "1.Provide corporate governance related support with full spectrum of corporate secretarial duties, including approval workflow, document preparation, registration & filing, record &corporate calendar maintenance, compliance with relevant statutory and regulatory requirements, etc.;",
+        "2.Carry out compliance check per  compliance related policies, including intermediary check, international sanction check, etc.;",
+        "3.Facilitate approval and signing process of contracts and other documents, including name list check under approval matrix, signature collection, etc.;",
+      ],
+      jd2: [
+        "1.Education background in law (bachelors’ degree in law - preferred);",
+        "2.Minimum 3 years of full-time professional experience as in-house paralegal (company covering APAC is preferred) or law firm experience;",
+        "3.Fluent in both written and spoken English;",
+      ],
+    },
+  },
+  {
+    name: "BD Manager",
+    tag: "全职",
+    type: "销售类",
+    com: "一家为全球客户提供精密的医疗、通信、消费、工业类塑料件的外企",
+    address: "苏州",
+    time: "2024/5/17",
+    conf: {
+      jd1: [
+        "1.根据KPI确定客户发展目标，聚焦于医疗、汽车、电子等行业。",
+        "2.细分市场预算，包括成本控制。",
+        "3.计算的准确性和报价。",
+        "4.实现销售并移交给客服团队。",
+      ],
+      jd2: [
+        "1.超过2年的塑料注塑件技术销售商业经验。",
+        "2.具有业务发展思维，能够通过为关键客户业务问题提供最佳解决方案来识别商机和增长领域。",
+        "3.以短期结果为导向，具有竞争力，是一个精力充沛的自我驱动者，推动行动计划并跟进完成。",
+        "4.有一定的英语书面能力，口语可简单沟通即可。",
+      ],
+    },
+  },
+  {
+    name: "Customer Service Specialist",
+    tag: "全职",
+    type: "客户服务类",
+    com: "一家为全球各行业的客户提供精密的塑料零部件的外资企业",
+    address: "苏州",
+    time: "2024/5/17",
+    conf: {
+      jd1: ["1.处理订单交付阶段的客服工作"],
+      jd2: [
+        "1.英语口语流利",
+        "2.有医疗/汽车/电子行业工作经验，或有上述行业较丰富的客户服务经验",
+      ],
+    },
+  },
+  {
+    name: "销售总监",
+    tag: "全职",
+    type: "销售类",
+    com: "全球知名的大型包装设备及整线解决方案供应商之一",
+    address: "上海、江苏、浙江",
+    time: "2024/5/17",
+    conf: {
+      jd1: [
+        "1.高层管理职位，协助决策层制定公司发展战略，负责其功能领域内短期及长期的公司决策和战略，对公司中长期目标的达成产生重要影响。",
+        "2.负责公司的业务拓展、销售运作，能强有力的将计划转变成结果",
+        "3.建立和管理销售队伍，规范销售流程，完成销售目标，关注于维护和提高公司市场竞争力。",
+        "4.设置销售目标、销售模式、销售战略、销售预算和奖励计划。",
+      ],
+      jd2: [
+        "1.在大型机械设备行业有丰富的管理经验。",
+        "2.出色的领导和团队管理能力，有敏锐的市场意识、应变能力、领导能力和独立开拓市场的能力，学习能力强;逻辑性强和良好的语言表达能力。",
+        "3.流利英文，有外企背景，曾经汇报给欧美老板背景优先。",
+      ],
+    },
+  },
+  {
+    name: "电商设计师",
+    tag: "全职",
+    type: "互联网类",
+    com: "空调行业龙头企业",
+    address: "苏州",
+    time: "2024/5/17",
+    conf: {
+      jd1: [
+        "1.抖音内容拍摄：根据策划需求，进行抖音短视频素材的拍摄收集、整理和剪辑，确保视频质量和效果；",
+        "2.直播间设计及布置：包括视觉主题设计、氛围营造、效果优化等。",
+        "3.抖音直播后期制作：负责直播内容的后期制作，包括视频剪辑、特效添加和音频处理等。",
+        "4.电商店铺（抖音小店或天猫）把控电商店铺页面整体风格和视觉呈现，全面提升电商产品页面品牌形象和视觉效果；",
+        "5.负责店铺首页、详情页、主图、活动页面的设计制作、修改和优化；",
+        "6.跟进站内产品推广所需海报、单页、banner、广告图的设计；",
+        "7.根据店铺运营数据反馈，定期优化店铺主页、配合活动制定相关营销设计策略，对店铺整体设计输出、设计效果（图片点击率、转化率）负责；",
+        "8.挖掘消费者的浏览习惯及点击需求，进行设计前期调研分析；",
+      ],
+      jd2: [
+        "1.美术或广告设计相关大专及以上学历；",
+        "2.具备优秀的视频拍摄及剪辑技能，熟练使用专业视频剪辑软件。具备2年以上短视频及直播后期拍摄剪辑经验；",
+        "3.熟悉电商网店，1年以上电商店铺设计经验，能独立完成全店风格把控及营销活动设计；有工业品设计经验优先；",
+        "4.有良好的美术功底和美工基础，具备视觉表现、版式规划、色彩搭配等设计能力，有一定的运营思维；",
+      ],
+    },
+  },
+  {
     name: "销售工程师",
     tag: "全职",
     type: "销售类",
