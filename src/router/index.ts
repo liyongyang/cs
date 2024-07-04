@@ -62,6 +62,11 @@ export const defaultRoutes: RouteRecordRaw[] = [
     meta: { title: "customer", hidden: true },
   },
   {
+    path: "/customer/more",
+    component: () => import("@/views/myCustomer/more.vue"),
+    meta: { title: "customer", hidden: true },
+  },
+  {
     path: "/customer/:case",
     component: () => import("@/views/myCustomer/components/case.vue"),
     meta: { title: "customer_case", hidden: true },
@@ -73,7 +78,7 @@ export const defaultRoutes: RouteRecordRaw[] = [
   },
   {
     path: "/recruit",
-    component: () => import("@/views/recruit/index.vue"),
+    component: () => import("@/views/joinUs/index.vue"),
     meta: { title: "recruit", hidden: true },
   },
   {
@@ -90,6 +95,11 @@ export const defaultRoutes: RouteRecordRaw[] = [
     path: "/joinUs/images",
     component: () => import("@/views/joinUs/imgList/index.vue"),
     meta: { title: "images", hidden: true },
+  },
+  {
+    path: "/joinUs/pg",
+    component: () => import("@/views/joinUs/article/pg.vue"),
+    meta: { title: "art1", hidden: true },
   },
   {
     path: "/joinUs/pg1",

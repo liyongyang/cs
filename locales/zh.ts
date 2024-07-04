@@ -1,6 +1,7 @@
 // index 首页结构 zh
 export default {
   common: {
+    name: "璞偌芳德商务咨询有限公司",
     routes: {
       menus: "我们是谁 | 我们的服务 | 我们的客户 | 招聘 | 加入我们",
       menu1: "我们是谁",
@@ -11,6 +12,7 @@ export default {
     },
     return: "返回",
     more: "了解更多",
+    more1: "查看更多",
   },
   Email: "联系我们",
   page1: {
@@ -1548,11 +1550,14 @@ export default {
     },
     type: ["企业文化", "加入我们"],
     conf1: {
+      img1: "/joinUs/conf3.png",
       title: "团建、照片集",
       title2: "员工声音",
       title3: "晋升机制",
       title4: "文章分享",
+      title5: "母亲关怀",
       img: "/joinUs/conf4.png",
+      qaImg: "/joinUs/img-qa.png",
       desc: "企业的晋升机制透明化和明确清晰性不仅有助于员工的职业发展和满意度，还有助于组织的稳定和发展。透明的晋升机制可以促进公平、激励、信任和绩效，为企业创造一个更健康和积极的工作环境。",
       card: [
         "作为Csuite的一名员工，我深刻体验到了这里的企业文化和价值观。在这里，我不仅找到了自己的价值和方向，还获得了无数的成长机会。",

@@ -3,12 +3,7 @@
     <li v-if="isSmallSize" class="container-name">
       {{ t("common.routes.menu3") }}
     </li>
-    <vue3-seamless-scroll
-      v-if="logoList"
-      :list="logoList"
-      class="scroll"
-      direction="right"
-    >
+    <vue3-seamless-scroll v-if="logoList" :list="logoList" class="scroll" direction="right">
       <div class="scroll-item" v-for="(item, index) in logoList" :key="index">
         <div v-for="(t1, index) in item" :key="index" class="logo">
           <img :src="t1" alt="" />
@@ -22,37 +17,21 @@
       </li>
       <div class="my-conf1 wow animate__fadeInUp">
         <div class="card-item" v-for="(item, index) in egList" :key="index">
-          <img
-            @mouseover="changeHover(index, true)"
-            @mouseleave="changeHover(index, false)"
-            @click="toCase(index)"
+          <img @mouseover="changeHover(index, true)" @mouseleave="changeHover(index, false)" @click="toCase(index)"
             :class="[
-              'img',
-              'animate__animated',
-              item.status ? 'animate__fadeIn' : '',
-            ]"
-            :src="item.status ? item.activeImg : item.img"
-            alt=""
-          />
+      'img',
+      'animate__animated',
+      item.status ? 'animate__fadeIn' : '',
+    ]" :src="item.status ? item.activeImg : item.img" alt="" />
         </div>
       </div>
       <li class="title wow animate__fadeInUp">
         {{ t("page_customer.conf2.title") }}
       </li>
-      <div class="my-conf2 wow animate__fadeInUp">
+      <!-- <div class="my-conf2 wow animate__fadeInUp">
         <div class="search">
-          <el-select
-            clearable
-            v-model="filterV.type1"
-            placeholder="行业选择"
-            @change="getEvaluationList"
-          >
-            <el-option
-              v-for="(item, index) in industryOptions"
-              :key="index"
-              :label="item"
-              :value="index + 1"
-            />
+          <el-select clearable v-model="filterV.type1" placeholder="行业选择" @change="getEvaluationList">
+            <el-option v-for="(item, index) in industryOptions" :key="index" :label="item" :value="index + 1" />
           </el-select>
         </div>
         <div v-if="!commentList2" class="list-container">
@@ -61,11 +40,7 @@
 
         <div v-else class="list-container">
           <div class="card" v-for="(item, index) in commentList2" :key="index">
-            <img
-              class="item-img"
-              :src="`/customer/comment/logo${item.headPortrait}` + '.png'"
-              alt=""
-            />
+            <img class="item-img" :src="`/customer/comment/logo${item.headPortrait}` + '.png'" alt="" />
             <div class="item-info">
               <div class="head">
                 <span class="line"></span>
@@ -75,6 +50,12 @@
               <li class="txt">{{ item.idea }}</li>
             </div>
           </div>
+        </div>
+      </div> -->
+      <Evaluation />
+      <div class="getmore wow animate__fadeInUp">
+        <div @click="toMore">
+          {{ t('common.more1') }}
         </div>
       </div>
     </div>
@@ -88,6 +69,7 @@ import { onBeforeMount, reactive, ref } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 import { Vue3SeamlessScroll } from "vue3-seamless-scroll";
+import Evaluation from './components/evaluation.vue';
 
 const { t } = useI18n();
 const router = useRouter();
@@ -180,6 +162,15 @@ const toCase = (i: number) => {
   router
     .push({
       path: `customer/${i}`,
+    })
+    .then(() => {
+      window.scrollTo(0, 0);
+    });
+};
+const toMore = (i: number) => {
+  router
+    .push({
+      path: `customer/more`,
     })
     .then(() => {
       window.scrollTo(0, 0);
@@ -321,6 +312,7 @@ const getEvaluationList = () => {
               line-height: 36px;
               align-items: center;
               white-space: nowrap;
+
               .line {
                 width: 3px;
                 height: 20px;
@@ -348,6 +340,23 @@ const getEvaluationList = () => {
           }
         }
       }
+    }
+  }
+
+  .getmore {
+    width: 100%;
+    text-align: center;
+
+
+    div {
+      display: inline-block;
+      width: 160px;
+      height: 56px;
+      line-height: 56px;
+      text-align: center;
+      border: 1px solid rgba(176, 167, 167, 1);
+      border-radius: 8px;
+      cursor: pointer;
     }
   }
 }

@@ -15,14 +15,14 @@
 			</div>
 		</div>
 		<el-dialog class="my-dialog" v-model="showDialog" align-center>
-			<div class="content">
+			<div class="content" :style="'height:' + activeCardHeight[activeCard] + 'px'">
 				<el-icon class="close" @click="showDialog = false">
 					<CloseBold />
 				</el-icon>
 				<img class="dia-img" :src="`/home/card` + activeCard + `.png`" alt="" />
 				<div class="dia-msg">
 					<li class="line"></li>
-					<div class="flex flex-col">
+					<div class="flex flex-col " :style="'height:' + (activeCardHeight[activeCard] - 138) + 'px'">
 						<li class="txt" v-for="(item, idx) in list[activeCard - 1].info" :key="idx">{{ item }}</li>
 						<li class="name">{{ list[activeCard - 1].name }}</li>
 					</div>
@@ -118,15 +118,15 @@ const list = [
 			t('home_more[7].info[2]'),
 		]
 	},
-	{
-		name: t('home_more[8].name'),
-		img: t('home_more[8].img'),
-		info: [
-			t('home_more[8].info[0]'),
-			t('home_more[8].info[1]'),
-			t('home_more[8].info[2]'),
-		]
-	},
+	// {
+	// 	name: t('home_more[8].name'),
+	// 	img: t('home_more[8].img'),
+	// 	info: [
+	// 		t('home_more[8].info[0]'),
+	// 		t('home_more[8].info[1]'),
+	// 		t('home_more[8].info[2]'),
+	// 	]
+	// },
 	{
 		name: t('home_more[9].name'),
 		img: t('home_more[9].img'),
@@ -137,15 +137,15 @@ const list = [
 			t('home_more[9].info[3]'),
 		]
 	},
-	{
-		name: t('home_more[10].name'),
-		img: t('home_more[10].img'),
-		info: [
-			t('home_more[10].info[0]'),
-			t('home_more[10].info[1]'),
-			t('home_more[10].info[2]'),
-		]
-	},
+	// {
+	// 	name: t('home_more[10].name'),
+	// 	img: t('home_more[10].img'),
+	// 	info: [
+	// 		t('home_more[10].info[0]'),
+	// 		t('home_more[10].info[1]'),
+	// 		t('home_more[10].info[2]'),
+	// 	]
+	// },
 	{
 		name: t('home_more[11].name'),
 		img: t('home_more[11].img'),
@@ -176,6 +176,20 @@ onMounted(() => { });
 
 const goBack = () => {
 	router.go(-1)
+}
+const activeCardHeight = {
+	1: '426',
+	2: '360',
+	3: '426',
+	4: '360',
+	5: '426',
+	6: '360',
+	7: '426',
+	8: '360',
+	9: '426',
+	10: '360',
+	11: '426',
+	12: '397',
 }
 const handleDialog = (idx: number) => {
 	showDialog.value = true
@@ -275,6 +289,7 @@ const handleDialog = (idx: number) => {
 				white-space: pre-wrap;
 				padding-top: 56px;
 				padding-left: 40px;
+				padding-bottom: 80px;
 				color: #231C1E;
 
 				.line {
@@ -284,6 +299,10 @@ const handleDialog = (idx: number) => {
 					margin-right: 14px;
 					border-radius: 12px;
 					background-color: #e30214;
+				}
+
+				.flex {
+					overflow: auto;
 				}
 
 				.txt {
@@ -411,6 +430,7 @@ const handleDialog = (idx: number) => {
 					padding: 8px;
 					color: #231C1E;
 
+
 					.line {
 						width: 4px;
 						height: 14px;
@@ -424,6 +444,10 @@ const handleDialog = (idx: number) => {
 						width: 280px;
 						line-height: 18px;
 						margin-bottom: 4px;
+					}
+
+					.flex {
+						overflow: auto;
 					}
 
 					.name {

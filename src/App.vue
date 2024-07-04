@@ -2,12 +2,10 @@
   <el-config-provider @wheel="onMouseWheel">
 
     <Head v-show="showMenus" class="animate__animated animate__fadeInDown"></Head>
-    <div>
-      <router-view v-slot="{ Component }">
-        <component :is="Component" :class="isStart ? '' : 'main'" />
-      </router-view>
-      <Footer v-if="!isStart"></Footer>
-    </div>
+    <router-view v-slot="{ Component }">
+      <component :is="Component" :class="isStart ? '' : 'main'" />
+    </router-view>
+    <Footer v-if="!isStart"></Footer>
   </el-config-provider>
 
 </template>

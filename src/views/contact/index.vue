@@ -17,7 +17,7 @@ import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n()
 const conf = {
-	name: '璞偌芳德商务咨询有限公司',
+	name: t('common.name'),
 	msg: [
 		[
 			t('footer.conf1.txt2'),

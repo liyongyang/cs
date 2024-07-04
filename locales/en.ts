@@ -1,6 +1,7 @@
 // index homepage structure en
 export default {
   common: {
+    name: "CSUITE EXECUTIVE",
     routes: {
       menus: "Who We Are | Our Services | Our Clients | Careers | Join Us",
       menu1: "Who We Are",
@@ -9,8 +10,10 @@ export default {
       menu4: "Careers",
       menu5: "Join Us",
     },
-    return: "return",
+    // return: "return",
+    return: "",
     more: "more",
+    more1: "View more",
   },
   Email: "contact us",
   page1: {
@@ -394,7 +397,7 @@ export default {
             "Academic check and 360-degree reference checks ",
             "Psychometrics test on the final list ",
             "Negotiation terms and conditions",
-            "与客户及候选人进行就业安置服务（第4-6周）",
+            "Job placement services with clients and candidates (weeks 4-6)",
           ],
         },
         {
@@ -1128,7 +1131,7 @@ export default {
     conf1: {
       title: "About Us:",
       msg: [
-        "研亚咨询致力于通过深度、定制化的市场研究服务，帮助客户洞察技术发展趋势、发现新的业务机会、制定差异化的竞争策略、探寻产业链上合作伙伴，进一步为客户战略制定提供关键决策信息，从而实现业务的可持续增长研亚咨询在性能材料与特种化学品、新能源汽车、半导体/显示/YIMR Advisory is committed to providing clients with in-depth and customized market research services. We help them gain insights into technology development trends, discover new business opportunities, develop differentiated competitive strategies, and explore collaboration partners in the value chain. Our goal is to provide clients with critical decision-making information to achieve sustainable business growth. With over 15 years of experience in performance materials and specialty chemicals, new energy vehicles, semiconductor/display/electronics, photovoltaics, and precision instruments, we serve global leading companies in these industries, including Wanhua, 3M, Covestro, Huntsman, Henkel, Siemens, Toyota, Denso, Hitachi Chemical, Infineon, Toray, and Sumitomo Chemical.",
+        "Yanya Consulting is committed to helping customers gain insight into technology development trends, discover new business opportunities, formulate differentiated competitive strategies, explore partners in the industry chain through in-depth and customized market research services, and further provide key decisions for customer strategy formulation information, thereby achieving sustainable business growth. Yanya Consulting has accumulated more than 15 years of systematic research and experience in the fields of performance materials and specialty chemicals, new energy vehicles, semiconductors/displays/electronics, photovoltaics, and precision instruments; serving the above fields Global leading companies, including: Wanhua, 3M, Evonik, Huntsman, Henkel, Siemens, Toyota, Denso, Hitachi Chemical, Infineon, Toray, Sumitomo Chemical, etc.",
       ],
     },
     conf2: {
@@ -1630,11 +1633,14 @@ Ham-let has a strong global presence with 14 branches, 5 manufacturing sites and
     },
     type: ["Enterprise Culture", "Join Us"],
     conf1: {
+      img1: "/joinUs/conf3_en.png",
       title: "photo",
       title2: "Employee Voice",
       title3: "Promotion Mechanisms",
       title4: "Article Sharing",
+      title5: "Mother and care",
       img: "/joinUs/conf4_en.png",
+      qaImg: "/joinUs/img-qa_en.png",
       desc: `Transparency and clarity in an enterprise's promotion mechanisms contribute not only to the career development and satisfaction of employees, but also to the stability and development of the organization. Transparent promotion mechanisms promote fairness, motivation, trust and performance, creating a healthier and more positive work environment for the organization.`,
       card: [
         "Having been an employee at Csuite, I have fully immersed myself in the corporate culture and values that define this organization. ",

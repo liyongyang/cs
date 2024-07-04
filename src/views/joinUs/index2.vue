@@ -67,10 +67,10 @@
           <li>
             {{ t("page_joinUs.conf1.desc") }}
           </li>
-          <img class="conf3-img" :src="t('page_joinUs.conf1.img1')" alt="" />
+          <img class="conf3-img" src="/joinUs/conf3.png" alt="" />
         </div>
 
-        <li class="title wow animate__fadeInUp"> {{ t("page_joinUs.conf1.title5") }}</li>
+        <li class="title wow animate__fadeInUp">Mother and care</li>
         <img class="conf4-img wow animate__fadeInUp" :src="t('page_joinUs.conf1.img')" alt="" />
 
         <div class="flex justify-between items-center">

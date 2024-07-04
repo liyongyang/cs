@@ -671,7 +671,7 @@ onUnmounted(() => {
 
 
 			.left {
-				width: 800px;
+				width: 840px;
 				text-wrap: wrap;
 				word-wrap: break-word;
 				white-space: pre-wrap;
