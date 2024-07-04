@@ -21,7 +21,7 @@
         </li>
       </div>
       <div v-if="active === 0" class="tab-box">
-        <div class="flex justify-between items-center">
+        <div id="box1Ref" class="flex justify-between items-center">
           <li class="title wow animate__fadeInUp">
             {{ t("page_joinUs.conf1.title") }}
           </li>
@@ -36,7 +36,7 @@
           </el-carousel> -->
         </div>
 
-        <li class="title wow animate__fadeInUp">
+        <li id="box2Ref" class="title wow animate__fadeInUp">
           {{ t("page_joinUs.conf1.title2") }}
         </li>
         <div class="conf2 wow animate__fadeInUp">
@@ -60,7 +60,7 @@
           </el-carousel>
         </div>
 
-        <li class="title wow animate__fadeInUp">
+        <li id="box3Ref" class="title wow animate__fadeInUp">
           {{ t("page_joinUs.conf1.title3") }}
         </li>
         <div class="conf3 wow animate__fadeInUp">
@@ -70,10 +70,10 @@
           <img class="conf3-img" :src="t('page_joinUs.conf1.img1')" alt="" />
         </div>
 
-        <li class="title wow animate__fadeInUp"> {{ t("page_joinUs.conf1.title5") }}</li>
+        <li id="box4Ref" class="title wow animate__fadeInUp"> {{ t("page_joinUs.conf1.title5") }}</li>
         <img class="conf4-img wow animate__fadeInUp" :src="t('page_joinUs.conf1.img')" alt="" />
 
-        <div class="flex justify-between items-center">
+        <div id="box5Ref" class="flex justify-between items-center">
           <li class="title wow animate__fadeInUp">
             {{ t("page_joinUs.conf1.title4") }}
           </li>

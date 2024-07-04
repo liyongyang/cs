@@ -12,20 +12,20 @@
       </div>
     </vue3-seamless-scroll>
     <div class="content">
-      <li class="title wow animate__fadeInUp">
+      <li id="box1Ref" class="title wow animate__fadeInUp">
         {{ t("page_customer.conf1.title") }}
       </li>
       <div class="my-conf1 wow animate__fadeInUp">
         <div class="card-item" v-for="(item, index) in egList" :key="index">
           <img @mouseover="changeHover(index, true)" @mouseleave="changeHover(index, false)" @click="toCase(index)"
             :class="[
-      'img',
-      'animate__animated',
-      item.status ? 'animate__fadeIn' : '',
-    ]" :src="item.status ? item.activeImg : item.img" alt="" />
+              'img',
+              'animate__animated',
+              item.status ? 'animate__fadeIn' : '',
+            ]" :src="item.status ? item.activeImg : item.img" alt="" />
         </div>
       </div>
-      <li class="title wow animate__fadeInUp">
+      <li id="box2Ref" class="title wow animate__fadeInUp">
         {{ t("page_customer.conf2.title") }}
       </li>
       <!-- <div class="my-conf2 wow animate__fadeInUp">
@@ -69,7 +69,7 @@ import { onBeforeMount, reactive, ref } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 import { Vue3SeamlessScroll } from "vue3-seamless-scroll";
-import Evaluation from './components/evaluation.vue';
+import Evaluation from './components/evaluation.vue'
 
 const { t } = useI18n();
 const router = useRouter();

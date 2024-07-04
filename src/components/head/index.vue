@@ -7,9 +7,16 @@
 		<div class="head" v-else>
 			<img class="cursor-pointer" src="/img/logo.png" alt="" @click="reload">
 			<div class="menus">
-				<li v-for="(item, index) in  menus" :key="index" :class="activeRoute === index ? 'active-bg' : 'default-bg'"
+				<li v-for="(item, index) in menus" :key="index" :class="activeRoute === index ? 'active-bg' : 'default-bg'"
 					class=" menu" @click="changePage(item, i)">
-					{{ item.name }}
+					<div>{{ item.name }}</div>
+					<div class="navlist_wrap" v-if="item.navlist && item.navlist.length > 1 && !isMobile"></div>
+					<!-- <div class="navlist_wrap"> -->
+					<ul class="navlist" v-if="item.navlist && item.navlist.length > 1 && !isMobile">
+						<li v-for="(nav, index) in item.navlist" @click="scrollToAnchor(nav.id, index)">{{ nav.name }}</li>
+					</ul>
+					<!-- </div> -->
+
 				</li>
 			</div>
 			<div class="head-left space-x-2">
@@ -30,7 +37,7 @@
 		<div v-if="showMenu" class="showMenus animate__animated animate__fadeInDown">
 			<div>
 				<img class="logo" src="/img/logo.png" alt="">
-				<li v-for="( item, index ) in  menus " :key="index"
+				<li v-for="( item, index ) in menus " :key="index"
 					:class="activeRoute === index ? 'active-menu' : 'defult-menu'" class="menu" @click="changePage(item, index)">
 					{{ item.name }}
 				</li>
@@ -39,7 +46,7 @@
 					<li class="active-lang def-lang">CN</li>
 					<li class="def-lang">EN</li>
 				</div> -->
-			</div>
+			</div>http://localhost:3333/src/components/head/index.vue?t=1720069243488
 			<div class="close" @click="showMenubtn"></div>
 		</div>
 	</div>
@@ -49,7 +56,7 @@
 import { onMounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from "vue-router";
-
+const emit = defineEmits(['scrollToAnchor']);
 const { t, locale } = useI18n()
 const router = useRouter();
 const route = useRoute();
@@ -60,17 +67,65 @@ const menus = [
 	{
 		path: '/home',
 		name: t('common.routes.menu1'),
-		id: 0
+		id: 0,
+		navlist: [{
+			name: t('page1.conf1.title'),
+			id: 'box1Ref'
+		}, {
+			name: t('page1.conf1.banner.title'),
+			id: 'box2Ref'
+		}, {
+			name: t('page1.conf2.title'),
+			id: 'box3Ref'
+		}, {
+			name: t('page1.conf3.title'),
+			id: 'box4Ref'
+		}]
 	},
 	{
 		path: '/service',
 		name: t('common.routes.menu2'),
-		id: 1
+		id: 1,
+		navlist: [{
+			name: t('page_server.conf1.title'),
+			id: 'box1Ref'
+		}, {
+			name: t('page_server.conf2.title'),
+			id: 'box2Ref'
+		}, {
+			name: t('page_server.conf3.title'),
+			id: 'box3Ref'
+		}, {
+			name: t('page_server.conf4.title'),
+			id: 'box4Ref'
+		}, {
+			name: t('page_server.conf5.title'),
+			id: 'box5Ref'
+		}, {
+			name: t('page_server.conf6.title'),
+			id: 'box6Ref'
+		}, {
+			name: t('page_server.conf7.title'),
+			id: 'box7Ref'
+		}, {
+			name: t('page_server.conf8.title'),
+			id: 'box8Ref'
+		}, {
+			name: t('page_server.conf9.title'),
+			id: 'box9Ref'
+		}]
 	},
 	{
 		path: '/customer',
 		name: t('common.routes.menu3'),
-		id: 2
+		id: 2,
+		navlist: [{
+			name: t('page_customer.conf1.title'),
+			id: 'box1Ref'
+		}, {
+			name: t('page_customer.conf2.title'),
+			id: 'box2Ref'
+		}]
 	},
 	{
 		path: '/recruit',
@@ -80,9 +135,26 @@ const menus = [
 	{
 		path: '/joinUs',
 		name: t('common.routes.menu5'),
-		id: 4
+		id: 4,
+		navlist: [{
+			name: t('page_joinUs.conf1.title'),
+			id: 'box1Ref'
+		}, {
+			name: t('page_joinUs.conf1.title2'),
+			id: 'box2Ref'
+		}, {
+			name: t('page_joinUs.conf1.title3'),
+			id: 'box3Ref'
+		}, {
+			name: t('page_joinUs.conf1.title5'),
+			id: 'box4Ref'
+		}, {
+			name: t('page_joinUs.conf1.title4'),
+			id: 'box5Ref'
+		}]
 	}
 ]
+const isMobile = ref(true)
 watch(route, (v) => {
 	window.scrollTo(0, 0);
 	document.body.style.overflow = 'auto';
@@ -107,6 +179,7 @@ const showMenubtn = () => {
 	document.body.style.overflow = showMenu.value ? 'hidden' : 'auto';
 }
 onMounted(() => {
+	isMobile.value = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 });
 
 const toContact = () => {
@@ -124,6 +197,9 @@ const changePage = (item: any, i: number) => {
 	router.push({
 		path: item.path
 	});
+}
+const scrollToAnchor = (anchorName, index) => {
+	emit('scrollToAnchor', anchorName, activeRoute === index)
 }
 </script>
 
@@ -153,11 +229,79 @@ const changePage = (item: any, i: number) => {
 			border-radius: 12px;
 
 			.menu {
+				position: relative;
 				font-size: 16px;
 				align-items: center;
 				cursor: pointer;
 				padding: 12px 24px;
 				border-radius: 12px;
+
+				&:hover {
+
+					&>.navlist_wrap,
+					&>.navlist {
+						display: block;
+					}
+				}
+
+				&:nth-child(2) {
+					.navlist {
+						width: 800px;
+
+						li {
+							width: 33%;
+						}
+					}
+				}
+
+				.navlist_wrap {
+					display: none;
+					position: fixed;
+					z-index: 1;
+					left: 0;
+					top: 104px;
+					height: 180px;
+					width: 100%;
+					background-color: #fff;
+
+				}
+
+				.navlist {
+					display: none;
+					position: absolute;
+					left: 15px;
+					// display: flex;
+					// flex-wrap: wrap;
+					width: 460px;
+					padding-left: 0px;
+					z-index: 2;
+					color: #909399;
+					font-size: 14px;
+					padding-top: 16px;
+					white-space: normal;
+
+					li {
+						display: inline-block;
+						position: relative;
+						padding-left: 12px;
+						width: 50%;
+						margin-bottom: 16px;
+
+						&:before {
+							content: '';
+							position: absolute;
+							left: 0;
+							top: 2px;
+							margin-right: 12px;
+							width: 3px;
+							height: 18px;
+							border-radius: 8px;
+							background-color: #E30214;
+						}
+					}
+
+
+				}
 			}
 
 		}
@@ -191,24 +335,29 @@ const changePage = (item: any, i: number) => {
 		:deep(.el-select__placeholder) {
 			color: #20262e;
 		}
+
 		:deep(.el-input) {
 			height: 48px;
-			
+
 		}
+
 		:deep(.el-input__inner) {
-			color:#231C1E;
+			color: #231C1E;
 		}
+
 		:deep(.el-input__wrapper) {
 			position: relative;
 			border-radius: 12px;
-			padding-left:56px;
+			padding-left: 56px;
 			box-shadow: 0 0 0 1px #B0A7A7 inset
 		}
-		:deep(.el-input__suffix){
+
+		:deep(.el-input__suffix) {
 			position: absolute;
-			left:20px;
-			svg{
-				color:#231C1E;
+			left: 20px;
+
+			svg {
+				color: #231C1E;
 			}
 		}
 	}
@@ -261,6 +410,8 @@ const changePage = (item: any, i: number) => {
 					cursor: pointer;
 					padding: 12px 24px;
 					border-radius: 12px;
+
+
 				}
 
 			}

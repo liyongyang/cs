@@ -13,7 +13,7 @@
 			</el-carousel>
 		</div>
 		<div class="content">
-			<div class="box1 wow animate__fadeInUp">
+			<div id="box1Ref" class="box1 wow animate__fadeInUp">
 				<li class="title text-8">{{ t('page1.conf1.title') }}</li>
 				<li class="msg">{{ t('page1.conf1.tips') }}</li>
 			</div>
@@ -40,13 +40,14 @@
 					<li class="txt-2"><span>{{ t('page1.conf1.msg[3].tips') }}</span></li>
 				</div>
 			</div>
-			<div class="bg1 wow animate__fadeInUp" :style="{ backgroundImage: `url(${bg1Image})` }"
+			<div id="box2Ref" class="bg1 wow animate__fadeInUp" :style="{ backgroundImage: `url(${bg1Image})` }"
 				style="background-size: 100% 100%;">
 				<div class="box1" :class="bg1_MouseMove ? 'box1_active' : 'box1_default'">
 					<li class="title" :style="{ opacity: bg1Image != bg1_default ? 0 : 1 }">{{ t('page1.conf1.banner.title') }}
 					</li>
 					<div class="btn">
-						<div class="btn-item" @mouseover="handleMouseMove(language ==='zh'?bg1_1:bg1_1_en)" @mouseleave="handleMouseLeave()">
+						<div class="btn-item" @mouseover="handleMouseMove(language === 'zh' ? bg1_1 : bg1_1_en)"
+							@mouseleave="handleMouseLeave()">
 							<li>
 								{{ t('page1.conf1.banner.msg[0].txt') }}
 							</li>
@@ -54,7 +55,8 @@
 								<Right />
 							</el-icon>
 						</div>
-						<div class="btn-item" @mouseover="handleMouseMove(language ==='zh'?bg1_2:bg1_2_en)" @mouseleave="handleMouseLeave()">
+						<div class="btn-item" @mouseover="handleMouseMove(language === 'zh' ? bg1_2 : bg1_2_en)"
+							@mouseleave="handleMouseLeave()">
 							<li>
 								{{ t('page1.conf1.banner.msg[1].txt') }}
 							</li>
@@ -62,7 +64,8 @@
 								<Right />
 							</el-icon>
 						</div>
-						<div class="btn-item" @mouseover="handleMouseMove(language ==='zh'?bg1_3:bg1_3_en)" @mouseleave="handleMouseLeave()">
+						<div class="btn-item" @mouseover="handleMouseMove(language === 'zh' ? bg1_3 : bg1_3_en)"
+							@mouseleave="handleMouseLeave()">
 							<li>
 								{{ t('page1.conf1.banner.msg[2].txt') }}
 							</li>
@@ -73,7 +76,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="bg2 wow animate__fadeInUp">
+			<div id="box3Ref" class="bg2 wow animate__fadeInUp">
 				<div class="flex justify-between items-center">
 					<li class="title">{{ t('page1.conf2.title') }}</li>
 					<li class="toMore" @click="toDetail">{{ t('page1.conf2.more') }}</li>
@@ -93,7 +96,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="bg3 wow animate__fadeInUp">
+			<div id="box4Ref" class="bg3 wow animate__fadeInUp">
 				<li class="title">{{ t('page1.conf3.title') }}</li>
 				<li class="address">{{ t('page1.conf3.tips') }}</li>
 				<div class="card">
@@ -132,6 +135,7 @@ import { Ref, onMounted, onUnmounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from "vue-router";
 
+const box1Ref = ref(null)
 const router = useRouter();
 const { t } = useI18n()
 const language = ref(useI18n().locale.value)
@@ -221,7 +225,11 @@ const areaList = [
 const bg1Image = ref(bg1_default);
 const bg1_MouseMove = ref(false)
 onMounted(() => {
-
+	// setTimeout(() => {
+	// 	const domName = 'box1Ref';
+	// 	const top = document.getElementById(domName).getBoundingClientRect().top
+	// 	window.scrollTo(0, top - 104)
+	// }, 2000);
 });
 
 const showMapTip = (key: number) => {

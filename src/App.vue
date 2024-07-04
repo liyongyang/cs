@@ -1,62 +1,87 @@
 <template>
   <el-config-provider @wheel="onMouseWheel">
-
-    <Head v-show="showMenus" class="animate__animated animate__fadeInDown"></Head>
+    <Head
+      v-show="showMenus"
+      class="animate__animated animate__fadeInDown"
+      @scrollToAnchor="scrollToAnchor"
+    ></Head>
     <router-view v-slot="{ Component }">
       <component :is="Component" :class="isStart ? '' : 'main'" />
     </router-view>
     <Footer v-if="!isStart"></Footer>
   </el-config-provider>
-
 </template>
 
 <script lang="ts" setup>
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import WOW from "wow.js";
 
-import Footer from '@/components/footer/index.vue';
-import Head from '@/components/head/index.vue';
-
+import Footer from "@/components/footer/index.vue";
+import Head from "@/components/head/index.vue";
 
 const route = useRoute();
-const isStart = ref(true)
-const showMenus = ref(true)
+const isStart = ref(true);
+const showMenus = ref(true);
 const currentVideo = ref(0);
 
 watch(route, (v) => {
-  showMenus.value = true
-  if (v.path != '/') {
-    isStart.value = false
+  showMenus.value = true;
+  if (v.path != "/") {
+    isStart.value = false;
   }
-  console.log(v)
-})
+  console.log(v);
+});
 const playNextVideo = () => {
-  const videos = document.querySelectorAll('video');
-  videos[currentVideo.value].style.display = 'block'; // 显示当前视频
+  const videos = document.querySelectorAll("video");
+  videos[currentVideo.value].style.display = "block"; // 显示当前视频
   videos[currentVideo.value].play(); // 播放当前视频
   currentVideo.value = (currentVideo.value + 1) % videos.length; // 更新当前视频索引
   setTimeout(playNextVideo, videos[currentVideo.value].duration * 1000); // 在当前视频播放完后切换到下一个视频
-}
+};
 
-const onMouseWheel = ((event: any) => {
+const onMouseWheel = (event: any) => {
   if (event.deltaY > 0) {
-    showMenus.value = false
+    showMenus.value = false;
   } else if (event.deltaY < 0) {
-    showMenus.value = true
+    showMenus.value = true;
   }
-})
+};
+const scrollFn = (name) => {
+  const dom = document.getElementById(name);
+  console.log("scrol", dom);
+  if (dom) {
+    const top = dom.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo(0, top - 104);
+  }
+};
+let timer = ref(null);
+const isMounted = ref(false);
+const scrollToAnchor = (name, isRefresh) => {
+  if (isRefresh) {
+    scrollFn(name);
+  } else {
+    timer.value = setInterval(() => {
+      if (isMounted.value) {
+        scrollFn(name);
+        clearInterval(timer.value);
+      }
+    }, 100);
+  }
+};
 
 onMounted(() => {
   new WOW({
-    boxClass: 'wow',      // default
-    animateClass: 'animate__animated', // default
-  }).init()
-  document.body.addEventListener('wheel', onMouseWheel)
-})
+    boxClass: "wow", // default
+    animateClass: "animate__animated", // default
+  }).init();
+  document.body.addEventListener("wheel", onMouseWheel);
+  isMounted.value = true;
+});
 onBeforeUnmount(() => {
-  document.body.removeEventListener('wheel', onMouseWheel);
-})
+  document.body.removeEventListener("wheel", onMouseWheel);
+  clearInterval(timer.value);
+});
 </script>
 <style lang="scss" scoped>
 .loading {
